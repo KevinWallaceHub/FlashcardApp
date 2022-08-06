@@ -1,6 +1,6 @@
 <template>
   <div>
-      <h1>This is flashcard page!</h1>
+      <h1>Flashcards!</h1>
       <flash-card-list />
   </div>
 </template>
@@ -15,3 +15,8 @@ export default {
     }
 }
 </script>
+<style>
+h1{
+    text-align: center;
+}
+</style>

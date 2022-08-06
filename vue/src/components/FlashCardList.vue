@@ -33,4 +33,13 @@ export default {
 </script>
 
 <style>
+div.flashCardList{
+    display: flex;
+    flex-direction: row;
+    justify-items: center;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    
+}
+
 </style>
