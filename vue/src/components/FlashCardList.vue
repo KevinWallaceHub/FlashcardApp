@@ -1,6 +1,9 @@
 <template>
   <div class="flashCardList">
-    <flash-card />
+    <flash-card 
+     v-for="currentFlashCard in flashCardList"
+     :key="currentFlashCard.card_id"
+     :flashcard="currentFlashCard"/>
   </div>
 </template>
 
@@ -22,6 +25,7 @@ export default {
       .getAllFlashCards()
       .then((response) => {
         this.flashCardList = response.data;
+        console.log(this.flashCardList);
       })
       .catch((error) => console.error(error));
   },
