@@ -7,4 +7,6 @@ import java.util.List;
 public interface FlashCardDao {
 
     List<FlashCard> findAllCards();
+
+    FlashCard createNewFlashCard(FlashCard flashCard, long userId);
 }

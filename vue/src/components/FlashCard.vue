@@ -23,14 +23,9 @@
 export default {
     date(){
         return {
-            display: false,
         }
     },
-    props: ['flashcard']
-    ,
-    computed: {
-
-    },
+    props: ['flashcard'],
 }
 </script>
 
@@ -59,7 +54,7 @@ div#card  {
     } 
 
      div#card:hover .sideOne{
-        transform: rotateY(180deg)
+        transform: rotateY(180deg);
     }
 
     .front, .back{
@@ -69,7 +64,7 @@ div#card  {
     }
     .sideOne{
         background-color:rgb(247, 241, 234);
-        border-style:inset;
+        border-style:solid;
         border-width: 1px;
         border-radius: 5px;
             }

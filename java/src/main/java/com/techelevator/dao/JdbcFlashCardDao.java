@@ -21,7 +21,7 @@ public class JdbcFlashCardDao implements FlashCardDao {
     @Override
     public List<FlashCard> findAllCards() {
         List<FlashCard> allCards = new ArrayList<>();
-        String sql = "Select * FROM flashcards";
+        String sql = "Select user_id, card_id, question_side, answer_side, keywords FROM flashcards";
 
         SqlRowSet results = jdbcTemplate.queryForRowSet(sql);
 
@@ -31,6 +31,16 @@ public class JdbcFlashCardDao implements FlashCardDao {
         return allCards;
     }
 
+    @Override
+    public FlashCard createNewFlashCard(FlashCard flashCard, long userId) {
+        String sql = "INSERT INTO flashcards(user_id, card_id, question_side, answer_side, keywords) " +
+                "VALUES (?, DEFAULT, ?,?,?) RETURNING card_id";
+        Integer id = jdbcTemplate.queryForObject(sql , Integer.class, userId,  flashCard.getQuestionSide(),
+                flashCard.getAnswerSide(), flashCard.getKeywords());
+        flashCard.setCardId(id);
+        return flashCard;
+    }
+
 
     private FlashCard mapRowToFlashCard(SqlRowSet row){
         FlashCard flashCard = new FlashCard();
@@ -38,8 +48,8 @@ public class JdbcFlashCardDao implements FlashCardDao {
         flashCard.setCardId(row.getLong("card_id"));
         flashCard.setQuestionSide(row.getString("question_side"));
         flashCard.setAnswerSide(row.getString("answer_side"));
-        if(row.getString("keywords") != null) {
-            flashCard.setKeywords(List.of(row.getString("keywords").split(" ")));
+        if (row.getString("keywords") != null) {
+            flashCard.setKeywords(row.getString("keywords"));
         }
         return flashCard;
 
