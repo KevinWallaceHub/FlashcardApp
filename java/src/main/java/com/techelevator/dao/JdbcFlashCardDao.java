@@ -32,13 +32,19 @@ public class JdbcFlashCardDao implements FlashCardDao {
     }
 
     @Override
-    public FlashCard createNewFlashCard(FlashCard flashCard, long userId) {
+    public FlashCard createNewFlashCard(FlashCard flashCard) {
         String sql = "INSERT INTO flashcards(user_id, card_id, question_side, answer_side, keywords) " +
                 "VALUES (?, DEFAULT, ?,?,?) RETURNING card_id";
-        Integer id = jdbcTemplate.queryForObject(sql , Integer.class, userId,  flashCard.getQuestionSide(),
+        Integer id = jdbcTemplate.queryForObject(sql , Integer.class, flashCard.getUserId(),  flashCard.getQuestionSide(),
                 flashCard.getAnswerSide(), flashCard.getKeywords());
         flashCard.setCardId(id);
         return flashCard;
+    }
+
+    @Override
+    public void updateFlashCard(FlashCard flashCard) {
+        String sql = "UPDATE flashcards SET question_side = ?, answer_side = ?, keywords = ? WHERE card_id = ?";
+        jdbcTemplate.update(sql, flashCard.getQuestionSide(), flashCard.getAnswerSide(), flashCard.getKeywords(), flashCard.getCardId());
     }
 
 

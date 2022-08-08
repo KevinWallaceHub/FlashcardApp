@@ -21,6 +21,10 @@ public class FlashCardController {
         this.flashCardDao = flashCardDao;
     }
 
+    @RequestMapping(path="/cards/{id}", method=RequestMethod.PUT)
+    public void updateFlashcard(@PathVariable("id") long flashCardId, @RequestBody FlashCard flashCard){
+       flashCardDao.updateFlashCard(flashCard);
+    }
 
     @RequestMapping(path = "/cards", method = RequestMethod.GET)
     public List<FlashCard> showAllCards() {
@@ -29,8 +33,10 @@ public class FlashCardController {
 
     @ResponseStatus(HttpStatus.CREATED)
     @RequestMapping(path = "/cards", method = RequestMethod.POST)
-    public FlashCard addNewCard(@RequestBody FlashCard flashCard, Principal principal){
-        return flashCardDao.createNewFlashCard(flashCard, userDao.findIdByUsername(principal.getName()));
+    public FlashCard addNewCard(@RequestBody FlashCard flashCard){
+        return flashCardDao.createNewFlashCard(flashCard);
     }
+
+    
 
 }

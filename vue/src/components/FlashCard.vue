@@ -1,5 +1,5 @@
 <template>
-  <div id="card">
+  <div id="card"  v-on:click="getCardId()">
 <!--     
       {{ flashcard.user_id}}
       {{flashcard.keywords}}
@@ -10,11 +10,10 @@
               <p  id="question">{{flashcard.question_side}}</p>
           </div>
           <div class= "back">
-      <p id="answer">{{flashcard.answer_side}} </p>
+      <p  id="answer">{{flashcard.answer_side}} </p>
       </div>
       </div>
-<!-- v-if="!display" v-on:click="display=true"
- v-on:click="display=false" v-show="display"   -->
+
   </div>
 </template>
 
@@ -23,8 +22,20 @@
 export default {
     date(){
         return {
+            currentCard:{}
         }
     },
+    computed: {
+        
+    },
+    methods: {
+        getCardId(){
+            this.currentCard = this.flashcard
+            this.$store.commit('SET_CURRENT_CARD', this.currentCard);
+            // console.log(this.$store.state.currentCard);
+        }
+    },
+    
     props: ['flashcard'],
 }
 </script>

@@ -8,5 +8,7 @@ public interface FlashCardDao {
 
     List<FlashCard> findAllCards();
 
-    FlashCard createNewFlashCard(FlashCard flashCard, long userId);
+    FlashCard createNewFlashCard(FlashCard flashCard);
+
+    void updateFlashCard(FlashCard flashCard);
 }

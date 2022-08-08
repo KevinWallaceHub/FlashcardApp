@@ -7,5 +7,9 @@ export default {
 
     createNewFlashCard(flashCard) {
         return axios.post("/cards", flashCard);
+    },
+
+    updateFlashCard(cardId, flashCard){
+        return axios.put(`/cards/${cardId}`, flashCard);
     }
 }
