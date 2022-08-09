@@ -20,7 +20,9 @@ export default new Vuex.Store({
   state: {
     token: currentToken || '',
     user: currentUser || {},
-    currentCard: {}
+    currentCard: {},
+    updatedFlashCard:{},
+    flashCardList: [],
   },
   mutations: {
     SET_AUTH_TOKEN(state, token) {
@@ -42,7 +44,9 @@ export default new Vuex.Store({
     SET_CURRENT_CARD(state, flashCard) { 
       state.currentCard = flashCard;
     },
-    
+    SET_UPDATED_CARD(state, flashCard){
+      state.updatedFlashCard=flashCard;
+    }
   },
   // actions: {
   //   getCardId(){

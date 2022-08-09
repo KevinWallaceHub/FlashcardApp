@@ -1,15 +1,16 @@
 <template>
   <div class="flashCardList">
+    <search-flash-card />
     <single-flash-card
       v-if="this.$store.state.currentCard.card_id != 0"
       v-bind:flashcard="
         getFlashCardInfoFromCardId(
           this.$store.state.currentCard.card_id,
-          flashCardList
+          this.$store.state.flashCardList
         )
       "
     />
-    <div class="form" v-show="!this.$store.state.currentCard.card_id > 0">
+    <div class="form" v-if="!this.$store.state.currentCard.card_id > 0">
       <form action="submit">
         <label for="questionSide">Question:</label>
         <input type="text" id="questionSide" v-model="questionSide" />
@@ -22,11 +23,19 @@
         </button>
       </form>
     </div>
-    <flash-card
-      v-for="currentFlashCard in flashCardList"
-      :key="currentFlashCard.card_id"
-      :flashcard="currentFlashCard"
-    />
+    <!-- <div v-if="filteredList()">
+      <flash-card
+        v-for="currentFlashCard in filteredList()"
+        :key="currentFlashCard.card_id"
+        :flashcard="currentFlashCard"
+      />
+      </div> --> 
+      <flash-card
+        v-for="currentFlashCard in this.$store.state.flashCardList"
+        :key="currentFlashCard.card_id"
+        :flashcard="currentFlashCard"
+      />
+    
   </div>
 </template>
 
@@ -34,14 +43,16 @@
 import FlashCard from "@/components/FlashCard.vue";
 import flashCardService from "@/services/FlashCardService.js";
 import SingleFlashCard from "@/components/SingleFlashCard.vue";
+import SearchFlashCard from "@/components/SearchFlashCard.vue";
 export default {
   components: {
     FlashCard,
     SingleFlashCard,
+    SearchFlashCard,
   },
+  props: ['filteredList'],
   data() {
     return {
-      flashCardList: [],
       questionSide: "",
       answerSide: "",
       keywords: "",
@@ -52,11 +63,18 @@ export default {
     flashCardService
       .getAllFlashCards()
       .then((response) => {
-        this.flashCardList = response.data;
+        this.$store.state.flashCardList = response.data;
       })
       .catch((error) => console.error(error));
   },
+  computed: {
+  },
   methods: {
+    resetData() {
+      this.questionSide = "";
+      this.answerSide = "";
+      this.keywords = "";
+    },
     createNewFlashCard() {
       const newFlashCard = {
         question_side: this.questionSide,
@@ -69,7 +87,8 @@ export default {
         .createNewFlashCard(newFlashCard)
         .then((response) => {
           console.log(response);
-          this.flashCardList.push(response.data);
+          this.$store.state.flashCardList.push(response.data);
+          this.resetData();
         })
         .catch((err) => console.error(err));
     },
