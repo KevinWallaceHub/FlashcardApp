@@ -2,7 +2,7 @@
   <div class="flashCardList">
     <search-flash-card />
     <single-flash-card
-      v-if="this.$store.state.currentCard.card_id != 0"
+      v-if="this.$store.state.showEdit"
       v-bind:flashcard="
         getFlashCardInfoFromCardId(
           this.$store.state.currentCard.card_id,
@@ -10,7 +10,8 @@
         )
       "
     />
-    <div class="form" v-if="!this.$store.state.currentCard.card_id > 0">
+    <button v-if="showButton" v-on:click="createFormToggle()">Create New Card</button>
+    <div class="form" v-if="showCreateForm">
       <form action="submit">
         <label for="questionSide">Question:</label>
         <input type="text" id="questionSide" v-model="questionSide" />
@@ -31,7 +32,7 @@
       />
       </div> --> 
       <flash-card
-        v-for="currentFlashCard in this.$store.state.flashCardList"
+        v-for="currentFlashCard in searchFunction"
         :key="currentFlashCard.card_id"
         :flashcard="currentFlashCard"
       />
@@ -56,6 +57,8 @@ export default {
       questionSide: "",
       answerSide: "",
       keywords: "",
+      showCreateForm: false,
+      showButton: true
     };
   },
 
@@ -68,8 +71,20 @@ export default {
       .catch((error) => console.error(error));
   },
   computed: {
+    searchFunction() {
+      const cardList = this.$store.state.flashCardList;
+      const searchTerm = this.$store.state.searchTerm;
+      return cardList.filter(card => {
+        return card.keywords.includes(searchTerm);
+      });
+    },
+    
   },
   methods: {
+    createFormToggle() {
+      this.showCreateForm = true
+      this.showButton = false;
+    },
     resetData() {
       this.questionSide = "";
       this.answerSide = "";
@@ -89,6 +104,8 @@ export default {
           console.log(response);
           this.$store.state.flashCardList.push(response.data);
           this.resetData();
+          this.showButton = true;
+          this.showCreateForm = false;
         })
         .catch((err) => console.error(err));
     },

@@ -1,5 +1,5 @@
 <template>
-  <div id="card"  v-on:click="getCardId()">
+  <div id="card"  v-on:click="getCardId(),toggleShowEdit()">
 <!--     
       {{ flashcard.user_id}}
       {{flashcard.keywords}}
@@ -29,6 +29,10 @@ export default {
         
     },
     methods: {
+           toggleShowEdit(){
+      this.$store.commit('SET_SHOW_EDIT', true)
+    },
+        
         getCardId(){
             this.currentCard = this.flashcard
             this.$store.commit('SET_CURRENT_CARD', this.currentCard);
