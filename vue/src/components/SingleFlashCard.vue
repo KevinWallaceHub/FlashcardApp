@@ -138,14 +138,14 @@ div.singleCard {
   display: flex;
   word-wrap: none;
   flex-direction: row;
-  justify-content: space-around;
+  /* justify-content: space-around; */
   box-shadow: 2px 4px 7px 0 #e47b64;
   margin-bottom: 10px;
   margin-right: 5px;
   border-radius: 5px;
   z-index: 1;
   position: fixed;
-  /* right: 35em; */
+  right: 35em;
   top: 25em;
 }
 div#questionSide,

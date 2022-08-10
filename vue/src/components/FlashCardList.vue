@@ -126,7 +126,7 @@ export default {
 div.twoButtons{
   display: flex;
   justify-content: center;
-  margin-left: 59px; 
+ 
    
 }
 div.flashCardList {

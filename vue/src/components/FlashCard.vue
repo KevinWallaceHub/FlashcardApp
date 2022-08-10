@@ -99,6 +99,7 @@ div#card  {
     .back{
     transform: rotateY(180deg);
     position: relative;
+    bottom: 10px;
         
         
     } 
