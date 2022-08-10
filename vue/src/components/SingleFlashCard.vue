@@ -88,11 +88,15 @@ export default {
 div.singleCard {
   color:rgb(4,65,65);
   border-style: solid;
+  border-width: 2px;
   background-color: white;
   display: flex;
   word-wrap: none;
   flex-direction: row;
   justify-content: space-around;
+  box-shadow: 2px 4px 7px 0 #E47B64;
+  margin-bottom: 10px;
+  margin-right:5px;
 }
 div#questionSide, div#answerSide, div#keywords{
   display: flex;
