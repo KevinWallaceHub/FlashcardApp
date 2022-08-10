@@ -53,7 +53,6 @@ div#card  {
     justify-content:space-evenly;
     flex-direction: row;
     width:300px;
-    /* everything between line 48 and 79 is relating to the card flip animation*/
     perspective: 1000px; 
     background-color:transparent;
     font-size: .9em;
@@ -74,6 +73,7 @@ div#card  {
 
      div#card:hover .sideOne{
         transform: rotateY(180deg);
+       
     }
 
     .front, .back{
@@ -111,12 +111,8 @@ div#card  {
 p#answer{
     border-width: 0px 0px 2px 0px;
     border-style:solid;
-    ;
-    /* color:white; */
+  
 }
-/* p#answer:hover {
-  color:black;
-    
-}  */
+
 
 </style>
