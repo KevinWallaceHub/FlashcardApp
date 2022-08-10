@@ -43,8 +43,13 @@ div.sidebar {
 div.main {
   grid-area: main;
 }
+
 button#yourCards {
     width: 25%;
+}
+
+button {
+    width: 9.7rem;
     padding: 10px;
     border-radius: 5px;
     color: #ffffff;
@@ -52,5 +57,6 @@ button#yourCards {
     font-weight: bold;
     text-align: center;
     text-transform: uppercase;
+    cursor:pointer;
 }
 </style>

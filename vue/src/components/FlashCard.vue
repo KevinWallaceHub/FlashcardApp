@@ -85,13 +85,13 @@ div#card  {
     .front{
         font-size: 1.5em;
         position: relative;
-        top: 50%;
+        top: 25%;
 
     }
     .sideOne{
         background-color:rgb(247, 241, 234);
         border-style:solid;
-        border-color: #E47B64;
+        border-color: #0e0d0d;
         border-width: 3px;
         border-radius: 5px;
             }
@@ -99,7 +99,7 @@ div#card  {
     .back{
     transform: rotateY(180deg);
     position: relative;
-        top: 25px;
+        
         
     } 
     
