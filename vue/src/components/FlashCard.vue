@@ -85,7 +85,7 @@ div#card  {
     .front{
         font-size: 1.5em;
         position: relative;
-        top: 50%;
+        top: 25%;
 
     }
     .sideOne{
@@ -99,7 +99,7 @@ div#card  {
     .back{
     transform: rotateY(180deg);
     position: relative;
-        top: 25px;
+        
         
     } 
     
