@@ -4,7 +4,8 @@
       <!-- <p>Username: {{ flashcard.user_id }}</p>
       <p>Card ID{{ flashcard.card_id }}</p> -->
       <label for="questionSide">Question: {{ flashcard.question_side }}</label>
-      <input type="text" id="questionSide" v-model="questionSide" />
+      <input type="text" id="questionSide" v-model="questionSide" 
+      v-bind="document.getElementById('questionSide').defaultValue='fsfssd'" />
       <label for="answerSide">Answer: {{ flashcard.answer_side }}</label>
       <input type="text" id="answerSide" v-model="answerSide" />
       <label for="keywords">Keywords: {{ flashcard.keywords }}</label>
@@ -69,6 +70,7 @@ export default {
     },
   },
 };
+
 </script>
 
 <style>

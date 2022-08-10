@@ -140,6 +140,7 @@ div.flashCardList {
 div.createForm{
   display: flex;
   justify-content: center;
+  
 }
 form.form{
   font-family:'Courier New', Courier, monospace;
