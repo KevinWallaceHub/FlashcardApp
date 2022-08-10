@@ -1,7 +1,8 @@
 <template>
   <div>
-    <label for="searchBar" >Search By Keyword:</label>
-    <input type="text" id="searchBar" v-model="searchBar" 
+    <!-- Search By Keyword: -->
+    <label for="searchBar" ></label>
+    <input type="text" placeholder="Search By Keyword" id="searchBar" v-model="searchBar" 
     v-bind="mutationForSearchTerm()"
     />
     
@@ -31,4 +32,14 @@ export default {
 </script>
 
 <style>
+input#searchBar{
+  
+  position: fixed;
+  background-color: #DFF0F9;
+  margin:5px;
+  border-style:solid;
+  border-radius:5px;
+  height: 1rem;
+  font-family:'Courier New', Courier, monospace 
+}
 </style>
