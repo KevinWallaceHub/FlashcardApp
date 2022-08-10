@@ -74,6 +74,7 @@ div#card  {
 
      div#card:hover .sideOne{
         transform: rotateY(180deg);
+        box-shadow: 2px 2px 2px 6px #E47B64;
     }
 
     .front, .back{
