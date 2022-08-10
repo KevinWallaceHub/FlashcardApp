@@ -11,5 +11,9 @@ export default {
 
     updateFlashCard(cardId, flashCard){
         return axios.put(`/cards/${cardId}`, flashCard);
+    },
+
+    deleteFlashCard(cardId){
+        return axios.delete(`/cards/${cardId}`)
     }
 }

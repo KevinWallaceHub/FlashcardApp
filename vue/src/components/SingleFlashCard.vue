@@ -22,16 +22,26 @@
           <label for="keywords">Keywords: </label>
           <input type="text" id="keywords" v-model="keywords" />
         </div>
-        <div>
-          <button
-            class="submit"
-            @click.prevent="updateSelectedFlashcard(), toggleShowEdit()"
-          >
-            Update
-          </button>
-          <button class="cancel" v-on:click.prevent="toggleShowEdit()">
-            Cancel
-          </button>
+        <div class="allEditFormBtn">
+          <div>
+            <button
+              class="submit"
+              @click.prevent="updateSelectedFlashcard(), toggleShowEdit()"
+            >
+              Update
+            </button>
+            <button class="cancel" v-on:click.prevent="toggleShowEdit()">
+              Cancel
+            </button>
+          </div>
+          <div>
+            <button
+              class="delete"
+              v-on:click.prevent="toggleShowEdit(), deleteSelectedFlashcard()"
+            >
+              Delete
+            </button>
+          </div>
         </div>
       </form>
     </div>
@@ -86,13 +96,36 @@ export default {
           console.error(err);
         });
     },
+
+    deleteSelectedFlashcard() {
+      if(confirm('Are your sure you would like to delete this Flashcard?'))
+      {
+      const unwantedFlashcard = 
+      {
+        card_id: this.flashcard.card_id,
+        question_side: this.questionSide,
+        answer_side: this.answerSide,
+        keywords: this.keywords,
+        user_id: this.$store.state.user.id,
+      };
+      
+      flashCardService
+        .deleteFlashCard(unwantedFlashcard.card_id)
+        .then((response) => {
+          if (response.status < 300) {
+            let index =
+              this.$store.state.flashCardList.indexOf(unwantedFlashcard.card_id);
+              this.$store.state.flashCardList.splice(index, 1);
+              alert("Flashcard Deleted Forever");
+            }}).catch((err) => console.error(err));
+      }
   },
+  }
 };
 </script>
 
 <style>
-
-div#cardForm{
+div#cardForm {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -122,7 +155,14 @@ div#keywords {
   flex-direction: column;
   margin: 5px;
 }
-button.cancel {
+
+div.allEditFormBtn {
+  display: flex;
+  justify-content: space-between;
+}
+
+button.cancel,
+button.delete {
   margin: 5px;
   width: 9.7rem;
   padding: 10px;
@@ -134,7 +174,8 @@ button.cancel {
   text-transform: uppercase;
   cursor: pointer;
 }
-button.cancel:hover {
+button.cancel:hover,
+button.delete:hover {
   background-color: #e47b64;
   transition: 0.7s;
 }

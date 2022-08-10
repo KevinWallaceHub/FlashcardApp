@@ -47,6 +47,12 @@ public class JdbcFlashCardDao implements FlashCardDao {
         jdbcTemplate.update(sql, flashCard.getQuestionSide(), flashCard.getAnswerSide(), flashCard.getKeywords(), flashCard.getCardId());
     }
 
+    @Override
+    public void deleteFlashCard(int flashCardId) {
+        String sql = "DELETE FROM flashcards WHERE card_id = ?";
+        jdbcTemplate.update(sql, flashCardId);
+    }
+
 
     private FlashCard mapRowToFlashCard(SqlRowSet row){
         FlashCard flashCard = new FlashCard();
