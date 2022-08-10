@@ -34,12 +34,13 @@ export default {
 <style>
 input#searchBar{
   
-  position: fixed;
+  
   background-color: #DFF0F9;
   margin:5px;
   border-style:solid;
+  
   border-radius:5px;
-  height: 1rem;
+  height:29px;
   font-family:'Courier New', Courier, monospace 
 }
 </style>

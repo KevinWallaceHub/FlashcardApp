@@ -15,13 +15,13 @@
     <div> <button v-if="showButton" class="createButton" v-on:click="createFormToggle()">Create New Card</button></div>
    </div>
     
-    <div class="form" v-if="showCreateForm">
-      <form action="submit">
+    <div class="createForm" v-if="showCreateForm">
+      <form class="form" action="submit">
         <label for="questionSide">Question:</label>
         <input type="text" id="questionSide" v-model="questionSide" />
-        <label for="answerSide">Answer:</label>
+        <label for="answerSide"> Answer:</label>
         <input type="text" id="answerSide" v-model="answerSide" />
-        <label for="keywords">Keywords:</label>
+        <label for="keywords"> Keywords:</label>
         <input type="text" id="keywords" v-model="keywords" />
         <button class="submit" v-on:click.prevent="createNewFlashCard()">
           Submit
@@ -125,7 +125,9 @@ export default {
 <style>
 div.twoButtons{
   display: flex;
-  justify-content: space-evenly;
+  justify-content: center;
+  margin-left: 59px;
+  /* justify-content: space-evenly; */
 }
 div.flashCardList {
   display: flex;
@@ -134,17 +136,40 @@ div.flashCardList {
   flex-wrap: wrap;
   justify-content: space-evenly;
 }
-/* div.searchBar{
-  position: absolute;
-  bottom:42rem;
-  right:41rem
-} */
+div.searchBar{
+ text-align: center;
+}
 
+div.createForm{
+  display: flex;
+  justify-content: center;
+}
+form.form{
+  font-family:'Courier New', Courier, monospace;
+  color:#215350;
+  font-weight: bold;
+  
+}
+button.submit{
+  height: 1.9rem;;
+  border-color:grey;
+   background-color: #DFF0F9;
+  margin:5px;
+  border-style:solid;
+  border-radius:5px;
+  font-size: 14pt;
+  font-weight: bold;
+  font-family: 'Courier New', Courier, monospace;
+  color: #215350;
+  cursor:pointer;
+}
+button.submit:hover{
+  border-color:#215350;
+  border-width: 3px;
+}
 button.createButton{
   height:35px;
-  /* position: relative;
-  bottom:43rem;
-  right:1rem; */
+  border-color:grey;
    background-color: #DFF0F9;
   margin:5px;
   border-style:solid;
