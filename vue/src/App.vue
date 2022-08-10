@@ -50,6 +50,7 @@ div#nav {
   background-color: #dff0f9;
   justify-content: space-between;
   align-items: center;
+  z-index: 1;
 }
 li.navs {
   font-family: "Nunito Sans", sans-serif;
