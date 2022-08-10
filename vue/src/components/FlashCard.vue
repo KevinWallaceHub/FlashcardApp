@@ -91,7 +91,7 @@ div#card  {
     .sideOne{
         background-color:rgb(247, 241, 234);
         border-style:solid;
-        border-color: #E47B64;
+        border-color: #0e0d0d;
         border-width: 3px;
         border-radius: 5px;
             }
