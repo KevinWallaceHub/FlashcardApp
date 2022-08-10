@@ -51,7 +51,7 @@ div#card  {
 }
      div.sideOne{
         position: relative;
-        transition:transform 1.1s;
+        transition:transform .9s;
         transform-style: preserve-3d;
         box-shadow: 2px 4px 8px 0 rgba(0, 0, 0, 0.2);
         width:100%;
