@@ -23,7 +23,7 @@ public class FlashCard {
     @JsonProperty("answer_side")
     @NotBlank(message = "answer side is required")
     String answerSide;
-    List<String> keywords;
+    String keywords;
 
 
     public long getCardId() {
@@ -58,11 +58,11 @@ public class FlashCard {
         this.answerSide = answerSide;
     }
 
-    public List<String> getKeywords() {
+    public String getKeywords() {
         return keywords;
     }
 
-    public void setKeywords(List<String> keywords) {
+    public void setKeywords(String keywords) {
         this.keywords = keywords;
     }
 

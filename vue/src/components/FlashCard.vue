@@ -1,5 +1,5 @@
 <template>
-  <div id="card">
+  <div id="card"  v-on:click="getCardId(),toggleShowEdit()">
 <!--     
       {{ flashcard.user_id}}
       {{flashcard.keywords}}
@@ -10,11 +10,10 @@
               <p  id="question">{{flashcard.question_side}}</p>
           </div>
           <div class= "back">
-      <p id="answer">{{flashcard.answer_side}} </p>
+      <p  id="answer">{{flashcard.answer_side}} </p>
       </div>
       </div>
-<!-- v-if="!display" v-on:click="display=true"
- v-on:click="display=false" v-show="display"   -->
+
   </div>
 </template>
 
@@ -23,14 +22,25 @@
 export default {
     date(){
         return {
-            display: false,
+            currentCard:{}
         }
     },
-    props: ['flashcard']
-    ,
     computed: {
-
+        
     },
+    methods: {
+           toggleShowEdit(){
+      this.$store.commit('SET_SHOW_EDIT', true)
+    },
+        
+        getCardId(){
+            this.currentCard = this.flashcard
+            this.$store.commit('SET_CURRENT_CARD', this.currentCard);
+            // console.log(this.$store.state.currentCard);
+        }
+    },
+    
+    props: ['flashcard'],
 }
 </script>
 
@@ -59,7 +69,7 @@ div#card  {
     } 
 
      div#card:hover .sideOne{
-        transform: rotateY(180deg)
+        transform: rotateY(180deg);
     }
 
     .front, .back{
@@ -69,7 +79,7 @@ div#card  {
     }
     .sideOne{
         background-color:rgb(247, 241, 234);
-        border-style:inset;
+        border-style:solid;
         border-width: 1px;
         border-radius: 5px;
             }

@@ -7,6 +7,7 @@ import Register from '../views/Register.vue'
 import store from '../store/index'
 import FlashCardsDisplay from '@/views/FlashCardsDisplay.vue'
 
+
 Vue.use(Router)
 
 /**
@@ -61,6 +62,18 @@ const router = new Router({
       meta: {
         requiresAuth: true
       }
+    },
+
+      // consider alt view if this does not work as expected
+   
+    {
+      path: "/cards/:id",
+      name: "EditCards",
+      component: FlashCardsDisplay,
+      meta: {
+        requiresAuth: true
+      }
+
     }
   ]
 })

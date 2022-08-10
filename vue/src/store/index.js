@@ -19,9 +19,23 @@ if(currentToken != null) {
 export default new Vuex.Store({
   state: {
     token: currentToken || '',
-    user: currentUser || {}
+    user: currentUser || {},
+    currentCard: {},
+    updatedFlashCard:{},
+    flashCardList: [],
+    searchTerm: "",
+    showEdit: false
   },
   mutations: {
+    SET_SHOW_EDIT(state, bool){
+      if(bool){
+        state.showEdit = true;
+      } else {state.showEdit = false;}
+    },
+
+    SET_SEARCH_TERM(state, string) {
+      state.searchTerm = string;
+    },
     SET_AUTH_TOKEN(state, token) {
       state.token = token;
       localStorage.setItem('token', token);
@@ -37,6 +51,19 @@ export default new Vuex.Store({
       state.token = '';
       state.user = {};
       axios.defaults.headers.common = {};
-    }
-  }
+    },
+    SET_CURRENT_CARD(state, flashCard) { 
+      state.currentCard = flashCard;
+    },
+    SET_UPDATED_CARD(state, flashCard){
+      state.updatedFlashCard=flashCard;
+    },
+
+  },
+  // actions: {
+  //   getCardId(){
+  //     console.log(this.currentCardId)
+  //     return this.currentCard.card_id;
+  // }
+  // }
 })
