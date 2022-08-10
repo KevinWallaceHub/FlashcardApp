@@ -7,10 +7,10 @@
        -->
       <div class="sideOne">
           <div class="front">
-              <p  id="question">{{flashcard.question_side}}</p>
+              <span  id="question">{{flashcard.question_side}}</span>
           </div>
           <div class= "back">
-      <p  id="answer">{{flashcard.answer_side}} </p>
+                <span  id="answer">{{flashcard.answer_side}} </span>
       </div>
       </div>
 
@@ -50,14 +50,16 @@ div#card  {
     /* border: 2px;
     border-style:solid; */
     margin: 10px;
-    text-align: center;
-    justify-content: center;
+    justify-content:space-evenly;
     flex-direction: row;
-    width:25%;
+    width:300px;
     /* everything between line 48 and 79 is relating to the card flip animation*/
     perspective: 1000px; 
     background-color:transparent;
-    font-size: 20pt;
+    font-size: .9em;
+    height: 300px;
+    text-align: center;
+    
 }
      div.sideOne{
         position: relative;
@@ -65,6 +67,8 @@ div#card  {
         transform-style: preserve-3d;
         box-shadow: 2px 4px 8px 0 #E47B64;
         width:100%;
+        
+        justify-content: center;
         
     } 
 
@@ -76,6 +80,13 @@ div#card  {
         
         -webkit-backface-visibility: hidden;
         backface-visibility: hidden;
+        
+    }
+    .front{
+        font-size: 1.5em;
+        position: relative;
+        top: 50%;
+
     }
     .sideOne{
         background-color:rgb(247, 241, 234);
@@ -87,9 +98,12 @@ div#card  {
     
     .back{
     transform: rotateY(180deg);
+    position: relative;
+        top: 25px;
+        
     } 
     
-    p#question {
+    span#question {
     border-width: 0px 0px 2px 0px;
     border-style:solid;
 }

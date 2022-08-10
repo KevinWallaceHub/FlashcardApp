@@ -34,7 +34,7 @@ export default {
 <style>
 input#searchBar{
   
-  position: fixed;
+  
   background-color: #DFF0F9;
   margin:5px;
   border-style:solid;
