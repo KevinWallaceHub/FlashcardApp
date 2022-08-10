@@ -8,7 +8,7 @@
         <ul class="nav__links">
           <li class="navs">
             <router-link v-bind:to="{ name: 'home' }">Home</router-link
-            >&nbsp;|&nbsp;
+            >&nbsp;&nbsp;
           </li>
           <li class="navs">
             <router-link
