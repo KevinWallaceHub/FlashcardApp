@@ -150,11 +150,38 @@ form.form{
   border-style: inset;
   
 }
+button.createButton{
+  margin:5px;
+    width: 9.7rem;
+  padding: 10px;
+  border-radius: 5px;
+  color: #ffffff;
+  background-color: #fdb89c;
+  font-weight: bold;
+  text-align: center;
+  text-transform: uppercase;
+  cursor: pointer;
+
+}
+button.createButton:hover{
+background-color: #e47b64;
+  transition: 0.7s;
+}
  button.submit{ 
     margin:5px;
+    width: 9.7rem;
+  padding: 10px;
+  border-radius: 5px;
+  color: #ffffff;
+  background-color: #fdb89c;
+  font-weight: bold;
+  text-align: center;
+  text-transform: uppercase;
+  cursor: pointer;
 } 
 button.submit:hover{
   border-color:#215350;
-  
+  background-color: #e47b64;
+  transition: 0.7s;
 }
 </style>

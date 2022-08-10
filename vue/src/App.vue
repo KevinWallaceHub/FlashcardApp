@@ -11,6 +11,7 @@
 <style>
  div#app{
    background-image: linear-gradient(to bottom right, #DFF0F9, #215350);
+   
 
    /* background-image: linear-gradient(rgba(0, 0, 255, 0.5), rgba(255, 255, 0, 0.5)),
                   url("../../media/examples/lizard.png"); */

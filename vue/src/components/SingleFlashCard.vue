@@ -1,34 +1,40 @@
 <template>
-  <div class="singleCard" v-if="this.$store.state.showEdit">
-    <form action="submit">
-      <!-- <p>Username: {{ flashcard.user_id }}</p>
+  <div id="cardForm">
+    <div class="singleCard" v-if="this.$store.state.showEdit">
+      <form action="submit">
+        <!-- <p>Username: {{ flashcard.user_id }}</p>
       <p>Card ID{{ flashcard.card_id }}</p> -->
-      <div id="questionSide">
-        <label for="questionSide"
-          >Question: </label
-        >
-        <textarea rows="3" cols="100" type="textbox" id="questionSide" v-model="questionSide" />
-      </div>
-      <div id="answerSide">
-        <label for="answerSide">Answer: </label>
-        <textarea rows="6" type="text" id="answerSide" v-model="answerSide" />
-      </div>
-      <div id="keywords">
-        <label for="keywords">Keywords: </label>
-        <input type="text" id="keywords" v-model="keywords" />
-      </div>
-      <div>
-        <button
-          class="submit"
-          @click.prevent="updateSelectedFlashcard(), toggleShowEdit()"
-        >
-          Update
-        </button>
-        <button class="cancel" v-on:click.prevent="toggleShowEdit()">
-          Cancel
-        </button>
-      </div>
-    </form>
+        <div id="questionSide">
+          <label for="questionSide">Question: </label>
+          <textarea
+            rows="3"
+            cols="100"
+            type="textbox"
+            id="questionSide"
+            v-model="questionSide"
+          />
+        </div>
+        <div id="answerSide">
+          <label for="answerSide">Answer: </label>
+          <textarea rows="6" type="text" id="answerSide" v-model="answerSide" />
+        </div>
+        <div id="keywords">
+          <label for="keywords">Keywords: </label>
+          <input type="text" id="keywords" v-model="keywords" />
+        </div>
+        <div>
+          <button
+            class="submit"
+            @click.prevent="updateSelectedFlashcard(), toggleShowEdit()"
+          >
+            Update
+          </button>
+          <button class="cancel" v-on:click.prevent="toggleShowEdit()">
+            Cancel
+          </button>
+        </div>
+      </form>
+    </div>
   </div>
 </template>
 
@@ -82,12 +88,17 @@ export default {
     },
   },
 };
-
 </script>
 
 <style>
+
+div#cardForm{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 div.singleCard {
-  color:rgb(4,65,65);
+  color: rgb(4, 65, 65);
   border-style: solid;
   border-width: 2px;
   background-color: white;
@@ -95,14 +106,36 @@ div.singleCard {
   word-wrap: none;
   flex-direction: row;
   justify-content: space-around;
-  box-shadow: 2px 4px 7px 0 #E47B64;
+  box-shadow: 2px 4px 7px 0 #e47b64;
   margin-bottom: 10px;
-  margin-right:5px;
+  margin-right: 5px;
+  border-radius: 5px;
+  z-index: 1;
+  position: fixed;
+  /* right: 35em; */
+  top: 25em;
 }
-div#questionSide, div#answerSide, div#keywords{
+div#questionSide,
+div#answerSide,
+div#keywords {
   display: flex;
   flex-direction: column;
   margin: 5px;
-  
+}
+button.cancel {
+  margin: 5px;
+  width: 9.7rem;
+  padding: 10px;
+  border-radius: 5px;
+  color: #ffffff;
+  background-color: #fdb89c;
+  font-weight: bold;
+  text-align: center;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+button.cancel:hover {
+  background-color: #e47b64;
+  transition: 0.7s;
 }
 </style>
