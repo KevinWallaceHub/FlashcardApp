@@ -11,4 +11,6 @@ public interface FlashCardDao {
     FlashCard createNewFlashCard(FlashCard flashCard);
 
     void updateFlashCard(FlashCard flashCard);
+
+    void deleteFlashCard(int flashCardId);
 }

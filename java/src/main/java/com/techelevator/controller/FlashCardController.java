@@ -37,6 +37,10 @@ public class FlashCardController {
         return flashCardDao.createNewFlashCard(flashCard);
     }
 
-    
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    @RequestMapping(path="/cards/{id}", method=RequestMethod.DELETE)
+    public void deleteFlashCard(@PathVariable("id") int flashCardId){
+        flashCardDao.deleteFlashCard(flashCardId);
+    }
 
 }

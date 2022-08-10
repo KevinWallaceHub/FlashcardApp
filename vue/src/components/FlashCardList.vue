@@ -135,6 +135,7 @@ div.flashCardList {
   justify-items: center;
   flex-wrap: wrap;
   justify-content: space-evenly;
+  
 }
 
 div.createForm{
