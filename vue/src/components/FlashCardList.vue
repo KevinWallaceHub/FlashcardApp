@@ -126,8 +126,8 @@ export default {
 div.twoButtons{
   display: flex;
   justify-content: center;
-  margin-left: 59px;
-  /* justify-content: space-evenly; */
+  margin-left: 59px; 
+   
 }
 div.flashCardList {
   display: flex;
@@ -136,9 +136,6 @@ div.flashCardList {
   flex-wrap: wrap;
   justify-content: space-evenly;
 }
-div.searchBar{
- text-align: center;
-}
 
 div.createForm{
   display: flex;
@@ -146,41 +143,17 @@ div.createForm{
 }
 form.form{
   font-family:'Courier New', Courier, monospace;
-  color:#215350;
   font-weight: bold;
+  text-align: center;
+  text-transform: uppercase;
+  border-style: inset;
   
 }
-button.submit{
-  height: 1.9rem;;
-  border-color:grey;
-   background-color: #DFF0F9;
-  margin:5px;
-  border-style:solid;
-  border-radius:5px;
-  font-size: 14pt;
-  font-weight: bold;
-  font-family: 'Courier New', Courier, monospace;
-  color: #215350;
-  cursor:pointer;
-}
+ button.submit{ 
+    margin:5px;
+} 
 button.submit:hover{
   border-color:#215350;
-  border-width: 3px;
-}
-button.createButton{
-  height:35px;
-  border-color:grey;
-   background-color: #DFF0F9;
-  margin:5px;
-  border-style:solid;
-  border-radius:5px;
-  font-family: 'Courier New', Courier, monospace;
-  font-weight: bold;
-  color: #215350;
-  cursor:pointer;
-
-}
-button.createButton:hover{
-border-width: 3px;
+  
 }
 </style>

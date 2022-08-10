@@ -44,7 +44,7 @@ div.main {
   grid-area: main;
 }
 button {
-    width: 25%;
+    width: 9.7rem;
     padding: 10px;
     border-radius: 5px;
     color: #ffffff;
@@ -52,5 +52,6 @@ button {
     font-weight: bold;
     text-align: center;
     text-transform: uppercase;
+    cursor:pointer;
 }
 </style>
