@@ -1,7 +1,9 @@
 <template>
-  <div class="flashCardList">
-    <search-flash-card />
-    <single-flash-card
+  <div class="page">
+   <div class="twoButtons">
+    <div class="searchBar"><search-flash-card /></div>
+    
+    <div><single-flash-card
       v-if="this.$store.state.showEdit"
       v-bind:flashcard="
         getFlashCardInfoFromCardId(
@@ -9,8 +11,10 @@
           this.$store.state.flashCardList
         )
       "
-    />
-    <button v-if="showButton" v-on:click="createFormToggle()">Create New Card</button>
+    /></div>
+    <div> <button v-if="showButton" class="createButton" v-on:click="createFormToggle()">Create New Card</button></div>
+   </div>
+    
     <div class="form" v-if="showCreateForm">
       <form action="submit">
         <label for="questionSide">Question:</label>
@@ -24,19 +28,13 @@
         </button>
       </form>
     </div>
-    <!-- <div v-if="filteredList()">
-      <flash-card
-        v-for="currentFlashCard in filteredList()"
-        :key="currentFlashCard.card_id"
-        :flashcard="currentFlashCard"
-      />
-      </div> --> 
+    <div class="flashCardList">
       <flash-card
         v-for="currentFlashCard in searchFunction"
         :key="currentFlashCard.card_id"
         :flashcard="currentFlashCard"
       />
-    
+    </div>
   </div>
 </template>
 
@@ -125,11 +123,39 @@ export default {
 </script>
 
 <style>
+div.twoButtons{
+  display: flex;
+  justify-content: space-evenly;
+}
 div.flashCardList {
   display: flex;
   flex-direction: row;
   justify-items: center;
   flex-wrap: wrap;
   justify-content: space-evenly;
+}
+/* div.searchBar{
+  position: absolute;
+  bottom:42rem;
+  right:41rem
+} */
+
+button.createButton{
+  height:35px;
+  /* position: relative;
+  bottom:43rem;
+  right:1rem; */
+   background-color: #DFF0F9;
+  margin:5px;
+  border-style:solid;
+  border-radius:5px;
+  font-family: 'Courier New', Courier, monospace;
+  font-weight: bold;
+  color: #215350;
+  cursor:pointer;
+
+}
+button.createButton:hover{
+border-width: 3px;
 }
 </style>

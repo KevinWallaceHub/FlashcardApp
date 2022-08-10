@@ -20,6 +20,7 @@ export default {
 };
 </script>
 
+
 <style>
 div.home {
   display: grid;
