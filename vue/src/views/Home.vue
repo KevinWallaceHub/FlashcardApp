@@ -4,7 +4,7 @@
     <h1>Welcome!</h1>
     <p class="greeting">Expanding your knowledge and studying hard is {website name}'s number one goal!</p>
     <router-link :to="{ name: 'cards' }"
-      ><button>Your cards</button></router-link
+      ><button id="yourCards">Your cards</button></router-link
     >
     </div>
     <div class="sidebars">
@@ -43,7 +43,7 @@ div.sidebar {
 div.main {
   grid-area: main;
 }
-button {
+button#yourCards {
     width: 25%;
     padding: 10px;
     border-radius: 5px;
