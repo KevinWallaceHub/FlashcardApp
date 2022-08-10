@@ -15,13 +15,13 @@
     <div> <button v-if="showButton" class="createButton" v-on:click="createFormToggle()">Create New Card</button></div>
    </div>
     
-    <div class="form" v-if="showCreateForm">
-      <form action="submit">
+    <div class="createForm" v-if="showCreateForm">
+      <form class="form" action="submit">
         <label for="questionSide">Question:</label>
         <input type="text" id="questionSide" v-model="questionSide" />
-        <label for="answerSide">Answer:</label>
+        <label for="answerSide"> Answer:</label>
         <input type="text" id="answerSide" v-model="answerSide" />
-        <label for="keywords">Keywords:</label>
+        <label for="keywords"> Keywords:</label>
         <input type="text" id="keywords" v-model="keywords" />
         <button class="submit" v-on:click.prevent="createNewFlashCard()">
           Submit
@@ -125,7 +125,9 @@ export default {
 <style>
 div.twoButtons{
   display: flex;
-  justify-content: space-evenly;
+  justify-content: center;
+  margin-left: 59px; 
+   
 }
 div.flashCardList {
   display: flex;
@@ -134,28 +136,24 @@ div.flashCardList {
   flex-wrap: wrap;
   justify-content: space-evenly;
 }
-/* div.searchBar{
-  position: absolute;
-  bottom:42rem;
-  right:41rem
-} */
 
-button.createButton{
-  height:35px;
-  /* position: relative;
-  bottom:43rem;
-  right:1rem; */
-   background-color: #DFF0F9;
-  margin:5px;
-  border-style:solid;
-  border-radius:5px;
-  font-family: 'Courier New', Courier, monospace;
-  font-weight: bold;
-  color: #215350;
-  cursor:pointer;
-
+div.createForm{
+  display: flex;
+  justify-content: center;
 }
-button.createButton:hover{
-border-width: 3px;
+form.form{
+  font-family:'Courier New', Courier, monospace;
+  font-weight: bold;
+  text-align: center;
+  text-transform: uppercase;
+  border-style: inset;
+  
+}
+ button.submit{ 
+    margin:5px;
+} 
+button.submit:hover{
+  border-color:#215350;
+  
 }
 </style>
