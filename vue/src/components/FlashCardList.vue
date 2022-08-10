@@ -3,7 +3,7 @@
    <div class="twoButtons">
     <div class="searchBar"><search-flash-card /></div>
     
-    <div><single-flash-card
+    <div><single-flash-card class="formToEdit"
       v-if="this.$store.state.showEdit"
       v-bind:flashcard="
         getFlashCardInfoFromCardId(
@@ -71,9 +71,9 @@ export default {
   computed: {
     searchFunction() {
       const cardList = this.$store.state.flashCardList;
-      const searchTerm = this.$store.state.searchTerm;
+      const searchTerm = this.$store.state.searchTerm.toLowerCase();
       return cardList.filter(card => {
-        return card.keywords.includes(searchTerm);
+        return card.keywords.toLowerCase().includes(searchTerm);
       });
     },
     

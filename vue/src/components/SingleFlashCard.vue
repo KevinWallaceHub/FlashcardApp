@@ -3,17 +3,31 @@
     <form action="submit">
       <!-- <p>Username: {{ flashcard.user_id }}</p>
       <p>Card ID{{ flashcard.card_id }}</p> -->
-      <label for="questionSide">Question: {{ flashcard.question_side }}</label>
-      <input type="text" id="questionSide" v-model="questionSide" 
-      v-bind="document.getElementById('questionSide').defaultValue='fsfssd'" />
-      <label for="answerSide">Answer: {{ flashcard.answer_side }}</label>
-      <input type="text" id="answerSide" v-model="answerSide" />
-      <label for="keywords">Keywords: {{ flashcard.keywords }}</label>
-      <input type="text" id="keywords" v-model="keywords" />
-      <button class="submit" @click.prevent="updateSelectedFlashcard(),toggleShowEdit()">
-        Update
-      </button>
-      <button class="cancel" v-on:click.prevent="toggleShowEdit()">Cancel</button>
+      <div id="questionSide">
+        <label for="questionSide"
+          >Question: </label
+        >
+        <textarea rows="3" cols="100" type="textbox" id="questionSide" v-model="questionSide" />
+      </div>
+      <div id="answerSide">
+        <label for="answerSide">Answer: </label>
+        <textarea rows="6" type="text" id="answerSide" v-model="answerSide" />
+      </div>
+      <div id="keywords">
+        <label for="keywords">Keywords: </label>
+        <input type="text" id="keywords" v-model="keywords" />
+      </div>
+      <div>
+        <button
+          class="submit"
+          @click.prevent="updateSelectedFlashcard(), toggleShowEdit()"
+        >
+          Update
+        </button>
+        <button class="cancel" v-on:click.prevent="toggleShowEdit()">
+          Cancel
+        </button>
+      </div>
     </form>
   </div>
 </template>
@@ -24,18 +38,16 @@ import flashCardService from "@/services/FlashCardService.js";
 export default {
   data() {
     return {
-      
-      questionSide: "",
-      answerSide: "",
-      keywords: "",
+      questionSide: this.flashcard.question_side,
+      answerSide: this.flashcard.answer_side,
+      keywords: this.flashcard.keywords,
     };
   },
   props: ["flashcard"],
-  computed: {
-  },
+  computed: {},
   methods: {
-    toggleShowEdit(){
-      this.$store.commit('SET_SHOW_EDIT', false)
+    toggleShowEdit() {
+      this.$store.commit("SET_SHOW_EDIT", false);
     },
     resetData() {
       this.questionSide = "";
@@ -74,4 +86,19 @@ export default {
 </script>
 
 <style>
+div.singleCard {
+  color:rgb(4,65,65);
+  border-style: solid;
+  background-color: white;
+  display: flex;
+  word-wrap: none;
+  flex-direction: row;
+  justify-content: space-around;
+}
+div#questionSide, div#answerSide, div#keywords{
+  display: flex;
+  flex-direction: column;
+  margin: 5px;
+  
+}
 </style>
