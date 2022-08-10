@@ -63,7 +63,7 @@ div#card  {
         position: relative;
         transition:transform .9s;
         transform-style: preserve-3d;
-        box-shadow: 2px 4px 8px 0 rgba(0, 0, 0, 0.2);
+        box-shadow: 2px 4px 8px 0 #E47B64;
         width:100%;
         
     } 
@@ -80,7 +80,8 @@ div#card  {
     .sideOne{
         background-color:rgb(247, 241, 234);
         border-style:solid;
-        border-width: 1px;
+        border-color: #E47B64;
+        border-width: 3px;
         border-radius: 5px;
             }
     

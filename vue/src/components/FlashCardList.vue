@@ -24,13 +24,6 @@
         </button>
       </form>
     </div>
-    <!-- <div v-if="filteredList()">
-      <flash-card
-        v-for="currentFlashCard in filteredList()"
-        :key="currentFlashCard.card_id"
-        :flashcard="currentFlashCard"
-      />
-      </div> --> 
       <flash-card
         v-for="currentFlashCard in searchFunction"
         :key="currentFlashCard.card_id"
