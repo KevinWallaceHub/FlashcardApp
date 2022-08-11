@@ -21,6 +21,7 @@ export default new Vuex.Store({
     token: currentToken || '',
     user: currentUser || {},
     currentCard: {},
+    currentDeck: {},
     updatedFlashCard:{},
     flashCardList: [],
     searchTerm: "",
@@ -56,6 +57,10 @@ export default new Vuex.Store({
     SET_CURRENT_CARD(state, flashCard) { 
       state.currentCard = flashCard;
     },
+    SET_CURRENT_DECK(state,deck){
+      state.currentDeck=deck;
+    },
+
     SET_UPDATED_CARD(state, flashCard){
       state.updatedFlashCard=flashCard;
     },
