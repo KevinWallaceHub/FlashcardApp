@@ -24,7 +24,8 @@ export default new Vuex.Store({
     updatedFlashCard:{},
     flashCardList: [],
     searchTerm: "",
-    showEdit: false
+    showEdit: false,
+    deckList:[],
   },
   mutations: {
     SET_SHOW_EDIT(state, bool){

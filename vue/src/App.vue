@@ -24,6 +24,13 @@
               >My Cards</router-link
             >
           </li>
+          <li class="navs">
+            <router-link
+              v-bind:to="{ name: 'decks' }"
+              v-if="$store.state.token != ''"
+              >My Decks</router-link
+            >
+             </li>
         </ul>
       </nav>
     </div>
@@ -47,7 +54,12 @@ div#nav {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
-  background-color: #dff0f9;
+  background-image: linear-gradient(to  right, #dff0f9, #74a19e);
+  /* background-color: #dff0f9; */
+  border-width: 0px 0px 3px 0px;
+  border-style: solid;
+  border-color: antiquewhite;
+  height:5%;
   justify-content: space-between;
   align-items: center;
   z-index: 1;

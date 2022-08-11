@@ -32,6 +32,21 @@ public class JdbcFlashCardDao implements FlashCardDao {
     }
 
     @Override
+    public List<FlashCard> findAllCardsInDeck(long deck_id) {
+        List<FlashCard> deckOfCards = new ArrayList<>();
+        String sql= "SELECT flashcards.user_id, flashcards.card_id, question_side, answer_side, keywords " +
+                "FROM flashcards " +
+                "JOIN deckard ON flashcards.card_id=deckard.card_id " +
+                "JOIN decks ON deckard.deck_id=decks.deck_id " +
+                "WHERE decks.deck_id=?";
+        SqlRowSet rows = jdbcTemplate.queryForRowSet(sql,deck_id);
+        while(rows.next()){
+            deckOfCards.add(mapRowToFlashCard(rows));
+        }
+        return deckOfCards;
+    }
+
+    @Override
     public FlashCard createNewFlashCard(FlashCard flashCard) {
         String sql = "INSERT INTO flashcards(user_id, card_id, question_side, answer_side, keywords) " +
                 "VALUES (?, DEFAULT, ?,?,?) RETURNING card_id";

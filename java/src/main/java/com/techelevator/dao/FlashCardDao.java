@@ -8,6 +8,8 @@ public interface FlashCardDao {
 
     List<FlashCard> findAllCards();
 
+    List<FlashCard> findAllCardsInDeck(long deck_id);
+
     FlashCard createNewFlashCard(FlashCard flashCard);
 
     void updateFlashCard(FlashCard flashCard);

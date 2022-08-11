@@ -6,10 +6,17 @@
         Expanding your knowledge and studying hard is {website name}'s number
         one goal!
       </p>
+      <div id="userChoices">
       <div id="yourCardsDiv">
         <router-link :to="{ name: 'cards' }"
           ><button id="yourCards">Your cards</button></router-link
         >
+      </div>
+      <div id="yourDecksDiv">
+        <router-link :to="{ name: 'decks' }"
+          ><button id="yourDecks">Your decks</button></router-link
+        >
+      </div>
       </div>
       <div class="sidebars">
         <div class="sidebar1"></div>
@@ -40,6 +47,9 @@ body {
 h1 {
   text-align: justify;
 }
+p{
+  text-align: center;
+}
 div.sidebars {
   background-color: #6d9f9c;
 }
@@ -52,11 +62,17 @@ div.sidebar2 {
 div.main {
   grid-area: main;
 }
-div#yourCardsDiv {
+/* div#yourCardsDiv, div#yourDecksDiv {
   text-align: center;
+} */
+div#userChoices{
+  display:flex;
+  justify-content: space-evenly;
+  margin:10px;
+  padding: 30px;
+  
 }
-
-button#yourCards {
+button#yourCards, button#yourDecks {
   width: 9.7rem;
   padding: 10px;
   border-radius: 5px;
@@ -67,12 +83,8 @@ button#yourCards {
   text-transform: uppercase;
   cursor: pointer;
 }
-button#yourCards {
-  width: 25%;
-  margin-bottom: 30px;
-  margin-top: 10px;
-}
-button#yourCards:hover {
+
+button#yourCards:hover, button#yourDecks:hover {
   background-color: #e47b64;
   transition: 0.7s;
 }

@@ -26,6 +26,7 @@ public class FlashCard {
     String keywords;
 
 
+
     public long getCardId() {
         return cardId;
     }

@@ -20,7 +20,7 @@
 <script>
 
 export default {
-    date(){
+    data(){
         return {
             currentCard:{}
         }
@@ -98,8 +98,10 @@ div#card  {
     
     .back{
     transform: rotateY(180deg);
-    position: relative;
-    bottom: 10px;
+    /* this bit here makes the answer side of the card fit 
+    but for short cards the answer is down at the bottom... not ideal  */
+    position:absolute;
+       bottom: 1%;
         
         
     } 
