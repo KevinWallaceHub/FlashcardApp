@@ -64,7 +64,7 @@ export default new Vuex.Store({
     SET_UPDATED_CARD(state, flashCard){
       state.updatedFlashCard=flashCard;
     },
-
+  
   },
   // actions: {
   //   getCardId(){

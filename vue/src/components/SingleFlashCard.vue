@@ -35,10 +35,22 @@
             </button>
           </div>
           <div>
-            <button class="addToDeck"
-            @click.prevent="addCardToDeck()">
-            Add To Deck
+            <form action="submit">
+            <label for="Decks"></label>
+            <select  name="Decks" id="Decks" v-on:change="this.$store.commit('SET_CURRENT_DECK', deck)">
+            <option></option>
+            <option v-for="deck in this.deckList"
+            :key="deck.deck_id"
+            :value="deck.deck_id">{{deck.name}}
+                   </option>
+            </select>
+                    
+            <button class="addToDeck" @click.prevent="addFlashCardToDeck()">
+              Add To Deck
             </button>
+            </form>
+            </div>
+            <div>
             <button
               class="delete"
               v-on:click.prevent="toggleShowEdit(), deleteSelectedFlashcard()"
@@ -54,20 +66,34 @@
 
 <script>
 import flashCardService from "@/services/FlashCardService.js";
-import deckService from "@/services/FlashCardService"
+import deckService from "@/services/DeckService"
 export default {
   data() {
     return {
       questionSide: this.flashcard.question_side,
       answerSide: this.flashcard.answer_side,
       keywords: this.flashcard.keywords,
+      deckList: [],
+      value: ""
     };
   },
   props: ["flashcard"],
   computed: {},
+created() {
+    deckService.getAllDecks()
+      .then((response) => {
+        this.deckList = response.data;
+        console.log(this.deckList);
+      })
+      .catch((error) => console.error(error));
+  },
+
   methods: {
-    addCardToDeck(){
-      deckService
+    addFlashCardToDeck(){
+      console.log(this.value)
+      deckService.addFlashCardToDeck().then(response => {
+        console.log(response.data);
+      }).catch(err => console.error(err))
     },
     toggleShowEdit() {
       this.$store.commit("SET_SHOW_EDIT", false);
@@ -170,7 +196,8 @@ div.allEditFormBtn {
 }
 
 button.cancel,
-button.delete {
+button.delete,
+button.addToDeck {
   margin: 5px;
   width: 9.7rem;
   padding: 10px;
