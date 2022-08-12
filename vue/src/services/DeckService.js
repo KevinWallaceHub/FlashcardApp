@@ -8,4 +8,8 @@ export default{
     createNewDeck(deck) {
         return axios.post("/decks", deck);
     },
+
+    getFlashCardForDeck(deckId){
+        return axios.get(`/deck/${deckId}`)
+    }
 }

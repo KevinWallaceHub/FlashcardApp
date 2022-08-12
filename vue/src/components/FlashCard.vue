@@ -1,5 +1,5 @@
 <template>
-  <div id="card"  v-on:click="getCardId(),toggleShowEdit()">
+  <div id="card"  v-on:click="getCardId(), toggleShowEdit()">
 <!--     
       {{ flashcard.user_id}}
       {{flashcard.keywords}}
@@ -101,7 +101,7 @@ div#card  {
     /* this bit here makes the answer side of the card fit 
     but for short cards the answer is down at the bottom... not ideal  */
     position:absolute;
-       bottom: 1%;
+       top: 1%;
         
         
     } 

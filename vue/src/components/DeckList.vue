@@ -12,7 +12,7 @@
 
 <script>
 import SingleDeck from '@/components/SingleDeck';
-import DeckService from "@/services/DeckService.js";
+import deckService from "@/services/DeckService.js";
 
 export default {
 
@@ -28,7 +28,7 @@ data() {
   },
 
 created() {
-    DeckService.getAllDecks()
+    deckService.getAllDecks()
       .then((response) => {
         this.decks = response.data;
       })
