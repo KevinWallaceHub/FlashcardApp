@@ -83,6 +83,14 @@ const router = new Router({
         requiresAuth: true
       }
     },
+    {
+      path: "/decks/:id",
+      name: "decks",
+      component: DecksDisplay,
+      meta: {
+        requiresAuth: true
+      }
+    },
   ]
 })
 
