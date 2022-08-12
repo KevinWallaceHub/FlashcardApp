@@ -39,4 +39,10 @@ public class DeckController {
     public void addCardToDeck( @PathVariable("deckId") int deckId ,@RequestBody FlashCard flashCard){
        deckDao.addCardToDeck(deckId, flashCard);
     }
+
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    @RequestMapping(path="/decks/{id}", method=RequestMethod.DELETE)
+    public void updateDeck(@PathVariable("id") long deckId, @RequestBody FlashCard card){
+        deckDao.deleteCardFromDeck(deckId, card.getCardId());
+    }
 }
