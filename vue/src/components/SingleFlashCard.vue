@@ -35,6 +35,10 @@
             </button>
           </div>
           <div>
+            <button class="addToDeck"
+            @click.prevent="addCardToDeck()">
+            Add To Deck
+            </button>
             <button
               class="delete"
               v-on:click.prevent="toggleShowEdit(), deleteSelectedFlashcard()"
@@ -50,7 +54,7 @@
 
 <script>
 import flashCardService from "@/services/FlashCardService.js";
-
+import deckService from "@/services/FlashCardService"
 export default {
   data() {
     return {
@@ -62,6 +66,9 @@ export default {
   props: ["flashcard"],
   computed: {},
   methods: {
+    addCardToDeck(){
+      deckService
+    },
     toggleShowEdit() {
       this.$store.commit("SET_SHOW_EDIT", false);
     },

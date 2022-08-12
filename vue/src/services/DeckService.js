@@ -11,5 +11,9 @@ export default{
 
     getFlashCardForDeck(deckId){
         return axios.get(`/decks/${deckId}`);
+    },
+
+    addFlashCardToDeck(deckId, flashCard){
+        return axios.post(`/decks/${deckId}`,flashCard)
     }
 }

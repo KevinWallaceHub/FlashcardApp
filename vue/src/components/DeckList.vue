@@ -48,8 +48,9 @@ methods: {
   createNewDeck(){
     const deck = {
       name: this.name,
-      user_id: this.$store.state.user_id
+      user_id: this.$store.state.user.id
     }
+    console.log(deck)
     deckService
     .createNewDeck(deck).then(response =>{
       console.log(response.data);
