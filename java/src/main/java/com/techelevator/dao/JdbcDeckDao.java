@@ -46,6 +46,12 @@ public class JdbcDeckDao implements DeckDao{
 //        deck.getDeckId(deckId);
     }
 
+    @Override
+    public void deleteCardFromDeck(long deckId, long cardId) {
+        String sql = "DELETE FROM deckard WHERE card_id = ? AND deck_id = ?";
+        jdbcTemplate.update(sql, cardId, deckId);
+    }
+
     private Deck mapRowToDeck(SqlRowSet row) {
         Deck deck = new Deck();
         deck.setUserId(row.getLong("user_id"));

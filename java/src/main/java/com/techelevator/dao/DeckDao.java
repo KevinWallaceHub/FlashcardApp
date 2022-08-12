@@ -10,5 +10,6 @@ public interface DeckDao {
     Deck  createNewDeck(Deck deck);
     List<Deck> findAllDecks();
     void addCardToDeck(int deckId, FlashCard card);
+    void deleteCardFromDeck(long deckId, long cardId);
 
 }
