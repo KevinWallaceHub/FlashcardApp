@@ -9,6 +9,6 @@ public interface DeckDao {
 
     Deck  createNewDeck(Deck deck);
     List<Deck> findAllDecks();
-
+    Deck addCardToDeck(Deck deck, FlashCard card);
 
 }

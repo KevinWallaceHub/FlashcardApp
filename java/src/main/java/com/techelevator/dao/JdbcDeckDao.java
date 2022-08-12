@@ -1,6 +1,7 @@
 package com.techelevator.dao;
 
 import com.techelevator.model.Deck;
+import com.techelevator.model.FlashCard;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.support.rowset.SqlRowSet;
 import org.springframework.stereotype.Component;
@@ -37,6 +38,15 @@ public class JdbcDeckDao implements DeckDao{
         return allDecks;
     }
 
+    @Override
+    public Deck addCardToDeck(Deck deck, FlashCard card) {
+        String sql = "INSERT INTO deckard(deck_id, card_id) " +
+                "VALUES (?, ?) RETURNING deck_id";
+        Long deckId = jdbcTemplate.queryForObject(sql, Long.class, deck.getDeckId(), card.getCardId());
+        deck.setDeckId(deckId);
+        return deck;
+    }
+
     private Deck mapRowToDeck(SqlRowSet row) {
         Deck deck = new Deck();
         deck.setUserId(row.getLong("user_id"));
@@ -46,4 +56,5 @@ public class JdbcDeckDao implements DeckDao{
                 return deck;
 
     }
+
 }

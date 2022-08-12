@@ -34,4 +34,9 @@ public class DeckController {
     public List<FlashCard> showDeckCards(@PathVariable("id") long deck_Id) {
         return flashcardDao.findAllCardsInDeck(deck_Id);
     }
+    @ResponseStatus(HttpStatus.CREATED)
+    @RequestMapping(path = "/decks/{deckId}", method = RequestMethod.POST)
+    public Deck addCardToDeck(@RequestBody Deck deck, FlashCard flashCard){
+        return deckDao.addCardToDeck(deck, flashCard);
+    }
 }
