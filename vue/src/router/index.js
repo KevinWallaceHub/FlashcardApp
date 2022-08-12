@@ -85,7 +85,7 @@ const router = new Router({
     },
     {
       path: "/decks/:id",
-      name: "decks",
+      name: "DisplayDeck",
       component: DecksDisplay,
       meta: {
         requiresAuth: true

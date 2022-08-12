@@ -10,6 +10,6 @@ export default{
     },
 
     getFlashCardForDeck(deckId){
-        return axios.get(`/deck/${deckId}`)
+        return axios.get(`/decks/${deckId}`);
     }
 }

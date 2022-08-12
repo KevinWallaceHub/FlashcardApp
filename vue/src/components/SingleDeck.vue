@@ -1,15 +1,15 @@
 <template>
   <div>
-        <div @click="setCurrentDeck()">
-         {{ deck.name }}
-        </div>
-        <div v-if="this.$store.state.currentDeck > 0">
-              <flash-card
-        v-for="currentFlashCard in this.$store.state.currentDeck"
+    <div @click="setCurrentDeck(),viewFlashCardsInDeck()">
+      {{ deck.name }}
+    </div>
+    <div >
+      <flash-card
+        v-for="currentFlashCard in this.flashCardListForDeck"
         :key="currentFlashCard.card_id"
         :flashcard="currentFlashCard"
       />
-        </div>
+    </div>
 
     <div class="deckList"></div>
   </div>
@@ -22,6 +22,7 @@ export default {
   data() {
     return {
       decks: [],
+      flashCardListForDeck: []
     };
   },
   props: ["deck"],
@@ -30,17 +31,24 @@ export default {
   },
 
   methods: {
+
       setCurrentDeck(){
-          console.log(this.deck);
+         console.log(this.deck);
           return this.$store.commit('SET_CURRENT_DECK', this.deck)
           
       },
-
-      viewFlashCardsInDeck(deck){
-          const deckId = deck.deck_id;
-          return deckService.getFlashCardForDeck(deckId)
+      viewFlashCardsInDeck(){
+          const deckId = this.deck.deck_id;
+          // console.log(this.$store.state.currentDeck);
+           deckService
+           .getFlashCardForDeck(deckId)
+           .then(response =>{
+              console.log(response.data);
+              this.flashCardListForDeck =  response.data
+              return this.flashCardListForDeck
+           }).catch(err => console.error(err))
       }
-  },
+  }
 };
 </script>
 

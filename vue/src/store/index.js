@@ -58,7 +58,7 @@ export default new Vuex.Store({
       state.currentCard = flashCard;
     },
     SET_CURRENT_DECK(state,deck){
-      state.currentDeck=deck;
+      state.currentDeck = deck;
     },
 
     SET_UPDATED_CARD(state, flashCard){

@@ -36,7 +36,7 @@ public class DeckController {
     }
     @ResponseStatus(HttpStatus.CREATED)
     @RequestMapping(path = "/decks/{deckId}", method = RequestMethod.POST)
-    public Deck addCardToDeck(@RequestBody Deck deck, FlashCard flashCard){
-        return deckDao.addCardToDeck(deck, flashCard);
+    public void addCardToDeck( @PathVariable("deckId") int deckId ,@RequestBody FlashCard flashCard){
+       deckDao.addCardToDeck(deckId, flashCard);
     }
 }

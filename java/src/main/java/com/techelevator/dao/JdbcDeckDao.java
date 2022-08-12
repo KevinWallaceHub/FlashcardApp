@@ -39,12 +39,11 @@ public class JdbcDeckDao implements DeckDao{
     }
 
     @Override
-    public Deck addCardToDeck(Deck deck, FlashCard card) {
-        String sql = "INSERT INTO deckard(deck_id, card_id) " +
+    public void addCardToDeck(int deck_id, FlashCard card) {
+        String sql = "INSERT INTO deckard (deck_id, card_id) " +
                 "VALUES (?, ?) RETURNING deck_id";
-        Long deckId = jdbcTemplate.queryForObject(sql, Long.class, deck.getDeckId(), card.getCardId());
-        deck.setDeckId(deckId);
-        return deck;
+        Long deckId = jdbcTemplate.queryForObject(sql, Long.class, deck_id, card.getCardId());
+//        deck.getDeckId(deckId);
     }
 
     private Deck mapRowToDeck(SqlRowSet row) {
