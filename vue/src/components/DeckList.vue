@@ -7,6 +7,15 @@
       <button type="submit" class="submit" v-on:click.prevent="createNewDeck()">Create Deck</button>
     </form>
     </div>
+    <div class="flashCardList">
+      <search-flash-card/>
+      <flash-card
+     
+        v-for="currentFlashCard in searchFunctionForDeckList"
+        :key="currentFlashCard.card_id"
+        :flashcard="currentFlashCard"
+      />
+    </div>
     
     <div class="accContainer">
      <div class="flashCardListacc" > 
@@ -28,11 +37,13 @@
 <script>
 import SingleDeck from '@/components/SingleDeck';
 import deckService from "@/services/DeckService.js";
+import SearchFlashCard from './SearchFlashCard.vue';
 
 export default {
 
 components: {
 SingleDeck,
+SearchFlashCard
 },
 data() {
     return {
@@ -50,7 +61,18 @@ created() {
       })
       .catch((error) => console.error(error));
   },
-
+    computed: {
+    searchFunctionForDeckList() {
+      const cardList = this.$store.state.flashCardList;
+      const searchTerm = this.$store.state.searchTerm.toLowerCase();
+      return cardList.filter(card => {
+        return card.keywords.toLowerCase().includes(searchTerm);
+      });
+   
+    
+    
+  }
+},
 methods: {
   createNewDeck(){
     if(this.name.length > 0){

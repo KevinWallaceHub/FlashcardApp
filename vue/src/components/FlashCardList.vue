@@ -30,7 +30,6 @@
     </div>
     <div class="flashCardList">
       <flash-card
-      draggable="true"
         v-for="currentFlashCard in searchFunction"
         :key="currentFlashCard.card_id"
         :flashcard="currentFlashCard"
