@@ -3,7 +3,7 @@
     <div class="createForm">
       <form action="submit" class="form">
       <label for="name">Deck Name:</label>
-      <input type="text" id="newDeckName" v-model="name">
+      <input type="text" id="newDeckName" v-model="name" required >
       <button type="submit" class="submit" v-on:click.prevent="createNewDeck()">Create Deck</button>
     </form>
     </div>
@@ -46,6 +46,7 @@ created() {
 
 methods: {
   createNewDeck(){
+    if(this.name.length > 0){
     const deck = {
       name: this.name,
       user_id: this.$store.state.user.id
@@ -56,8 +57,9 @@ methods: {
       console.log(response.data);
       this.decks.push(response.data)
     }).catch(err => console.error(err))
-  },
+  } else { alert("Name is a required field")}
 
+  }
 },
 
 }
