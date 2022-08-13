@@ -1,16 +1,20 @@
 <template>
   <div>
-    <div @click="setCurrentDeck(),viewFlashCardsInDeck()">
-      {{ deck.name }}
+    <div >
+    <div @click="setCurrentDeck(),viewFlashCardsInDeck()" class="deckCover">
+     {{ deck.name }}
     </div>
+
+
     <div >
       <flash-card
+      
         v-for="currentFlashCard in this.flashCardListForDeck"
         :key="currentFlashCard.card_id"
         :flashcard="currentFlashCard"
       />
     </div>
-
+</div>
     <div class="deckList"></div>
   </div>
 </template>
@@ -25,6 +29,8 @@ export default {
       flashCardListForDeck: []
     };
   },
+
+  
   props: ["deck"],
   components: {
       FlashCard
@@ -53,4 +59,17 @@ export default {
 </script>
 
 <style>
+.deckCover{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  height: 22rem;
+  width: 7rem;
+  font-size: 22pt;
+  text-orientation: sideways;
+  writing-mode: vertical-lr;
+}
+
+
 </style>

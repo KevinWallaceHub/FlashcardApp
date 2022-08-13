@@ -6,7 +6,7 @@
       {{flashcard.card_id}}
        -->
       <div class="sideOne">
-          <div class="front">
+          <div class="front" >
               <span  id="question">{{flashcard.question_side}}</span>
           </div>
           <div class= "back">
