@@ -7,14 +7,14 @@
 
 
     <div >
-      <draggable  @start="drag=true" @end="drag=false">
+      <!-- <draggable  @start="drag=true" @end="drag=false"> -->
       <flash-card
         
         v-for="currentFlashCard in this.flashCardListForDeck"
         :key="currentFlashCard.card_id"
         :flashcard="currentFlashCard"
       />
-      </draggable>
+      <!-- </draggable> -->
     </div>
 </div>
     <div class="deckList"></div>
