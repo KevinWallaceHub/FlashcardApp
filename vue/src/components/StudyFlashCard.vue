@@ -4,7 +4,7 @@
           <div class="front" v-if="this.switchSide">
               <span  id="question">{{flashcard.question_side}}</span>
           </div>
-          <div class= "back" v-if="!this.switchSide">
+          <div class="back" v-if="!this.switchSide">
                 <span  id="answer">{{flashcard.answer_side}} </span>
             </div>
       </div>
