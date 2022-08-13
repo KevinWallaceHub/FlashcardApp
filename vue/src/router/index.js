@@ -7,6 +7,7 @@ import Register from '../views/Register.vue'
 import store from '../store/index'
 import FlashCardsDisplay from '@/views/FlashCardsDisplay.vue'
 import DecksDisplay from '@/views/DecksDisplay.vue'
+import StudySession from '@/views/StudySession.vue'
 
 Vue.use(Router)
 
@@ -87,6 +88,14 @@ const router = new Router({
       path: "/decks/:id",
       name: "DisplayDeck",
       component: DecksDisplay,
+      meta: {
+        requiresAuth: true
+      }
+    },
+    {
+      path: "/study",
+      name: "StudySession",
+      component: StudySession,
       meta: {
         requiresAuth: true
       }
