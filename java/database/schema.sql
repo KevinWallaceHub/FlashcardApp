@@ -37,7 +37,7 @@ CREATE TABLE flashcards(
 CREATE TABLE decks(
 	deck_id serial primary key,
 	user_id bigint,
-	name varchar(64),
+	name varchar(64) not null,
 	
 	constraint fk_decks_user_id foreign key (user_id) references users(user_id)
 );
@@ -81,6 +81,7 @@ INSERT INTO flashcards(user_id,question_side, answer_side , keywords) VALUES('2'
 INSERT INTO flashcards(user_id,question_side, answer_side , keywords) VALUES('2','How objects of a class are created if no constructor is defined in the class? ','Even if no explicit constructor is defined in a java class, objects get created successfully as a default constructor is implicitly used for object creation. This constructor has no parameters. ','Java Class Object');
 INSERT INTO decks(user_id, name) VALUES('1','First Deck');
 INSERT INTO deckard (deck_id, card_id) VALUES (1, 2);
+INSERT INTO deckard (deck_id, card_id) VALUES (1, 20);
 
 COMMIT TRANSACTION;
 

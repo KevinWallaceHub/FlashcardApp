@@ -37,15 +37,16 @@
           <div>
             <form action="submit">
             <label for="Decks"></label>
-            <select  name="Decks" id="Decks" v-on:change="this.$store.commit('SET_CURRENT_DECK', deck)">
+            <select  name="Decks" id="Decks" v-model="value">
             <option></option>
             <option v-for="deck in this.deckList"
             :key="deck.deck_id"
-            :value="deck.deck_id">{{deck.name}}
+            :value="deck.deck_id"
+            >{{deck.name}}
                    </option>
             </select>
                     
-            <button class="addToDeck" @click.prevent="addFlashCardToDeck()">
+            <button class="addToDeck" @click.prevent="addFlashCardToDeck() ">
               Add To Deck
             </button>
             </form>
@@ -83,16 +84,25 @@ created() {
     deckService.getAllDecks()
       .then((response) => {
         this.deckList = response.data;
-        console.log(this.deckList);
       })
       .catch((error) => console.error(error));
   },
 
   methods: {
+    // changingCurrentDeck(){
+    //     let selecetedDeck = {};
+    //     console.log(this.value);
+    //     this.deckList.forEach(deck => {
+    //          if(deck.deck_id == this.value)
+    //         { selecetedDeck = deck}
+    //     })
+    //     this.$store.commit('SET_CURRENT_DECK', selecetedDeck)
+    // },
     addFlashCardToDeck(){
-      console.log(this.value)
-      deckService.addFlashCardToDeck().then(response => {
+      // console.log(this.value);
+      deckService.addFlashCardToDeck(this.value, this.flashcard).then(response => {
         console.log(response.data);
+        alert("card was added to deck successfully")
       }).catch(err => console.error(err))
     },
     toggleShowEdit() {
