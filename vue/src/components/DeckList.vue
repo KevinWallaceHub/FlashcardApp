@@ -117,6 +117,7 @@ margin: 30px auto;
   width:40%;
   flex-grow:1;
   flex-shrink:1;
+  
   overflow-y:scroll;
   transition:all .5s ease;
   border:5px solid aliceblue;
@@ -126,7 +127,8 @@ margin: 30px auto;
   scroll-behavior: smooth;
 }
 
- 
+ .flashCardListHover >div::-webkit-scrollbar {
+  display: none; }
 
 .flashCardListacc{
   display: flex;
