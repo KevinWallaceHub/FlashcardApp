@@ -4,7 +4,7 @@
       <form action="submit" class="form">
       <label for="name">Deck Name:</label>
       <input type="text" id="newDeckName" v-model="name" required >
-      <button type="submit" class="submit" v-on:click.prevent="createNewDeck()">Create Deck</button>
+      <button type="submit" class="submit" v-on:click.prevent="createNewDeck(),logFlashcardList()">Create Deck</button>
     </form>
     </div>
     <div class="flashCardList">
@@ -37,8 +37,8 @@
 <script>
 import SingleDeck from '@/components/SingleDeck';
 import deckService from "@/services/DeckService.js";
-import SearchFlashCard from './SearchFlashCard.vue';
-
+import SearchFlashCard from '@/components/SearchFlashCard.vue';
+import flashCardService from '@/services/FlashCardService.js';
 export default {
 
 components: {
@@ -60,6 +60,13 @@ created() {
         this.decks = response.data;
       })
       .catch((error) => console.error(error));
+
+       flashCardService
+      .getAllFlashCards()
+      .then((response) => {
+        this.$store.state.flashCardList = response.data;
+      })
+      .catch((error) => console.error(error));
   },
     computed: {
     searchFunctionForDeckList() {
@@ -74,6 +81,9 @@ created() {
   }
 },
 methods: {
+  logFlashcardList(){
+    console.log(this.$store.state.flashCardList);
+  },
   createNewDeck(){
     if(this.name.length > 0){
     const deck = {
@@ -117,6 +127,7 @@ margin: 30px auto;
   width:40%;
   flex-grow:1;
   flex-shrink:1;
+  
   overflow-y:scroll;
   transition:all .5s ease;
   border:5px solid aliceblue;
@@ -126,7 +137,8 @@ margin: 30px auto;
   scroll-behavior: smooth;
 }
 
- 
+ .flashCardListHover >div::-webkit-scrollbar {
+  display: none; }
 
 .flashCardListacc{
   display: flex;
@@ -158,6 +170,14 @@ margin: 30px auto;
   flex-shrink: 0;
   
 } */
+div.flashCardList {
+  display: flex;
+  flex-direction: row;
+  justify-items: center;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  
+}
 
 
 
