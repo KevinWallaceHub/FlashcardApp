@@ -7,15 +7,21 @@
       <button type="submit" class="submit" v-on:click.prevent="createNewDeck()">Create Deck</button>
     </form>
     </div>
+    
     <div class="accContainer">
-     <div class="flashCardListacc">
+     <div class="flashCardListacc" > 
+     <div   v-bind:class="[isActive ? 'flashCardListHover' : 'flashCardListacc']" @click="toggleClass()">
+        
       <single-deck 
+         
             v-for="currentDeck in decks"
             v-bind:key="currentDeck.deck_id"
             v-bind:deck="currentDeck"
              />
        </div>
        </div>
+       </div>
+       
   </div>
 </template>
 
@@ -32,8 +38,8 @@ data() {
     return {
       name: "",
       decks: [],
-      newDeck: {}
-      
+      newDeck: {},
+      isActive: true
     };
   },
 
@@ -72,11 +78,11 @@ margin: 30px auto;
   width:100%;
   display: flex;
   justify-content: center;
-  align-items: center;
+  
  
 }
 
-.flashCardListacc{
+.flashCardListHover{
   display: flex;
   flex-wrap:nowrap;
   overflow:hidden;
@@ -85,10 +91,10 @@ margin: 30px auto;
    box-shadow: 3px 3px 4px 0px black;
 }
 
-.flashCardListacc >div {
-  width:80%;
+.flashCardListHover >div {
+  width:40%;
   flex-grow:1;
-  flex-shrink:10;
+  flex-shrink:1;
   overflow-y:scroll;
   transition:all .5s ease;
   border:5px solid aliceblue;
@@ -97,8 +103,41 @@ margin: 30px auto;
   position:relative;
   scroll-behavior: smooth;
 }
-.flashCardListacc >div:hover{
-  flex-shrink: 0;
+
+ 
+
+.flashCardListacc{
+  display: flex;
+  flex-wrap:nowrap;
+  overflow:hidden;
+  width:95%;
+  height:550px;
+   box-shadow: 3px 3px 4px 0px black;
 }
 
+.flashCardListacc >div {
+  width:80%;
+  flex-grow:1;
+  flex-shrink:0;
+  overflow-y:scroll;
+  transition:all .5s ease;
+  border:5px solid aliceblue;
+  border-radius:10px;
+  
+  position:relative;
+  scroll-behavior: smooth;
+}
+
+.flashCardListHover> div:hover{
+   
+  flex-shrink: 0;
+ }
+/* .flashCardListacc >div:hover{
+  flex-shrink: 0;
+  
+} */
+
+
+
+ 
 </style>
