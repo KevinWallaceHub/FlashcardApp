@@ -7,13 +7,14 @@
       <button type="submit" class="submit" v-on:click.prevent="createNewDeck()">Create Deck</button>
     </form>
     </div>
-    
-     <div class="flashCardList">
+    <div class="accContainer">
+     <div class="flashCardListacc">
       <single-deck 
             v-for="currentDeck in decks"
             v-bind:key="currentDeck.deck_id"
             v-bind:deck="currentDeck"
              />
+       </div>
        </div>
   </div>
 </template>
@@ -66,5 +67,38 @@ methods: {
 </script>
 
 <style>
+.accContainer{
+margin: 30px auto;
+  width:100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+ 
+}
+
+.flashCardListacc{
+  display: flex;
+  flex-wrap:nowrap;
+  overflow:hidden;
+  width:65%;
+  height:550px;
+   box-shadow: 3px 3px 4px 0px black;
+}
+
+.flashCardListacc >div {
+  width:80%;
+  flex-grow:1;
+  flex-shrink:10;
+  overflow-y:scroll;
+  transition:all .5s ease;
+  border:5px solid aliceblue;
+  border-radius:10px;
+  
+  position:relative;
+  scroll-behavior: smooth;
+}
+.flashCardListacc >div:hover{
+  flex-shrink: 0;
+}
 
 </style>
