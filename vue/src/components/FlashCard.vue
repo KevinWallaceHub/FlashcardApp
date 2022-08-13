@@ -111,11 +111,11 @@ div#card  {
     border-style:solid;
 }
 
-p#answer{
+/* p#answer{
     border-width: 0px 0px 2px 0px;
     border-style:solid;
   
-}
+} */
 
 
 </style>

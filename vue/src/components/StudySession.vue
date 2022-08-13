@@ -54,5 +54,17 @@ methods: {
 </script>
 
 <style>
+button{
+    
+  width: 9.7rem;
+  padding: 10px;
+  border-radius: 5px;
+  color: #ffffff;
+  background-color: #ffc7b0;
+  font-weight: bold;
+  text-align: center;
+  text-transform: uppercase;
+  cursor: pointer;
 
+}
 </style>
