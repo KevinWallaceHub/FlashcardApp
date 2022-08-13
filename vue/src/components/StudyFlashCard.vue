@@ -5,7 +5,6 @@
         <p v-if="this.switchSide" id="question"
           >{{ flashcard.question_side }}
         </p>
-
         <p v-if="!this.switchSide" id="answer"
           >{{ flashcard.answer_side }}
         </p>
@@ -16,6 +15,7 @@
     </div>
   </div>
 </template>
+
 
 <script>
 export default {
