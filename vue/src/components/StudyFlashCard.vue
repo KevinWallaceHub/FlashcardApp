@@ -1,15 +1,20 @@
 <template>
   <div>
       <div class="sideOne">
+         
+
+ 
+    
+
           <div class="front" v-if="this.switchSide">
-              <span  id="question">{{flashcard.question_side}}</span>
+              <p  id="question">{{flashcard.question_side}}</p>
           </div>
           <div class= "back" v-if="!this.switchSide">
-                <span  id="answer">{{flashcard.answer_side}} </span>
+                <p  id="answer">{{flashcard.answer_side}} </p>
             </div>
       </div>
       <div>
-          <button v-on:click="switchTo()"> Next</button>
+          <button v-on:click="switchTo"> Next</button>
       </div>
   </div>
 </template>
