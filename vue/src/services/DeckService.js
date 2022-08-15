@@ -15,5 +15,9 @@ export default{
 
     addFlashCardToDeck(deckId, flashCard){
         return axios.post(`/decks/${deckId}`,flashCard)
-    }
+    },
+
+    removeFlashCardFromDeck(deckId, cardId){
+        return axios.delete(`/decks/${deckId}/cards/${cardId}`)
+    },
 }

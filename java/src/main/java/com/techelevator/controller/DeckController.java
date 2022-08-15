@@ -41,8 +41,8 @@ public class DeckController {
     }
 
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    @RequestMapping(path="/decks/{id}", method=RequestMethod.DELETE)
-    public void updateDeck(@PathVariable("id") long deckId, @RequestBody FlashCard card){
-        deckDao.deleteCardFromDeck(deckId, card.getCardId());
+    @RequestMapping(path="/decks/{id}/cards/{cardId}", method=RequestMethod.DELETE)
+    public void updateDeck(@PathVariable("id") long deckId,@PathVariable("cardId") long cardId ){
+        deckDao.deleteCardFromDeck(deckId, cardId);
     }
 }

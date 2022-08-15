@@ -78,7 +78,6 @@ created() {
       .getAllFlashCards()
       .then((response) => {
         this.$store.state.flashCardList = response.data;
-        console.log(response.data);
       })
       .catch((error) => console.error(error));
   },
@@ -104,7 +103,6 @@ methods: {
       name: this.name,
       user_id: this.$store.state.user.id
     }
-    console.log(deck)
     deckService
     .createNewDeck(deck).then(response =>{
       this.decks.push(response.data)
@@ -118,8 +116,8 @@ methods: {
     
   //   const flashcardId = evt.dataTransfer.getData('flashcardId')
   //   const flashcard =this.$store.state.flashCardList.find((flashcard) => flashcard.card_id == flashcardId)
-  //   dropDeck.push(flashcard)
-  //   // flashcard.list=list;
+  //   dropDeck.drop(flashcard)
+  
   // }
 },
 
