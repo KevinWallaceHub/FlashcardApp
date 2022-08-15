@@ -72,11 +72,12 @@ export default {
     },
     deleteDrop(evt, dropDeck) {
       let flashcardId = evt.dataTransfer.getData("flashcardId");
+       
       let flashcard = this.$store.state.flashCardList.find(
         (flashcard) => flashcard.card_id == flashcardId
       );
-      console.log(dropDeck);
-      console.log(flashcard);
+      // console.log(dropDeck);
+      // console.log(flashcard);
       deckService
         .removeFlashCardFromDeck(dropDeck.deck_id, flashcardId)
           let index = this.flashCardListForDeck.indexOf(flashcard)
