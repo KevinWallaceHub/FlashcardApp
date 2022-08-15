@@ -10,7 +10,6 @@
     <div class="flashCardList">
       <search-flash-card/>
       <flash-card
-     
         v-for="currentFlashCard in searchFunctionForDeckList"
         :key="currentFlashCard.card_id"
         :flashcard="currentFlashCard"
@@ -19,7 +18,7 @@
     
     <div class="accContainer">
      <div class="flashCardListacc" > 
-     <div   v-bind:class="[isActive ? 'flashCardListHover' : 'flashCardListacc']" @click="toggleClass()">
+     <div   v-bind:class="[isActive ? 'flashCardListHover' : 'flashCardListacc']">
         
       <single-deck 
          
@@ -39,11 +38,13 @@ import SingleDeck from '@/components/SingleDeck';
 import deckService from "@/services/DeckService.js";
 import SearchFlashCard from '@/components/SearchFlashCard.vue';
 import flashCardService from '@/services/FlashCardService.js';
+import FlashCard from '@/components/FlashCard.vue';
 export default {
 
 components: {
 SingleDeck,
-SearchFlashCard
+SearchFlashCard,
+FlashCard
 },
 data() {
     return {
@@ -65,6 +66,7 @@ created() {
       .getAllFlashCards()
       .then((response) => {
         this.$store.state.flashCardList = response.data;
+        console.log(response.data);
       })
       .catch((error) => console.error(error));
   },
@@ -73,7 +75,9 @@ created() {
       const cardList = this.$store.state.flashCardList;
       const searchTerm = this.$store.state.searchTerm.toLowerCase();
       return cardList.filter(card => {
+        if(searchTerm.length > 0 ){
         return card.keywords.toLowerCase().includes(searchTerm);
+        } else { return false}
       });
    
     
@@ -93,7 +97,6 @@ methods: {
     console.log(deck)
     deckService
     .createNewDeck(deck).then(response =>{
-      console.log(response.data);
       this.decks.push(response.data)
     }).catch(err => console.error(err))
   } else { alert("Name is a required field")}
