@@ -4,13 +4,12 @@
       <form action="submit" class="form">
       <label for="name">Deck Name:</label>
       <input type="text" id="newDeckName" v-model="name" required >
-      <button type="submit" class="submit" v-on:click.prevent="createNewDeck()">Create Deck</button>
+      <button type="submit" class="submit" v-on:click.prevent="createNewDeck(),logFlashcardList()">Create Deck</button>
     </form>
     </div>
     <div class="flashCardList">
       <search-flash-card/>
       <flash-card
-     
         v-for="currentFlashCard in searchFunctionForDeckList"
         :key="currentFlashCard.card_id"
         :flashcard="currentFlashCard"
@@ -37,13 +36,15 @@
 <script>
 import SingleDeck from '@/components/SingleDeck';
 import deckService from "@/services/DeckService.js";
-import SearchFlashCard from './SearchFlashCard.vue';
-
+import SearchFlashCard from '@/components/SearchFlashCard.vue';
+import flashCardService from '@/services/FlashCardService.js';
+import FlashCard from '@/components/FlashCard.vue';
 export default {
 
 components: {
 SingleDeck,
-SearchFlashCard
+SearchFlashCard,
+FlashCard
 },
 data() {
     return {
@@ -60,13 +61,23 @@ created() {
         this.decks = response.data;
       })
       .catch((error) => console.error(error));
+
+       flashCardService
+      .getAllFlashCards()
+      .then((response) => {
+        this.$store.state.flashCardList = response.data;
+        console.log(response.data);
+      })
+      .catch((error) => console.error(error));
   },
     computed: {
     searchFunctionForDeckList() {
       const cardList = this.$store.state.flashCardList;
       const searchTerm = this.$store.state.searchTerm.toLowerCase();
       return cardList.filter(card => {
+        if(searchTerm.length > 0 ){
         return card.keywords.toLowerCase().includes(searchTerm);
+        } else { return false}
       });
    
     
@@ -74,6 +85,9 @@ created() {
   }
 },
 methods: {
+  logFlashcardList(){
+    console.log(this.$store.state.flashCardList);
+  },
   createNewDeck(){
     if(this.name.length > 0){
     const deck = {
@@ -83,7 +97,6 @@ methods: {
     console.log(deck)
     deckService
     .createNewDeck(deck).then(response =>{
-      console.log(response.data);
       this.decks.push(response.data)
     }).catch(err => console.error(err))
   } else { alert("Name is a required field")}
@@ -173,6 +186,14 @@ margin: 30px auto;
   flex-shrink: 0;
   
 } */
+div.flashCardList {
+  display: flex;
+  flex-direction: row;
+  justify-items: center;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  
+}
 
 
 
