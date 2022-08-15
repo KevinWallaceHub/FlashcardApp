@@ -11,12 +11,12 @@
       <search-flash-card/>
       
       <flash-card
-        draggable
-         @dragstart="dragStart($event, flashcard)"
+       
         v-for="currentFlashCard in searchFunctionForDeckList"
         :key="currentFlashCard.card_id"
         :flashcard="currentFlashCard"
-       
+        draggable
+         @dragstart="dragStart($event, flashcard)"
       />
       
     </div>
@@ -113,7 +113,6 @@ methods: {
     evt.dataTransfer.dropEffect = 'move';
     evt.dataTransfer.effectAllowed = 'move';
     this.flashcard=flashcard
-    
     evt.dataTransfer.setData('flashcardId', flashcard.card_id)
     
   },
