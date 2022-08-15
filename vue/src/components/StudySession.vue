@@ -54,17 +54,29 @@ methods: {
 </script>
 
 <style>
-button{
-    
+button {
   width: 9.7rem;
   padding: 10px;
   border-radius: 5px;
   color: #ffffff;
-  background-color: #ffc7b0;
+  background-color: #ee6c4d;
   font-weight: bold;
   text-align: center;
   text-transform: uppercase;
   cursor: pointer;
-
+  margin-left: 10px;
+  margin-bottom: 10px;
+}
+button:hover {
+  background-color: #d44623;
+  transition: 0.7s;
+}
+select {
+  margin: 10px;
+  cursor: pointer;
+}
+div.sideOne {
+  margin: 15px;
+  width: auto;
 }
 </style>

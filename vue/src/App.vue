@@ -48,10 +48,7 @@
 <style>
 @import url("https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@600&display=swap");
 div#app {
-  background-image: linear-gradient(to bottom right, #dff0f9, #215350);
-
-  /* background-image: linear-gradient(rgba(0, 0, 255, 0.5), rgba(255, 255, 0, 0.5)),
-                  url("../../media/examples/lizard.png"); */
+  /* background-image: linear-gradient(to bottom right, #dff0f9, #215350); */
 }
 * {
   font-family: "Nunito Sans", sans-serif;
@@ -61,7 +58,7 @@ div#nav {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
-  background-image: linear-gradient(to right, #dff0f9, #74a19e);
+  background-image: linear-gradient(to right, #e0fbfc, #98c1d9);
   /* background-color: #dff0f9; */
   border-width: 0px 0px 3px 0px;
   border-style: solid;
@@ -70,18 +67,25 @@ div#nav {
   justify-content: space-between;
   align-items: center;
   z-index: 1;
+  border-bottom: 2px solid #333333;
+}
+body {
+  background-image: linear-gradient(to right, #e0fbfc, #98c1d9);
 }
 li.navs {
   font-family: "Nunito Sans", sans-serif;
   font-weight: 600;
-  font-size: 16px;
+  font-size: 20px;
   color: #3d5a80;
   text-decoration: none;
+}
+ul.nav__links {
+  display: flex;
+  font-weight: bold;
 }
 img.logo {
   max-width: 300px;
   height: auto;
-
   padding: 1rem;
 }
 .nav__links {
@@ -106,6 +110,10 @@ img.logo {
   text-decoration: none;
   text-transform: uppercase;
   color: #3d5a80;
+  font-weight: bold;
+}
+nav {
+  flex-shrink:0;
 }
 button#logout {
   padding: 9px 25px;
@@ -120,5 +128,8 @@ button#logout {
 a#logoutlink{
   color: #e0fbfc;
   text-decoration: none;
+}
+a#logoutlink:hover{
+  color:#afc3c4;
 }
 </style>
