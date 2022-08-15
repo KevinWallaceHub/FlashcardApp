@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="whole">
     <div class="createForm">
       <form action="submit" class="form">
       <label for="name">Deck Name:</label>
@@ -9,26 +9,29 @@
     </div>
     <div class="flashCardList">
       <search-flash-card/>
+       
       
       <flash-card
-        draggable
-         @dragstart="dragStart($event, flashcard)"
+      
+        
         v-for="currentFlashCard in searchFunctionForDeckList"
         :key="currentFlashCard.card_id"
         :flashcard="currentFlashCard"
        
+        
       />
+       
       
     </div>
     
     <div class="accContainer">
      <div class="flashCardListacc" > 
-     <div   v-bind:class="[isActive ? 'flashCardListHover' : 'flashCardListacc']">
+     <div   v-bind:class="[isActive ? 'flashCardListHover' : 'flashCardListacc']"
+     
+     >
         
       <single-deck 
-          @drop="onDrop($event, this.decks)"
-           @dragover.prevent
-  @dragenter.prevent
+         
             v-for="currentDeck in decks"
             v-bind:key="currentDeck.deck_id"
             v-bind:deck="currentDeck"
@@ -108,21 +111,15 @@ methods: {
   } else { alert("Name is a required field")}
   },
   
-  dragStart(evt,flashcard){
-    console.log(flashcard)
-    evt.dataTransfer.dropEffect = 'move';
-    evt.dataTransfer.effectAllowed = 'move';
-    this.flashcard=flashcard
-    
-    evt.dataTransfer.setData('flashcardId', flashcard.card_id)
-    
-  },
+  
 
-  onDrop(evt, list) {
-    const flashcardId = evt.dataTransfer.getData('flashcardId')
-    const flashcard =this.$store.state.flashCardList.find((flashcard) => flashcard.card_id == flashcardId)
-    flashcard.list=list;
-  }
+  // onDrop(evt, dropDeck) {
+    
+  //   const flashcardId = evt.dataTransfer.getData('flashcardId')
+  //   const flashcard =this.$store.state.flashCardList.find((flashcard) => flashcard.card_id == flashcardId)
+  //   dropDeck.push(flashcard)
+  //   // flashcard.list=list;
+  // }
 },
 
 }
@@ -178,6 +175,7 @@ margin: 30px auto;
   display: none; }
 
 .flashCardListacc{
+  
   display: flex;
   flex-wrap:nowrap;
   overflow:hidden;
@@ -187,6 +185,7 @@ margin: 30px auto;
 }
 
 .flashCardListacc >div {
+  
   width:80%;
   flex-grow:1;
   flex-shrink:0;
@@ -213,10 +212,14 @@ div.flashCardList {
   justify-items: center;
   flex-wrap: wrap;
   justify-content: space-evenly;
-  
+ 
 }
 
-
+.whole{
+  display: flex;
+  flex-direction: column;
+  
+}
 
  
 </style>

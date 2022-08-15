@@ -1,5 +1,7 @@
 <template>
-  <div>
+  <div  @drop="onDrop($event, deck)"
+           @dragover.prevent
+  @dragenter.prevent>
     <div >
     <div @click="setCurrentDeck(),viewFlashCardsInDeck()" class="deckCover">
      {{ deck.name }}
@@ -7,7 +9,7 @@
 
 
     <div >
-      <!-- <draggable  @start="drag=true" @end="drag=false"> -->
+     
       <flash-card
         draggable="true"
         v-for="currentFlashCard in this.flashCardListForDeck"
@@ -56,7 +58,16 @@ export default {
               this.flashCardListForDeck =  response.data
               return this.flashCardListForDeck
            }).catch(err => console.error(err))
-      }
+      },
+       onDrop(evt, dropDeck) {
+    
+    const flashcardId = evt.dataTransfer.getData('flashcardId')
+    const flashcard =this.$store.state.flashCardList.find((flashcard) => flashcard.card_id == flashcardId)
+    console.log(dropDeck)
+    this.flashCardListForDeck.push(flashcard)
+    deckService.addFlashCardToDeck(dropDeck.deck_id, flashcard)
+    // flashcard.list=list;
+  }
   }
 };
 </script>

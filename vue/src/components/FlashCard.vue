@@ -1,5 +1,8 @@
 <template>
-  <div id="card"  v-on:click="getCardId(), toggleShowEdit()">
+  <div id="card"  v-on:click="getCardId(), toggleShowEdit()"
+  draggable 
+  v-bind:force-fallback="true"
+   @dragstart="dragStart($event, flashcard)">
 <!--     
       {{ flashcard.user_id}}
       {{flashcard.keywords}}
@@ -32,7 +35,17 @@ export default {
            toggleShowEdit(){
       this.$store.commit('SET_SHOW_EDIT', true)
     },
-        
+      
+       dragStart(evt,flashcard){
+           flashcard=this.flashcard
+  
+    evt.dataTransfer.dropEffect = 'move';
+    evt.dataTransfer.effectAllowed = 'move';
+    
+    
+    evt.dataTransfer.setData('flashcardId', flashcard.card_id)
+    
+  },
         getCardId(){
             this.currentCard = this.flashcard
             this.$store.commit('SET_CURRENT_CARD', this.currentCard);
