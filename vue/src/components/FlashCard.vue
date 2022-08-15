@@ -1,6 +1,6 @@
 <template>
   <div id="card"  v-on:click="getCardId(), toggleShowEdit()"
-   draggable 
+   draggable="true" 
   @dragstart="dragStart($event, flashcard)"
   >
 
