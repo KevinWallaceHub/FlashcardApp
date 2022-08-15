@@ -1,15 +1,14 @@
 <template>
-  <div id="card"  v-on:click="getCardId(), toggleShowEdit()">
-<!--     
-      {{ flashcard.user_id}}
-      {{flashcard.keywords}}
-      {{flashcard.card_id}}
-       -->
+  <div id="card"  v-on:click="getCardId(), toggleShowEdit()"
+   draggable 
+  @dragstart="dragStart($event, flashcard)"
+  >
+
       <div class="sideOne">
           <div class="front" >
               <span  id="question">{{flashcard.question_side}}</span>
           </div>
-          <div class= "back">
+          <div class= "back" >
                 <span  id="answer">{{flashcard.answer_side}} </span>
       </div>
       </div>
@@ -32,7 +31,17 @@ export default {
            toggleShowEdit(){
       this.$store.commit('SET_SHOW_EDIT', true)
     },
-        
+      
+       dragStart(evt,flashcard){
+           flashcard=this.flashcard
+  
+    evt.dataTransfer.dropEffect = 'move';
+    evt.dataTransfer.effectAllowed = 'move';
+    
+    
+    evt.dataTransfer.setData('flashcardId', flashcard.card_id)
+    
+  },
         getCardId(){
             this.currentCard = this.flashcard
             this.$store.commit('SET_CURRENT_CARD', this.currentCard);

@@ -1,34 +1,38 @@
 <template>
-  <div>
+  <div class="whole">
     <div class="createForm">
       <form action="submit" class="form">
       <label for="name">Deck Name:</label>
       <input type="text" id="newDeckName" v-model="name" required >
       <button type="submit" class="submit" v-on:click.prevent="createNewDeck()">Create Deck</button>
     </form>
+    <search-flash-card/>
     </div>
     <div class="flashCardList">
-      <search-flash-card/>
+      
+       
       
       <flash-card
-       
+      
+        
         v-for="currentFlashCard in searchFunctionForDeckList"
         :key="currentFlashCard.card_id"
         :flashcard="currentFlashCard"
-        draggable
-         @dragstart="dragStart($event, flashcard)"
+       
+        
       />
+       
       
     </div>
     
     <div class="accContainer">
      <div class="flashCardListacc" > 
-     <div   v-bind:class="[isActive ? 'flashCardListHover' : 'flashCardListacc']">
+     <div   class="flashCardListHover"
+     
+     >
         
       <single-deck 
-          @drop="onDrop($event, this.decks)"
-           @dragover.prevent
-  @dragenter.prevent
+         
             v-for="currentDeck in decks"
             v-bind:key="currentDeck.deck_id"
             v-bind:deck="currentDeck"
@@ -108,20 +112,15 @@ methods: {
   } else { alert("Name is a required field")}
   },
   
-  dragStart(evt,flashcard){
-    console.log(flashcard)
-    evt.dataTransfer.dropEffect = 'move';
-    evt.dataTransfer.effectAllowed = 'move';
-    this.flashcard=flashcard
-    evt.dataTransfer.setData('flashcardId', flashcard.card_id)
-    
-  },
+  
 
-  onDrop(evt, list) {
-    const flashcardId = evt.dataTransfer.getData('flashcardId')
-    const flashcard =this.$store.state.flashCardList.find((flashcard) => flashcard.card_id == flashcardId)
-    flashcard.list=list;
-  }
+  // onDrop(evt, dropDeck) {
+    
+  //   const flashcardId = evt.dataTransfer.getData('flashcardId')
+  //   const flashcard =this.$store.state.flashCardList.find((flashcard) => flashcard.card_id == flashcardId)
+  //   dropDeck.push(flashcard)
+  //   // flashcard.list=list;
+  // }
 },
 
 }
@@ -150,9 +149,9 @@ margin: 30px auto;
 
 .flashCardListHover >div {
   
-  /* potential drop zone? */
+  
 
-  width:40%;
+  width: 310px;
   flex-grow:1;
   flex-shrink:1;
   
@@ -167,16 +166,13 @@ margin: 30px auto;
 
 }
 
-/* .flashCardListHover >div:checked{
-  thought this might allow the accordian to stay open on click.. doesnt 
-  to do anything at all
-  width: 330px;
-} */
+
 
  .flashCardListHover >div::-webkit-scrollbar {
   display: none; }
 
 .flashCardListacc{
+  
   display: flex;
   flex-wrap:nowrap;
   overflow:hidden;
@@ -186,13 +182,14 @@ margin: 30px auto;
 }
 
 .flashCardListacc >div {
+  
   width:80%;
   flex-grow:1;
   flex-shrink:0;
   overflow-y:scroll;
   transition:all .5s ease;
-  border:5px solid aliceblue;
-  border-radius:10px;
+  /* border:5px solid aliceblue;
+  border-radius:10px; */
   
   position:relative;
   scroll-behavior: smooth;
@@ -212,10 +209,14 @@ div.flashCardList {
   justify-items: center;
   flex-wrap: wrap;
   justify-content: space-evenly;
-  
+ 
 }
 
-
+.whole{
+  display: flex;
+  flex-direction: column;
+  
+}
 
  
 </style>

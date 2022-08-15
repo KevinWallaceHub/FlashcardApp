@@ -3,7 +3,7 @@
     <div class="main">
       <h1>Welcome!</h1>
       <p class="greeting">
-        Expanding your knowledge and studying hard is {website name}'s number
+        Expanding your knowledge and studying hard is QwikFlip's number
         one goal!
       </p>
       <div id="userChoices">
@@ -15,6 +15,11 @@
       <div id="yourDecksDiv">
         <router-link :to="{ name: 'decks' }"
           ><button id="yourDecks">Your decks</button></router-link
+        >
+      </div>
+      <div id="yourDecksDiv">
+        <router-link :to="{ name: 'StudySession' }"
+          ><button id="yourDecks">Study Session</button></router-link
         >
       </div>
       </div>
@@ -41,8 +46,8 @@ div.home {
   gap: 10px;
 }
 body {
-  background-color: #dff0f9;
-  color: #215350;
+  background-color: #e0fbfc;
+  color: #293241;
 }
 h1 {
   text-align: justify;
@@ -77,7 +82,7 @@ button#yourCards, button#yourDecks {
   padding: 10px;
   border-radius: 5px;
   color: #ffffff;
-  background-color: #ffc7b0;
+  background-color: #ee6c4d;
   font-weight: bold;
   text-align: center;
   text-transform: uppercase;
@@ -85,7 +90,7 @@ button#yourCards, button#yourDecks {
 }
 
 button#yourCards:hover, button#yourDecks:hover {
-  background-color: #e47b64;
+  background-color: #d44623;
   transition: 0.7s;
 }
 </style>
