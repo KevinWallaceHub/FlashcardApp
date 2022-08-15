@@ -112,13 +112,6 @@ methods: {
   
   
 
-  // onDrop(evt, dropDeck) {
-    
-  //   const flashcardId = evt.dataTransfer.getData('flashcardId')
-  //   const flashcard =this.$store.state.flashCardList.find((flashcard) => flashcard.card_id == flashcardId)
-  //   dropDeck.drop(flashcard)
-  
-  // }
 },
 
 }

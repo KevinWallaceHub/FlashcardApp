@@ -1,20 +1,31 @@
 <template>
   <div class="page">
-   <div class="twoButtons">
-    <div class="searchBar"><search-flash-card /></div>
-    
-    <div><single-flash-card class="formToEdit"
-      v-if="this.$store.state.showEdit"
-      v-bind:flashcard="
-        getFlashCardInfoFromCardId(
-          this.$store.state.currentCard.card_id,
-          this.$store.state.flashCardList
-        )
-      "
-    /></div>
-    <div> <button v-if="showButton" class="createButton" v-on:click="createFormToggle()">Create New Card</button></div>
-   </div>
-    
+    <div class="twoButtons">
+      <div class="searchBar"><search-flash-card /></div>
+
+      <div>
+        <single-flash-card
+          class="formToEdit"
+          v-if="this.$store.state.showEdit"
+          v-bind:flashcard="
+            getFlashCardInfoFromCardId(
+              this.$store.state.currentCard.card_id,
+              this.$store.state.flashCardList
+            )
+          "
+        />
+      </div>
+      <div>
+        <button
+          v-if="showButton"
+          class="createButton"
+          v-on:click="createFormToggle()"
+        >
+          Create New Card
+        </button>
+      </div>
+    </div>
+
     <div class="createForm" v-if="showCreateForm">
       <form class="form" action="submit">
         <label for="questionSide">Question:</label>
@@ -49,14 +60,14 @@ export default {
     SingleFlashCard,
     SearchFlashCard,
   },
-  props: ['filteredList'],
+  props: ["filteredList"],
   data() {
     return {
       questionSide: "",
       answerSide: "",
       keywords: "",
       showCreateForm: false,
-      showButton: true
+      showButton: true,
     };
   },
 
@@ -72,15 +83,14 @@ export default {
     searchFunction() {
       const cardList = this.$store.state.flashCardList;
       const searchTerm = this.$store.state.searchTerm.toLowerCase();
-      return cardList.filter(card => {
+      return cardList.filter((card) => {
         return card.keywords.toLowerCase().includes(searchTerm);
       });
     },
-    
   },
   methods: {
     createFormToggle() {
-      this.showCreateForm = true
+      this.showCreateForm = true;
       this.showButton = false;
     },
     resetData() {
@@ -123,11 +133,9 @@ export default {
 </script>
 
 <style>
-div.twoButtons{
+div.twoButtons {
   display: flex;
   justify-content: center;
- 
-   
 }
 div.flashCardList {
   display: flex;
@@ -135,54 +143,49 @@ div.flashCardList {
   justify-items: center;
   flex-wrap: wrap;
   justify-content: space-evenly;
-  
 }
 
-div.createForm{
+div.createForm {
   display: flex;
   justify-content: center;
-  
 }
-form.form{
-  font-family:'Courier New', Courier, monospace;
+form.form {
+  font-family: "Courier New", Courier, monospace;
   font-weight: bold;
   text-align: center;
   text-transform: uppercase;
   border-style: inset;
-  
 }
-button.createButton{
-  margin:5px;
-    width: 9.7rem;
+button.createButton {
+  width: 9.7rem;
   padding: 10px;
   border-radius: 5px;
   color: #ffffff;
-  background-color: #fdb89c;
+  background-color: #ee6c4d;
   font-weight: bold;
   text-align: center;
   text-transform: uppercase;
   cursor: pointer;
-
 }
-button.createButton:hover{
-background-color: #e47b64;
+button.createButton:hover {
+  background-color: #d44623;
   transition: 0.7s;
 }
- button.submit{ 
-    margin:5px;
-    width: 9.7rem;
+button.submit {
+  margin: 5px;
+  width: 9.7rem;
   padding: 10px;
   border-radius: 5px;
   color: #ffffff;
-  background-color: #fdb89c;
+  background-color: #ee6c4d;
   font-weight: bold;
   text-align: center;
   text-transform: uppercase;
   cursor: pointer;
-} 
-button.submit:hover{
-  border-color:#215350;
-  background-color: #e47b64;
+}
+button.submit:hover {
+  border-color: #215350;
+  background-color: #d44623;
   transition: 0.7s;
 }
 </style>

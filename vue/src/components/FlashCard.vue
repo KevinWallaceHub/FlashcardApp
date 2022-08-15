@@ -1,6 +1,6 @@
 <template>
   <div id="card"  v-on:click="getCardId(), toggleShowEdit()"
-   draggable 
+   draggable="true" 
   @dragstart="dragStart($event, flashcard)"
   >
 
@@ -111,7 +111,7 @@ div#card  {
     but for short cards the answer is down at the bottom... not ideal  */
     position:absolute;
        top: 1%;
-        
+      font-size: 10pt;  
         
     } 
     
