@@ -2,194 +2,170 @@
   <div class="whole">
     <div class="createForm">
       <form action="submit" class="form">
-      <label for="name">Deck Name:</label>
-      <input type="text" id="newDeckName" v-model="name" required >
-      <button type="submit" class="submit" v-on:click.prevent="createNewDeck()">Create Deck</button>
-    </form>
-    <search-flash-card/>
+        <label for="name">Deck Name:</label>
+        <input type="text" id="newDeckName" v-model="name" required />
+        <button
+          type="submit"
+          class="submit"
+          v-on:click.prevent="createNewDeck()"
+        >
+          Create Deck
+        </button>
+      </form>
+      <search-flash-card />
     </div>
     <div class="flashCardList">
-      
-       
-      
       <flash-card
-      
-        
         v-for="currentFlashCard in searchFunctionForDeckList"
         :key="currentFlashCard.card_id"
         :flashcard="currentFlashCard"
-       
-        
       />
-       
-      
     </div>
-    
+
     <div class="accContainer">
-     <div class="flashCardListacc" > 
-     <div   class="flashCardListHover"
-     
-     >
-        
-      <single-deck 
-         
+      <div class="flashCardListacc">
+        <div class="flashCardListHover">
+          <single-deck
             v-for="currentDeck in decks"
             v-bind:key="currentDeck.deck_id"
             v-bind:deck="currentDeck"
-             /></div>
-       
-       </div>
-       </div>
-       
+          />
+        </div>
+      </div>
+    </div>
   </div>
 </template>
 
 <script>
-import SingleDeck from '@/components/SingleDeck';
+import SingleDeck from "@/components/SingleDeck";
 import deckService from "@/services/DeckService.js";
-import SearchFlashCard from '@/components/SearchFlashCard.vue';
-import flashCardService from '@/services/FlashCardService.js';
-import FlashCard from '@/components/FlashCard.vue';
+import SearchFlashCard from "@/components/SearchFlashCard.vue";
+import flashCardService from "@/services/FlashCardService.js";
+import FlashCard from "@/components/FlashCard.vue";
 export default {
-
-components: {
-SingleDeck,
-SearchFlashCard,
-FlashCard
-},
-data() {
+  components: {
+    SingleDeck,
+    SearchFlashCard,
+    FlashCard,
+  },
+  data() {
     return {
       name: "",
       decks: [],
       newDeck: {},
       isActive: true,
-
     };
   },
 
-created() {
-    deckService.getAllDecks()
+  created() {
+    deckService
+      .getAllDecks()
       .then((response) => {
         this.decks = response.data;
       })
       .catch((error) => console.error(error));
 
-       flashCardService
+    flashCardService
       .getAllFlashCards()
       .then((response) => {
         this.$store.state.flashCardList = response.data;
       })
       .catch((error) => console.error(error));
   },
-    computed: {
+  computed: {
     searchFunctionForDeckList() {
       const cardList = this.$store.state.flashCardList;
       const searchTerm = this.$store.state.searchTerm.toLowerCase();
-      return cardList.filter(card => {
-        if(searchTerm.length > 0 ){
-        return card.keywords.toLowerCase().includes(searchTerm);
-        } else { return false}
+      return cardList.filter((card) => {
+        if (searchTerm.length > 0) {
+          return card.keywords.toLowerCase().includes(searchTerm);
+        } else {
+          return false;
+        }
       });
-   
-    
-    
-  }
-},
-methods: {
-  
-  createNewDeck(){
-    if(this.name.length > 0){
-    const deck = {
-      name: this.name,
-      user_id: this.$store.state.user.id
-    }
-    deckService
-    .createNewDeck(deck).then(response =>{
-      this.decks.push(response.data)
-    }).catch(err => console.error(err))
-  } else { alert("Name is a required field")}
+    },
   },
-  
-  
-
-},
-
-}
+  methods: {
+    createNewDeck() {
+      if (this.name.length > 0) {
+        const deck = {
+          name: this.name,
+          user_id: this.$store.state.user.id,
+        };
+        deckService
+          .createNewDeck(deck)
+          .then((response) => {
+            this.decks.push(response.data);
+          })
+          .catch((err) => console.error(err));
+      } else {
+        alert("Name is a required field");
+      }
+    },
+  },
+};
 </script>
 
 <style>
-.accContainer{
-margin: 30px auto;
-  width:100%;
+.accContainer {
+  margin: 30px auto;
+  width: 100%;
   display: flex;
   justify-content: center;
-        
-
- 
 }
 
-.flashCardListHover{
+.flashCardListHover {
   display: flex;
-  flex-wrap:nowrap;
-  overflow:hidden;
-  width:65%;
-  height:550px;
-   box-shadow: 3px 3px 4px 0px black;
- 
+  flex-wrap: nowrap;
+  overflow: hidden;
+  width: 65%;
+  height: 550px;
+  box-shadow: 3px 3px 4px 0px black;
 }
 
-.flashCardListHover >div {
-  
-  
-
+.flashCardListHover > div {
   width: 310px;
-  flex-grow:1;
-  flex-shrink:1;
-  
-  overflow-y:scroll;
-  transition:all .5s ease;
-  border:5px solid aliceblue;
-  border-radius:10px;
-  
-  position:relative;
+  flex-grow: 1;
+  flex-shrink: 1;
+
+  overflow-y: scroll;
+  transition: all 0.5s ease;
+  border: 5px solid aliceblue;
+  border-radius: 10px;
+
+  position: relative;
   scroll-behavior: smooth;
-
-
 }
 
+.flashCardListHover > div::-webkit-scrollbar {
+  display: none;
+}
 
-
- .flashCardListHover >div::-webkit-scrollbar {
-  display: none; }
-
-.flashCardListacc{
-  
+.flashCardListacc {
   display: flex;
-  flex-wrap:nowrap;
-  overflow:hidden;
-  width:95%;
-  height:550px;
-   box-shadow: 3px 3px 4px 0px black;
+  flex-wrap: nowrap;
+  overflow: hidden;
+  width: 95%;
+  height: 550px;
+  box-shadow: 3px 3px 4px 0px black;
 }
 
-.flashCardListacc >div {
-  
-  width:80%;
-  flex-grow:1;
-  flex-shrink:0;
-  overflow-y:scroll;
-  transition:all .5s ease;
+.flashCardListacc > div {
+  width: 80%;
+  flex-grow: 1;
+  flex-shrink: 0;
+  overflow-y: scroll;
+  transition: all 0.5s ease;
   /* border:5px solid aliceblue;
   border-radius:10px; */
-  
-  position:relative;
+
+  position: relative;
   scroll-behavior: smooth;
 }
 
-.flashCardListHover> div:hover{
-   
+.flashCardListHover > div:hover {
   flex-shrink: 0;
- }
+}
 /* .flashCardListacc >div:hover{
   flex-shrink: 0;
   
@@ -200,14 +176,10 @@ div.flashCardList {
   justify-items: center;
   flex-wrap: wrap;
   justify-content: space-evenly;
- 
 }
 
-.whole{
+.whole {
   display: flex;
   flex-direction: column;
-  
 }
-
- 
 </style>
