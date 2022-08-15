@@ -213,7 +213,7 @@ button.addToDeck {
   padding: 10px;
   border-radius: 5px;
   color: #ffffff;
-  background-color: #fdb89c;
+  background-color: #ee6c4d;
   font-weight: bold;
   text-align: center;
   text-transform: uppercase;
@@ -221,7 +221,7 @@ button.addToDeck {
 }
 button.cancel:hover,
 button.delete:hover {
-  background-color: #e47b64;
+  background-color: #d44623;
   transition: 0.7s;
 }
 </style>
