@@ -4,17 +4,21 @@
       <form action="submit" class="form">
       <label for="name">Deck Name:</label>
       <input type="text" id="newDeckName" v-model="name" required >
-      <button type="submit" class="submit" v-on:click.prevent="createNewDeck(),logFlashcardList()">Create Deck</button>
+      <button type="submit" class="submit" v-on:click.prevent="createNewDeck()">Create Deck</button>
     </form>
     </div>
     <div class="flashCardList">
       <search-flash-card/>
+      
       <flash-card
         draggable
+         @dragstart="dragStart($event, flashcard)"
         v-for="currentFlashCard in searchFunctionForDeckList"
         :key="currentFlashCard.card_id"
         :flashcard="currentFlashCard"
+       
       />
+      
     </div>
     
     <div class="accContainer">
@@ -22,12 +26,14 @@
      <div   v-bind:class="[isActive ? 'flashCardListHover' : 'flashCardListacc']">
         
       <single-deck 
-         
+          @drop="onDrop($event, this.decks)"
+           @dragover.prevent
+  @dragenter.prevent
             v-for="currentDeck in decks"
             v-bind:key="currentDeck.deck_id"
             v-bind:deck="currentDeck"
-             />
-       </div>
+             /></div>
+       
        </div>
        </div>
        
@@ -52,7 +58,8 @@ data() {
       name: "",
       decks: [],
       newDeck: {},
-      isActive: true
+      isActive: true,
+
     };
   },
 
@@ -86,9 +93,7 @@ created() {
   }
 },
 methods: {
-  logFlashcardList(){
-    console.log(this.$store.state.flashCardList);
-  },
+  
   createNewDeck(){
     if(this.name.length > 0){
     const deck = {
@@ -104,9 +109,19 @@ methods: {
   },
   
   dragStart(evt,flashcard){
+    console.log(flashcard)
     evt.dataTransfer.dropEffect = 'move';
     evt.dataTransfer.effectAllowed = 'move';
-    evt.dataTransfer.setData('flashcard.card_id', flashcard)
+    this.flashcard=flashcard
+    
+    evt.dataTransfer.setData('flashcardId', flashcard.card_id)
+    
+  },
+
+  onDrop(evt, list) {
+    const flashcardId = evt.dataTransfer.getData('flashcardId')
+    const flashcard =this.$store.state.flashCardList.find((flashcard) => flashcard.card_id == flashcardId)
+    flashcard.list=list;
   }
 },
 
