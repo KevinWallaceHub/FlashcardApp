@@ -3,7 +3,7 @@
            @dragover.prevent
   @dragenter.prevent>
     <div >
-    <div @click="setCurrentDeck(),viewFlashCardsInDeck()" class="deckCover">
+    <div class="deckCover">
      {{ deck.name }}
     </div>
 
@@ -39,16 +39,8 @@ export default {
   components: {
       FlashCard
   },
-
-  methods: {
-
-      setCurrentDeck(){
-         console.log(this.deck);
-         
-          return this.$store.commit('SET_CURRENT_DECK', this.deck)
-          
-      },
-      viewFlashCardsInDeck(){
+created() {
+ 
           const deckId = this.deck.deck_id;
           // console.log(this.$store.state.currentDeck);
            deckService
@@ -58,7 +50,19 @@ export default {
               this.flashCardListForDeck =  response.data
               return this.flashCardListForDeck
            }).catch(err => console.error(err))
+           return null;
+      
+},
+  methods: {
+
+      setCurrentDeck(){
+         console.log(this.deck);
+         
+          return this.$store.commit('SET_CURRENT_DECK', this.deck)
+          
       },
+     
+       
        onDrop(evt, dropDeck) {
     
     const flashcardId = evt.dataTransfer.getData('flashcardId')
@@ -75,14 +79,15 @@ export default {
 <style>
 .deckCover{
   display: flex;
-  justify-content: center;
-  align-items: flex-start;
-  cursor: pointer;
-  height: 22rem;
-  width: 20rem;
-  font-size: 22pt;
-  text-orientation: sideways;
-  writing-mode: vertical-lr;
+  justify-content: flex-start;
+  align-items: center;
+  
+  height: 11rem;
+  width: 9rem;
+  font-size: 18pt;
+ border-style: solid;
+  /* text-orientation: sideways;
+  writing-mode: vertical-lr; */
   
 }
 

@@ -1,18 +1,14 @@
 <template>
   <div id="card"  v-on:click="getCardId(), toggleShowEdit()"
-  draggable 
-  v-bind:force-fallback="true"
-   @dragstart="dragStart($event, flashcard)">
-<!--     
-      {{ flashcard.user_id}}
-      {{flashcard.keywords}}
-      {{flashcard.card_id}}
-       -->
+   draggable 
+  @dragstart="dragStart($event, flashcard)"
+  >
+
       <div class="sideOne">
           <div class="front" >
               <span  id="question">{{flashcard.question_side}}</span>
           </div>
-          <div class= "back">
+          <div class= "back" >
                 <span  id="answer">{{flashcard.answer_side}} </span>
       </div>
       </div>

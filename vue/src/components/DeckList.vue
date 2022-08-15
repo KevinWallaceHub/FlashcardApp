@@ -6,9 +6,10 @@
       <input type="text" id="newDeckName" v-model="name" required >
       <button type="submit" class="submit" v-on:click.prevent="createNewDeck()">Create Deck</button>
     </form>
+    <search-flash-card/>
     </div>
     <div class="flashCardList">
-      <search-flash-card/>
+      
        
       
       <flash-card
@@ -26,7 +27,7 @@
     
     <div class="accContainer">
      <div class="flashCardListacc" > 
-     <div   v-bind:class="[isActive ? 'flashCardListHover' : 'flashCardListacc']"
+     <div   class="flashCardListHover"
      
      >
         
@@ -148,9 +149,9 @@ margin: 30px auto;
 
 .flashCardListHover >div {
   
-  /* potential drop zone? */
+  
 
-  width:40%;
+  width: 310px;
   flex-grow:1;
   flex-shrink:1;
   
@@ -165,11 +166,7 @@ margin: 30px auto;
 
 }
 
-/* .flashCardListHover >div:checked{
-  thought this might allow the accordian to stay open on click.. doesnt 
-  to do anything at all
-  width: 330px;
-} */
+
 
  .flashCardListHover >div::-webkit-scrollbar {
   display: none; }
@@ -191,8 +188,8 @@ margin: 30px auto;
   flex-shrink:0;
   overflow-y:scroll;
   transition:all .5s ease;
-  border:5px solid aliceblue;
-  border-radius:10px;
+  /* border:5px solid aliceblue;
+  border-radius:10px; */
   
   position:relative;
   scroll-behavior: smooth;
