@@ -79,7 +79,12 @@ export default {
       console.log(flashcard);
       deckService
         .removeFlashCardFromDeck(dropDeck.deck_id, flashcardId)
-          this.flashCardListForDeck.pop(flashcard);
+          let index = this.flashCardListForDeck.indexOf(flashcard)
+          console.log(index)
+          console.log(this.flashCardListForDeck)
+          this.flashCardListForDeck.splice(index, 1)
+          // evt.dataTransfer.clearData("flashcardId")
+
   
     },
   },
