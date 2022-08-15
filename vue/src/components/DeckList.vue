@@ -19,7 +19,7 @@
     
     <div class="accContainer">
      <div class="flashCardListacc" > 
-     <div   v-bind:class="[isActive ? 'flashCardListHover' : 'flashCardListacc']" @click="toggleClass()">
+     <div   v-bind:class="[isActive ? 'flashCardListHover' : 'flashCardListacc']">
         
       <single-deck 
          
@@ -100,7 +100,8 @@ margin: 30px auto;
   width:100%;
   display: flex;
   justify-content: center;
-  
+        
+
  
 }
 
@@ -111,9 +112,13 @@ margin: 30px auto;
   width:65%;
   height:550px;
    box-shadow: 3px 3px 4px 0px black;
+ 
 }
 
 .flashCardListHover >div {
+  
+  /* potential drop zone? */
+
   width:40%;
   flex-grow:1;
   flex-shrink:1;
@@ -125,7 +130,15 @@ margin: 30px auto;
   
   position:relative;
   scroll-behavior: smooth;
+
+
 }
+
+/* .flashCardListHover >div:checked{
+  thought this might allow the accordian to stay open on click.. doesnt 
+  to do anything at all
+  width: 330px;
+} */
 
  .flashCardListHover >div::-webkit-scrollbar {
   display: none; }
