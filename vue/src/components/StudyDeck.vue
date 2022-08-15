@@ -8,7 +8,7 @@
 
     <div >
       <study-flash-card
-      
+        
         v-for="currentFlashCard in this.flashCardListForDeck"
         :key="currentFlashCard.card_id"
         :flashcard="currentFlashCard"
