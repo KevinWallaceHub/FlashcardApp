@@ -10,6 +10,7 @@
     <div class="flashCardList">
       <search-flash-card/>
       <flash-card
+        draggable
         v-for="currentFlashCard in searchFunctionForDeckList"
         :key="currentFlashCard.card_id"
         :flashcard="currentFlashCard"
@@ -100,7 +101,12 @@ methods: {
       this.decks.push(response.data)
     }).catch(err => console.error(err))
   } else { alert("Name is a required field")}
-
+  },
+  
+  dragStart(evt,flashcard){
+    evt.dataTransfer.dropEffect = 'move';
+    evt.dataTransfer.effectAllowed = 'move';
+    evt.dataTransfer.setData('flashcard.card_id', flashcard)
   }
 },
 
