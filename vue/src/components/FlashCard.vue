@@ -8,6 +8,7 @@
     <div class="sideOne">
       <div class="front">
         <span id="question">{{ flashcard.question_side }}</span>
+        <img :src="this.image" alt="" />
       </div>
       <div class="back">
         <span id="answer">{{ flashcard.answer_side }} </span>
@@ -17,11 +18,42 @@
 </template>
 
 <script>
+// Import the functions you need from the SDKs you need
+import { initializeApp } from "firebase/app";
+import { getStorage, ref, getDownloadURL } from "firebase/storage";
+// TODO: Add SDKs for Firebase products that you want to use
+// https://firebase.google.com/docs/web/setup#available-libraries
+
+// Your web app's Firebase configuration
+const firebaseConfig = {
+  apiKey: "AIzaSyDNwUAfWMlZ0_LW4L4iaf2qu1DQczthmS8",
+  authDomain: "qwikflipecho.firebaseapp.com",
+  projectId: "qwikflipecho",
+  storageBucket: "qwikflipecho.appspot.com",
+  messagingSenderId: "193713042654",
+  appId: "1:193713042654:web:94014e9299a3fcbbfa7e4f",
+};
+
+// Initialize Firebase
+const firebase = initializeApp(firebaseConfig);
+const storage = getStorage();
+const starsRef = ref(
+  storage,
+  "image/27b711ba595fca0c82e083a641560d6f--abstract-photos-abstract-backgrounds.jpg"
+);
+
 export default {
   data() {
     return {
       currentCard: {},
+      image: "",
     };
+  },
+  mounted() {
+    console.log(firebase);
+    getDownloadURL(starsRef).then((url) => {
+      this.image = url;
+    });
   },
   computed: {},
   methods: {
@@ -113,4 +145,8 @@ span#question {
     border-style:solid;
   
 } */
+img {
+  max-width: 250px;
+  max-height: auto;
+}
 </style>

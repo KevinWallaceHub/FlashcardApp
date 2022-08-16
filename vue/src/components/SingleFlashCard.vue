@@ -22,11 +22,20 @@
           <label for="keywords">Keywords: </label>
           <input type="text" id="keywords" v-model="keywords" />
         </div>
+        <div id="imageUpload">
+          <label for="imageURL">Upload image:</label>
+          <input type="file" @change="previewFile" />
+        </div>
         <div class="allEditFormBtn">
           <div>
             <button
               class="submit"
-              @click.prevent="updateSelectedFlashcard(), toggleShowEdit()"
+              id="submitButton"
+              @click.prevent="
+                updateSelectedFlashcard(),
+                  toggleShowEdit(),
+                  addImage(previewFile)
+              "
             >
               Update
             </button>
@@ -36,22 +45,24 @@
           </div>
           <div>
             <form action="submit">
-            <label for="Decks"></label>
-            <select  name="Decks" id="Decks" v-model="value">
-            <option></option>
-            <option v-for="deck in this.deckList"
-            :key="deck.deck_id"
-            :value="deck.deck_id"
-            >{{deck.name}}
-                   </option>
-            </select>
-                    
-            <button class="addToDeck" @click.prevent="addFlashCardToDeck() ">
-              Add To Deck
-            </button>
+              <label for="Decks"></label>
+              <select name="Decks" id="Decks" v-model="value">
+                <option></option>
+                <option
+                  v-for="deck in this.deckList"
+                  :key="deck.deck_id"
+                  :value="deck.deck_id"
+                >
+                  {{ deck.name }}
+                </option>
+              </select>
+
+              <button class="addToDeck" @click.prevent="addFlashCardToDeck()">
+                Add To Deck
+              </button>
             </form>
-            </div>
-            <div>
+          </div>
+          <div>
             <button
               class="delete"
               v-on:click.prevent="toggleShowEdit(), deleteSelectedFlashcard()"
@@ -67,7 +78,11 @@
 
 <script>
 import flashCardService from "@/services/FlashCardService.js";
-import deckService from "@/services/DeckService"
+import deckService from "@/services/DeckService";
+import { getStorage, ref, uploadBytes } from "firebase/storage";
+
+const storage = getStorage();
+const imageRef = ref(storage, "image/");
 export default {
   data() {
     return {
@@ -75,13 +90,20 @@ export default {
       answerSide: this.flashcard.answer_side,
       keywords: this.flashcard.keywords,
       deckList: [],
-      value: ""
+      value: "",
+      fileName: "",
     };
   },
+  mounted() {},
   props: ["flashcard"],
-  computed: {},
-created() {
-    deckService.getAllDecks()
+  computed: {
+    // getFileName() {
+    //   return (this.fileName = document.getElementById("submitButton").name);
+    // },
+  },
+  created() {
+    deckService
+      .getAllDecks()
       .then((response) => {
         this.deckList = response.data;
       })
@@ -89,6 +111,17 @@ created() {
   },
 
   methods: {
+    previewFile(event) {
+      console.log(event.target.files);
+      return event.target.files;
+    },
+
+    addImage(file) {
+      uploadBytes(imageRef, file).then((snapshot) => {
+        console.log("Uploaded file!");
+        console.log(snapshot);
+      });
+    },
     // changingCurrentDeck(){
     //     let selecetedDeck = {};
     //     console.log(this.value);
@@ -98,12 +131,15 @@ created() {
     //     })
     //     this.$store.commit('SET_CURRENT_DECK', selecetedDeck)
     // },
-    addFlashCardToDeck(){
+    addFlashCardToDeck() {
       // console.log(this.value);
-      deckService.addFlashCardToDeck(this.value, this.flashcard).then(response => {
-        console.log(response.data);
-        alert("card was added to deck successfully")
-      }).catch(err => console.error(err))
+      deckService
+        .addFlashCardToDeck(this.value, this.flashcard)
+        .then((response) => {
+          console.log(response.data);
+          alert("card was added to deck successfully");
+        })
+        .catch((err) => console.error(err));
     },
     toggleShowEdit() {
       this.$store.commit("SET_SHOW_EDIT", false);
@@ -141,29 +177,30 @@ created() {
     },
 
     deleteSelectedFlashcard() {
-      if(confirm('Are your sure you would like to delete this Flashcard?'))
-      {
-      const unwantedFlashcard = 
-      {
-        card_id: this.flashcard.card_id,
-        question_side: this.questionSide,
-        answer_side: this.answerSide,
-        keywords: this.keywords,
-        user_id: this.$store.state.user.id,
-      };
-      
-      flashCardService
-        .deleteFlashCard(unwantedFlashcard.card_id)
-        .then((response) => {
-          if (response.status < 300) {
-            let index =
-              this.$store.state.flashCardList.indexOf(unwantedFlashcard.card_id);
+      if (confirm("Are your sure you would like to delete this Flashcard?")) {
+        const unwantedFlashcard = {
+          card_id: this.flashcard.card_id,
+          question_side: this.questionSide,
+          answer_side: this.answerSide,
+          keywords: this.keywords,
+          user_id: this.$store.state.user.id,
+        };
+
+        flashCardService
+          .deleteFlashCard(unwantedFlashcard.card_id)
+          .then((response) => {
+            if (response.status < 300) {
+              let index = this.$store.state.flashCardList.indexOf(
+                unwantedFlashcard.card_id
+              );
               this.$store.state.flashCardList.splice(index, 1);
               alert("Flashcard Deleted Forever");
-            }}).catch((err) => console.error(err));
+            }
+          })
+          .catch((err) => console.error(err));
       }
+    },
   },
-  }
 };
 </script>
 
