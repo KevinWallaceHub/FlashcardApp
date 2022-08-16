@@ -68,25 +68,17 @@ export default {
       console.log(flashcard);
       this.flashCardListForDeck.push(flashcard);
       deckService.addFlashCardToDeck(dropDeck.deck_id, flashcard);
-      
     },
     deleteDrop(evt, dropDeck) {
-      let flashcardId = evt.dataTransfer.getData("flashcardId");
-       
-      let flashcard = this.$store.state.flashCardList.find(
+      const flashcardId = evt.dataTransfer.getData("flashcardId");
+      const flashcard = this.$store.state.flashCardList.find(
         (flashcard) => flashcard.card_id == flashcardId
       );
-      // console.log(dropDeck);
-      // console.log(flashcard);
-      deckService
-        .removeFlashCardFromDeck(dropDeck.deck_id, flashcardId)
-          let index = this.flashCardListForDeck.indexOf(flashcard)
-          console.log(index)
-          console.log(this.flashCardListForDeck)
-          this.flashCardListForDeck.splice(index, 1)
-          // evt.dataTransfer.clearData("flashcardId")
-
-  
+      let index = this.flashCardListForDeck.findIndex((card) => {
+        return card.card_id == flashcard.card_id;
+      });
+      this.flashCardListForDeck.splice(index, 1);
+      deckService.removeFlashCardFromDeck(dropDeck.deck_id, flashcardId);
     },
   },
 };
