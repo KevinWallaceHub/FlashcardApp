@@ -70,7 +70,6 @@ export default {
       console.log(flashcard);
       this.flashCardListForDeck.push(flashcard);
       deckService.addFlashCardToDeck(dropDeck.deck_id, flashcard);
-      
     },
     deleteDrop(evt, dropDeck) {
       const flashcardId = evt.dataTransfer.getData("flashcardId");
