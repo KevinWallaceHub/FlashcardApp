@@ -56,6 +56,7 @@ div#app {
 div#nav {
   display: flex;
   box-sizing: border-box;
+  flex-wrap: wrap;
   margin: 0;
   padding: 0;
   background-image: linear-gradient(to right, #e0fbfc, #98c1d9);
@@ -63,7 +64,7 @@ div#nav {
   border-width: 0px 0px 3px 0px;
   border-style: solid;
   border-color: antiquewhite;
-  height: 5%;
+  height: 30%;
   justify-content: space-between;
   align-items: center;
   z-index: 1;
@@ -81,7 +82,9 @@ li.navs {
 }
 ul.nav__links {
   display: flex;
+  flex-wrap: wrap;
   font-weight: bold;
+  
 }
 img.logo {
   max-width: 300px;
@@ -90,10 +93,10 @@ img.logo {
 }
 .nav__links {
   list-style: none;
-  display: inline-block;
+  /* display: inline-block; */
 }
 .nav__links li {
-  display: inline-block;
+  /* display: inline-block; */
   padding: 0px 20px;
   text-transform: uppercase;
   text-decoration: none;
@@ -113,7 +116,10 @@ img.logo {
   font-weight: bold;
 }
 nav {
-  flex-shrink:0;
+  
+  display: flex;
+  /* flex-shrink:0; */
+  flex-wrap: wrap;
 }
 button#logout {
   padding: 9px 25px;
