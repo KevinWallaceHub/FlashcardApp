@@ -6,7 +6,7 @@
       @drop="deleteDrop($event, deck)"
       @dragover.prevent
       @dragenter.prevent
-    ></div>
+    > Drag Drop & Delete</div>
     <div @drop="onDrop($event, deck)" @dragover.prevent @dragenter.prevent>
       <div class="deckCover">
         {{ deck.name }}
@@ -62,8 +62,8 @@ export default {
     },
 
     onDrop(evt, dropDeck) {
-      const flashcardId = evt.dataTransfer.getData("flashcardId");
-      const flashcard = this.$store.state.flashCardList.find(
+      let flashcardId = evt.dataTransfer.getData("flashcardId");
+      let flashcard = this.$store.state.flashCardList.find(
         (flashcard) => flashcard.card_id == flashcardId
       );
       console.log(dropDeck);
@@ -73,22 +73,15 @@ export default {
       
     },
     deleteDrop(evt, dropDeck) {
-      let flashcardId = evt.dataTransfer.getData("flashcardId");
-       
-      let flashcard = this.$store.state.flashCardList.find(
+      const flashcardId = evt.dataTransfer.getData("flashcardId");
+      const flashcard = this.$store.state.flashCardList.find(
         (flashcard) => flashcard.card_id == flashcardId
       );
-      // console.log(dropDeck);
-      // console.log(flashcard);
-      deckService
-        .removeFlashCardFromDeck(dropDeck.deck_id, flashcardId)
-          let index = this.flashCardListForDeck.indexOf(flashcard)
-          console.log(index)
-          console.log(this.flashCardListForDeck)
-          this.flashCardListForDeck.splice(index, 1)
-          // evt.dataTransfer.clearData("flashcardId")
-
-  
+      let index = this.flashCardListForDeck.findIndex((card) => {
+        return card.card_id == flashcard.card_id;
+      });
+      this.flashCardListForDeck.splice(index, 1);
+      deckService.removeFlashCardFromDeck(dropDeck.deck_id, flashcardId);
     },
   },
 };
@@ -110,6 +103,9 @@ export default {
 
 div#deleteZone {
   width: vw;
-  height: 25px;
+  height: 65px;
+  background-color: #293241;
+  color: #e0fbfc;
+  margin-bottom: 5px;
 }
 </style>
