@@ -38,7 +38,17 @@ export default {
 </script>
 
 <style>
-/* div.sideTwo {
+.sideOne{
+    width: 10px;
     
-} */
+}
+#answer {
+  
+  
+  background-color: transparent;
+  font-size: 0.9em;
+
+  text-align: center;
+    
+}
 </style>
