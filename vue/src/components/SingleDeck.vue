@@ -1,4 +1,5 @@
 <template>
+
   <div>
     <div
       id="deleteZone"
@@ -23,6 +24,7 @@
     </div>
     <div class="deckList"></div>
   </div>
+ 
 </template>
 
 <script>
