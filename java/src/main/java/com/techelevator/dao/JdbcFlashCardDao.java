@@ -21,7 +21,7 @@ public class JdbcFlashCardDao implements FlashCardDao {
     @Override
     public List<FlashCard> findAllCards() {
         List<FlashCard> allCards = new ArrayList<>();
-        String sql = "Select user_id, card_id, question_side, answer_side, keywords FROM flashcards";
+        String sql = "Select user_id, card_id, question_side, answer_side, image_url, keywords FROM flashcards";
 
         SqlRowSet results = jdbcTemplate.queryForRowSet(sql);
 
@@ -34,7 +34,7 @@ public class JdbcFlashCardDao implements FlashCardDao {
     @Override
     public List<FlashCard> findAllCardsInDeck(long deck_id) {
         List<FlashCard> deckOfCards = new ArrayList<>();
-        String sql= "SELECT flashcards.user_id, flashcards.card_id, question_side, answer_side, keywords " +
+        String sql= "SELECT flashcards.user_id, flashcards.card_id, question_side, answer_side, keywords, image_url " +
                 "FROM flashcards " +
                 "JOIN deckard ON flashcards.card_id=deckard.card_id " +
                 "JOIN decks ON deckard.deck_id=decks.deck_id " +
@@ -58,8 +58,8 @@ public class JdbcFlashCardDao implements FlashCardDao {
 
     @Override
     public void updateFlashCard(FlashCard flashCard) {
-        String sql = "UPDATE flashcards SET question_side = ?, answer_side = ?, keywords = ? WHERE card_id = ?";
-        jdbcTemplate.update(sql, flashCard.getQuestionSide(), flashCard.getAnswerSide(), flashCard.getKeywords(), flashCard.getCardId());
+        String sql = "UPDATE flashcards SET question_side = ?, answer_side = ?, keywords = ?, image_url = ? WHERE card_id = ?";
+        jdbcTemplate.update(sql, flashCard.getQuestionSide(), flashCard.getAnswerSide(), flashCard.getKeywords(), flashCard.getImageUrl(), flashCard.getCardId());
     }
 
     @Override
@@ -78,6 +78,9 @@ public class JdbcFlashCardDao implements FlashCardDao {
         if (row.getString("keywords") != null) {
             flashCard.setKeywords(row.getString("keywords"));
         }
+        if(row.getString("image_url") != null) {
+            flashCard.setImageUrl(row.getString("image_url"));
+        };
         return flashCard;
 
 

@@ -24,7 +24,7 @@
         </div>
         <div id="imageUpload">
           <label for="imageURL">Upload image:</label>
-          <input type="file" @change="previewFile" />
+          <input type="file" @input="previewFile" />
         </div>
         <div class="allEditFormBtn">
           <div>
@@ -32,9 +32,7 @@
               class="submit"
               id="submitButton"
               @click.prevent="
-                updateSelectedFlashcard(),
-                  toggleShowEdit(),
-                  addImage(previewFile)
+               addImage(), updateSelectedFlashcard(), toggleShowEdit()
               "
             >
               Update
@@ -79,27 +77,42 @@
 <script>
 import flashCardService from "@/services/FlashCardService.js";
 import deckService from "@/services/DeckService";
-import { getStorage, ref, uploadBytes } from "firebase/storage";
+import { initializeApp } from "firebase/app";
+import { getStorage, ref, uploadBytes, getDownloadURL } from "firebase/storage";
 
-const storage = getStorage();
-const imageRef = ref(storage, "image/");
+
+const firebaseConfig = {
+  apiKey: "AIzaSyDNwUAfWMlZ0_LW4L4iaf2qu1DQczthmS8",
+  authDomain: "qwikflipecho.firebaseapp.com",
+  projectId: "qwikflipecho",
+  storageBucket: "qwikflipecho.appspot.com",
+  messagingSenderId: "193713042654",
+  appId: "1:193713042654:web:94014e9299a3fcbbfa7e4f",
+};
+
+const firebase = initializeApp(firebaseConfig);
+const storage = getStorage(firebase, "gs://qwikflipecho.appspot.com/");
+
 export default {
   data() {
     return {
       questionSide: this.flashcard.question_side,
       answerSide: this.flashcard.answer_side,
       keywords: this.flashcard.keywords,
+      imageLocation: "",
       deckList: [],
       value: "",
       fileName: "",
+      file: {},
     };
   },
   mounted() {},
   props: ["flashcard"],
   computed: {
-    // getFileName() {
-    //   return (this.fileName = document.getElementById("submitButton").name);
-    // },
+    getFileName() {
+      const imageRef = ref(storage, this.fileName);
+      return imageRef;
+    },
   },
   created() {
     deckService
@@ -111,15 +124,25 @@ export default {
   },
 
   methods: {
-    previewFile(event) {
-      console.log(event.target.files);
-      return event.target.files;
+    setImageReference(imageURL) {
+     this.imageLocation = imageURL.then(link => {
+      //   console.log(link)
+      //  this.imageLocation = link
+      return link
+      })
+      console.log(this.imageLocation)
     },
 
-    addImage(file) {
-      uploadBytes(imageRef, file).then((snapshot) => {
-        console.log("Uploaded file!");
-        console.log(snapshot);
+    previewFile(event) {
+      this.file = event.target.files[0];
+      this.fileName = this.file.name;
+      return this.file;
+    },
+
+    addImage() {
+      uploadBytes(this.getFileName, this.file).then((snapshot) => {
+          console.log("uploaded", snapshot)
+        this.setImageReference(getDownloadURL(snapshot.ref))
       });
     },
     // changingCurrentDeck(){
@@ -156,6 +179,7 @@ export default {
         answer_side: this.answerSide,
         keywords: this.keywords,
         user_id: this.$store.state.user.id,
+        image_url: this.imageLocation
       };
       flashCardService
         .updateFlashCard(updatedFlashcard.card_id, updatedFlashcard)

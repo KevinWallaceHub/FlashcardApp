@@ -24,8 +24,16 @@ public class FlashCard {
     @NotBlank(message = "answer side is required")
     String answerSide;
     String keywords;
+    @JsonProperty("image_url")
+    String imageUrl;
 
+    public String getImageUrl() {
+        return imageUrl;
+    }
 
+    public void setImageUrl(String imageUrl) {
+        this.imageUrl = imageUrl;
+    }
 
     public long getCardId() {
         return cardId;
