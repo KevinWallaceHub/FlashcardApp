@@ -79,8 +79,9 @@ export default {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  border-style:ridge;
-  border-width: 1px;
+  border-style:solid;
+  border-color: #293241;
+  border-width: 1px 1px 1px 0px;
   margin-left: 2px;
   
 }
