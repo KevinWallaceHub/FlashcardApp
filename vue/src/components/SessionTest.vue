@@ -3,15 +3,13 @@
     <div>
     <div class="deckName" @click="setCurrentDeck()"> Currently studying deck: "{{ deck.name }}"
     </div>
-    <div v-if="showSummary">
-    <p >{{this.incorrect}} incorrect responses
+    <div class="summary"   v-if="showSummary">
+    <p >{{this.incorrect}} incorrect responses 
     </p>
     <p>
         {{this.correct}} correct responses
     </p>
-    <p>
-
-    </p>
+    
     </div>
 
 
@@ -31,7 +29,7 @@
     <div class="rightOrWrong">
         <button v-on:click="correctAnswer()">Mark Correct</button>
         <button v-on:click="incorrectAnswer()">Mark Incorrect</button>
- <button v-on:click="switchSummary()">Finish Session</button>
+ <button v-on:click="switchSummary()">Summary</button>
     </div>
     </div>
   </div>
@@ -121,5 +119,11 @@ computed:{
 .testControls{
     display: flex;
     justify-content: space-evenly;
+}
+
+.summary{
+    display: flex;
+    justify-content: space-evenly;
+    font-size: 16pt;
 }
 </style>
