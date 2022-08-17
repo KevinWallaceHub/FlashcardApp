@@ -12,6 +12,7 @@
         :key="currentFlashCard.card_id"
         :flashcard="currentFlashCard"
       />
+     
     </div>
 </div>
     <div class="deckList"></div>
@@ -72,18 +73,19 @@ export default {
 <style>
 .tester{
   padding: 30px;
-  width:350px;
+  width:100%;
+ 
   
 }
 .shape{
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  border-style:solid;
+  display: flex; 
+  flex-direction: row; 
+   flex-wrap: wrap; 
+   border-style:solid; 
   border-color: #293241;
-  border-width: 1px 1px 1px 0px;
+  border-width: 1px 1px 1px 1px;
   margin-left: 2px;
-  
+  width: 900px;
 }
 
 .deckName{
@@ -96,7 +98,7 @@ export default {
   border-style: solid;
   border-width: 2px;
   color: #ffffff;
-  background-color: #ee6c4d;
+  background-color: #293241;
   font-weight: bold;
   text-align: center;
   text-transform: uppercase;

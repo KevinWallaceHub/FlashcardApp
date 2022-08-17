@@ -1,7 +1,6 @@
 <template>
   <div>
-    <div class="theCard">
-        <!-- class="sideOne" -->
+    <div class="sideOne">
       <div class="testCard">
         <p v-if="this.switchSide" id="question"
           >{{ flashcard.question_side }}
@@ -13,7 +12,7 @@
     </div>
     <div>
       <button v-on:click="switchTo()">Flip</button>
-      
+       
     </div>
   </div>
 </template>
@@ -23,6 +22,9 @@
 export default {
   data() {
     return {
+    
+      decks: [],
+      flashCardListForDeck: [],
       switchSide: true,
     };
   },
@@ -34,25 +36,31 @@ export default {
       } else {
         this.switchSide = true;
       }
-    },
-  },
+    }
+  }
 };
 </script>
 
 <style>
-.theCard{
-    width: 100%;;
-}
+
 .testCard{
-    width:100%;
-   display: flex;
-   padding:5px;
+    height: 400px;
+    display: flex;
+    align-items: center;
+    text-align: center;
+   background-color: rgb(247, 241, 234);
+  border-style: solid;
+  border-color: rgb(4, 65, 65);
+  border-width: 1.5px;
+  border-radius: 5px;
+  font-size: 22pt;
 }
+
 #answer {
   
   
   background-color: transparent;
-  font-size: .9em;
+  font-size: 0.9em;
 
   text-align: center;
     

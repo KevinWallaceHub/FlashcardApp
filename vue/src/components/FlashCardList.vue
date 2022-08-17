@@ -150,17 +150,22 @@ div.createForm {
   color: rgb(4, 65, 65);
   border-style: solid;
   border-width: 2px;
-  background-color: white;
+  background-color: transparent;
   display: flex;
+  flex-direction: row;
+  align-items: center;
   word-wrap: none;
-  justify-content: space-around;
+  width: 45%;
+  justify-content: space-evenly;
   box-shadow: 2px 4px 7px 0 #e47b64;
-  margin-bottom: 10px;
-  margin-right: 5px;
+  /* margin-bottom: 10px;
+  margin-right: 25rem; */
+  margin: auto;
+  padding: 5px;
   border-radius: 5px;
   z-index: 1;
   /* right: 25rem; */
-  top: 40%;
+  /* top: 40%; */
   
 }
 form.form {

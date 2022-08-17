@@ -27,6 +27,7 @@ export default new Vuex.Store({
     searchTerm: "",
     showEdit: false,
     deckList:[],
+  
   },
   mutations: {
     SET_SHOW_EDIT(state, bool){
