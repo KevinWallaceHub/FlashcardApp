@@ -32,7 +32,7 @@
               class="submit"
               id="submitButton"
               @click.prevent="
-               addImage(), updateSelectedFlashcard(), toggleShowEdit()
+               addImage().then(() => updateSelectedFlashcard(), toggleShowEdit())
               "
             >
               Update
@@ -99,7 +99,7 @@ export default {
       questionSide: this.flashcard.question_side,
       answerSide: this.flashcard.answer_side,
       keywords: this.flashcard.keywords,
-      imageLocation: "",
+      imageLocation: this.flashcard.image_url,
       deckList: [],
       value: "",
       fileName: "",
@@ -125,12 +125,15 @@ export default {
 
   methods: {
     setImageReference(imageURL) {
-     this.imageLocation = imageURL.then(link => {
-      //   console.log(link)
-      //  this.imageLocation = link
-      return link
+      console.log(imageURL)
+      return imageURL.then(link => {
+       console.log(link)
+       return this.imageLocation = link
+      
       })
-      console.log(this.imageLocation)
+      
+      // console.log(this.imageLocation)
+      
     },
 
     previewFile(event) {
@@ -140,9 +143,9 @@ export default {
     },
 
     addImage() {
-      uploadBytes(this.getFileName, this.file).then((snapshot) => {
-          console.log("uploaded", snapshot)
-        this.setImageReference(getDownloadURL(snapshot.ref))
+      return uploadBytes(this.getFileName, this.file).then((snapshot) => {
+         
+       return this.setImageReference(getDownloadURL(snapshot.ref))
       });
     },
     // changingCurrentDeck(){
