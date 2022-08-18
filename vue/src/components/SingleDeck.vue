@@ -96,8 +96,8 @@ export default {
   /* justify-content: flex-start; */
   /* align-items: center; */
 
-  height: rem;
-  width: 12rem;
+  height: 7.5rem;
+  width: 1rem;
   font-size: 18pt;
   
   /* text-orientation:sideways;
