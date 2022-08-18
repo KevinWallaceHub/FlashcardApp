@@ -5,6 +5,7 @@
         <img src="@/images/new logo no bkg.png" alt="Logo" class="logo" />
       </router-link>
       <nav>
+        
         <ul class="nav__links">
           <li class="navs">
             <router-link v-bind:to="{ name: 'home' }">Home</router-link
@@ -42,6 +43,7 @@
       </button>
     </div>
     <router-view />
+    
   </div>
 </template>
 <script>

@@ -5,7 +5,7 @@
           <form action="submit" v-if="!this.sessionActive" v-show="!this.testSessionActive">
             <label for="Decks">Please Select a deck to study from</label>
             <select  name="Decks" id="Decks" v-model="selectedDeck">
-            <option></option>
+            <option value= "" disabled selected hidden > select a deck </option>
             <option v-for="deck in this.decks"
             :key="deck.deck_id"
             :value="deck"
