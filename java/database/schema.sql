@@ -83,7 +83,7 @@ INSERT INTO flashcards(user_id,question_side, answer_side , keywords) VALUES('2'
 INSERT INTO flashcards(user_id,question_side, answer_side , keywords) VALUES('1','What is 1950s consumerism?',E'The rise of white collar jobs allow family\'s to live comfortably in the suburbs and get surrounded by many consumer goods. The television was the most influential consumer good.', '1950 American History');
 INSERT INTO flashcards(user_id,question_side, answer_side , keywords) VALUES('1','1952 Election/Including Mood of Americans',E'Eisenhower being the first republican president elected in 20 years. He\'s elected in 1952. This reflects the nations desire to establish normalcy and forget the hardships of the depression and the war.', '1950 American History');
 INSERT INTO flashcards(user_id,question_side, answer_side , keywords) VALUES('1','21 Game Show',E'Popular game show in the 1950\'s. Charles Van Doren captivated Americans when he began to win the show. He was an instant celebrity. The nation was shocked when they found out he was fed answers to continue winning to keep the ratings high. People had never questioned what they had seen on tv as real of honest.', '1950 American History');
-INSERT INTO flashcards(user_id,question_side, answer_side , keywords) VALUES('1','Baby of Pigs Invasion',E'Known as the baby of pigs invasion Eisenhower put the CIA on a secret plan to overthrow Cuba. When Kennedy took office he supported this plan. On April 17, 1961 went ashore on the attack (Bahai de Cochinos). It was a disaster 1,400 invaders were killed or captured.', '1950 American History');
+INSERT INTO flashcards(user_id,question_side, answer_side , keywords) VALUES('1','Bay of Pigs Invasion',E'Known as the bay of pigs invasion Eisenhower put the CIA on a secret plan to overthrow Cuba. When Kennedy took office he supported this plan. On April 17, 1961 went ashore on the attack (Bahai de Cochinos). It was a disaster 1,400 invaders were killed or captured.', '1950 American History');
 INSERT INTO flashcards(user_id,question_side, answer_side , keywords) VALUES('1','Beat Generation',E'Also called beatniks were from coffee houses in New York. They criticize the conformity and complacency of the 50s. It\'s unique that the artists are highly educated and are inspired by intellectualism that is coming from college campuses. The influential writers of this period are Alan Ginsburg and Jack Kerouac.','1950 American History');
 INSERT INTO flashcards(user_id,question_side, answer_side , keywords) VALUES('1','Where do ant eaters live?','Central and South America.','Animal Ant Eaters');
 INSERT INTO flashcards(user_id,question_side, answer_side , keywords) VALUES('1','How many different species of ant eaters are there?','Four species.', 'Animal Ant Eaters');
@@ -95,11 +95,33 @@ INSERT INTO flashcards(user_id,question_side, answer_side , keywords) VALUES('1'
 INSERT INTO flashcards(user_id,question_side, answer_side , keywords) VALUES('1','What NFL team was originally called the ‘New York Titans’?', 'The New York Jets.', 'Sports Football NFL Trivia');
 INSERT INTO flashcards(user_id,question_side, answer_side , keywords) VALUES('1','What is the only team in the NFL to neither host nor play in the Super Bowl?', 'Cleveland Browns.', 'Sports Football NFL Trivia');
 INSERT INTO flashcards(user_id,question_side, answer_side , keywords) VALUES('1',E'What is Babe Ruth\'s full real name?', 'George Herman Ruth, Jr.', 'Sports Baseball MLB Trivia');
+INSERT INTO flashcards(user_id,question_side, answer_side , keywords) VALUES('1','la audición', 'audition', 'Spanish');
+INSERT INTO flashcards(user_id,question_side, answer_side , keywords) VALUES('1','el baile', 'dance', 'Spanish');
+INSERT INTO flashcards(user_id,question_side, answer_side , keywords) VALUES('1','la boda', 'wedding', 'Spanish');
+INSERT INTO flashcards(user_id,question_side, answer_side , keywords) VALUES('1','el desfile', 'parade', 'Spanish');
+INSERT INTO flashcards(user_id,question_side, answer_side , keywords) VALUES('1','la fiesta de sorpresa', 'surprise party', 'Spanish');
+INSERT INTO flashcards(user_id,question_side, answer_side , keywords) VALUES('1','el día festivo', 'holiday', 'Spanish');
+INSERT INTO flashcards(user_id,question_side, answer_side , keywords) VALUES('1','el concurso', 'contest', 'Spanish');
+INSERT INTO flashcards(user_id,question_side, answer_side , keywords) VALUES('1','celebrar', 'to celebrate', 'Spanish');
+INSERT INTO flashcards(user_id,question_side, answer_side , keywords) VALUES('1','la cita', 'date', 'Spanish');
+INSERT INTO flashcards(user_id,question_side, answer_side , keywords) VALUES('1','el cumpleaños', 'birthday', 'Spanish');
+INSERT INTO flashcards(user_id,question_side, answer_side , keywords) VALUES('1','Atom', 'the basic unit of a chemical element.', 'Science Chemistry');
+INSERT INTO flashcards(user_id,question_side, answer_side , keywords) VALUES('1','Atomic number', 'The number of protons in the nucleus of an atom of an element.', 'Science Chemistry');
+INSERT INTO flashcards(user_id,question_side, answer_side , keywords) VALUES('1','Molecule', '2 or more non-metal elements chemically bonded together.', 'Science Chemistry');
+INSERT INTO flashcards(user_id,question_side, answer_side , keywords) VALUES('1','Atomic mass', 'Number of protons plus neutrons in the nucleus of an atom.', 'Science Chemistry');
+INSERT INTO flashcards(user_id,question_side, answer_side , keywords) VALUES('1','Element', 'A pure substance made of only one kind of atom.', 'Science Chemistry');
+INSERT INTO flashcards(user_id,question_side, answer_side , keywords) VALUES('1','Protons', 'A positively charged particle in the nucleus of an atom.', 'Science Chemistry');
+INSERT INTO flashcards(user_id,question_side, answer_side , keywords) VALUES('1','Electrons', 'A negatively charged particle outside the nucleus of an atom.', 'Science Chemistry');
+INSERT INTO flashcards(user_id,question_side, answer_side , keywords) VALUES('1','Isotopes', 'Atoms of the same element that have different numbers of neutrons.', 'Science Chemistry');
+INSERT INTO flashcards(user_id,question_side, answer_side , keywords) VALUES('1','Neutrons', 'A subatomic particle that has no charge and that is found in the nucleus of an atom.', 'Science Chemistry');
+INSERT INTO flashcards(user_id,question_side, answer_side , keywords) VALUES('1','Nucleus', 'Center of an atom.', 'Science Chemistry');
 
-INSERT INTO decks(user_id, name) VALUES('1','Java Interview Prep');
+INSERT INTO decks(user_id, name) VALUES('2','Java Interview Prep');
 INSERT INTO decks(user_id, name) VALUES('1',E'1950\'s History');
 INSERT INTO decks(user_id, name) VALUES('1','Ant eaters!');
 INSERT INTO decks(user_id, name) VALUES('1',E'Sport\'s Trivia');
+INSERT INTO decks(user_id, name) VALUES('1','Spanish');
+INSERT INTO decks(user_id, name) VALUES('1','Chemistry');
 
 INSERT INTO deckard (deck_id, card_id) VALUES (1, 1);
 INSERT INTO deckard (deck_id, card_id) VALUES (1, 2);
@@ -140,5 +162,27 @@ INSERT INTO deckard (deck_id, card_id) VALUES (4, 36);
 INSERT INTO deckard (deck_id, card_id) VALUES (4, 37);
 INSERT INTO deckard (deck_id, card_id) VALUES (4, 38);
 INSERT INTO deckard (deck_id, card_id) VALUES (4, 39);
+INSERT INTO deckard (deck_id, card_id) VALUES (5, 40);
+INSERT INTO deckard (deck_id, card_id) VALUES (5, 41);
+INSERT INTO deckard (deck_id, card_id) VALUES (5, 42);
+INSERT INTO deckard (deck_id, card_id) VALUES (5, 43);
+INSERT INTO deckard (deck_id, card_id) VALUES (5, 44);
+INSERT INTO deckard (deck_id, card_id) VALUES (5, 45);
+INSERT INTO deckard (deck_id, card_id) VALUES (5, 46);
+INSERT INTO deckard (deck_id, card_id) VALUES (5, 47);
+INSERT INTO deckard (deck_id, card_id) VALUES (5, 48);
+INSERT INTO deckard (deck_id, card_id) VALUES (5, 49);
+INSERT INTO deckard (deck_id, card_id) VALUES (6, 50);
+INSERT INTO deckard (deck_id, card_id) VALUES (6, 51);
+INSERT INTO deckard (deck_id, card_id) VALUES (6, 52);
+INSERT INTO deckard (deck_id, card_id) VALUES (6, 53);
+INSERT INTO deckard (deck_id, card_id) VALUES (6, 54);
+INSERT INTO deckard (deck_id, card_id) VALUES (6, 55);
+INSERT INTO deckard (deck_id, card_id) VALUES (6, 56);
+INSERT INTO deckard (deck_id, card_id) VALUES (6, 57);
+INSERT INTO deckard (deck_id, card_id) VALUES (6, 58);
+INSERT INTO deckard (deck_id, card_id) VALUES (6, 59);
+
+
 
 COMMIT TRANSACTION;
