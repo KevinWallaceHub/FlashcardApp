@@ -1,11 +1,13 @@
 <template>
-  <div class="home">
+  <div class="home" >
+    
     <div class="main">
       <h1>Welcome!</h1>
       <p class="greeting">
         Expanding your knowledge and studying hard is QwikFlip's number
         one goal!
       </p>
+      <div class="maybe">
       <div id="userChoices">
       <div id="yourCardsDiv">
         <router-link :to="{ name: 'cards' }"
@@ -22,13 +24,20 @@
           ><button id="yourDecks">Study Session</button></router-link
         >
       </div>
+     
       </div>
+       <!-- <div id="hp-image-container">
+        <img id="homepage-image" src="@/images/engagement-to-autonomy.png"  alt="Homepage image">
+    </div> -->
+    </div>
       <div class="sidebars">
         <div class="sidebar1"></div>
         <div class="sidebar2"></div>
       </div>
     </div>
+    
   </div>
+  
 </template>
 
 <script>
@@ -39,6 +48,24 @@ export default {
 
 
 <style>
+/* .maybe{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+} */
+/* #homepage-image {
+    width: 100px;
+   
+    background-attachment: fixed;
+}
+#hp-image-container{
+    width: 100%;
+    grid-area:  main ;
+    display: flex;
+    justify-content: center;
+   
+    
+} */
 div.home {
   display: grid;
   grid-template-columns: 1fr 4fr 1fr;
@@ -93,4 +120,6 @@ button#yourCards:hover, button#yourDecks:hover {
   background-color: #d44623;
   transition: 0.7s;
 }
+
+
 </style>

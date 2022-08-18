@@ -47,13 +47,14 @@ export default {
     height: 400px;
     display: flex;
     align-items: center;
-    text-align: center;
+    text-align:center;
    background-color: rgb(247, 241, 234);
   border-style: solid;
   border-color: rgb(4, 65, 65);
   border-width: 1.5px;
   border-radius: 5px;
-  font-size: 22pt;
+  font-size: 24pt;
+ width: 100%;
 }
 
 #answer {
@@ -61,8 +62,12 @@ export default {
   
   background-color: transparent;
   font-size: 0.9em;
-
+    width: 100%;
   text-align: center;
     
+}
+#question{
+    text-align: center;
+    width: 100%;
 }
 </style>
