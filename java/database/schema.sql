@@ -79,9 +79,33 @@ INSERT INTO flashcards(user_id,question_side, answer_side , keywords) VALUES('2'
 INSERT INTO flashcards(user_id,question_side, answer_side , keywords) VALUES('2','How garbage collection is done in Java?','In java, when an object is not referenced any more, garbage collection takes place and the object is destroyed automatically. For automatic garbage collection java calls either System.gc() method or Runtime.gc() method.','Java Garbage');
 INSERT INTO flashcards(user_id,question_side, answer_side , keywords) VALUES('2','Can a class be a super class and a sub-class at the same time?','If there is a hierarchy of inheritance used, a class can be a super class for another class and a sub-class for another one at the same time.','Java Class');
 INSERT INTO flashcards(user_id,question_side, answer_side , keywords) VALUES('2','How objects of a class are created if no constructor is defined in the class? ','Even if no explicit constructor is defined in a java class, objects get created successfully as a default constructor is implicitly used for object creation. This constructor has no parameters. ','Java Class Object');
-INSERT INTO decks(user_id, name) VALUES('1','First Deck');
+INSERT INTO flashcards(user_id,question_side, answer_side , keywords) VALUES('1','What is 1950s consumerism?',E'The rise of white collar jobs allow family\'s to live comfortably in the suburbs and get surrounded by many consumer goods. The television was the most influential consumer good.', '1950 American History');
+
+INSERT INTO decks(user_id, name) VALUES('1','Java Interview Prep');
+INSERT INTO deckard (deck_id, card_id) VALUES (1, 1);
 INSERT INTO deckard (deck_id, card_id) VALUES (1, 2);
+INSERT INTO deckard (deck_id, card_id) VALUES (1, 3);
+INSERT INTO deckard (deck_id, card_id) VALUES (1, 4);
+INSERT INTO deckard (deck_id, card_id) VALUES (1, 5);
+INSERT INTO deckard (deck_id, card_id) VALUES (1, 6);
+INSERT INTO deckard (deck_id, card_id) VALUES (1, 7);
+INSERT INTO deckard (deck_id, card_id) VALUES (1, 8);
+INSERT INTO deckard (deck_id, card_id) VALUES (1, 9);
+INSERT INTO deckard (deck_id, card_id) VALUES (1, 10);
+INSERT INTO deckard (deck_id, card_id) VALUES (1, 11);
+INSERT INTO deckard (deck_id, card_id) VALUES (1, 12);
+INSERT INTO deckard (deck_id, card_id) VALUES (1, 13);
+INSERT INTO deckard (deck_id, card_id) VALUES (1, 14);
+INSERT INTO deckard (deck_id, card_id) VALUES (1, 15);
+INSERT INTO deckard (deck_id, card_id) VALUES (1, 16);
+INSERT INTO deckard (deck_id, card_id) VALUES (1, 17);
+INSERT INTO deckard (deck_id, card_id) VALUES (1, 18);
+INSERT INTO deckard (deck_id, card_id) VALUES (1, 19);
 INSERT INTO deckard (deck_id, card_id) VALUES (1, 20);
+INSERT INTO deckard (deck_id, card_id) VALUES (1, 21);
+INSERT INTO deckard (deck_id, card_id) VALUES (1, 22);
+INSERT INTO deckard (deck_id, card_id) VALUES (1, 23);
+INSERT INTO deckard (deck_id, card_id) VALUES (1, 24);
 
 COMMIT TRANSACTION;
 
