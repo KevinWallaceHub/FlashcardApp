@@ -35,10 +35,12 @@
         <textarea type="text" id="answerSide" v-model="answerSide" />
         <label for="keywords"> Keywords:</label>
         <textarea type="text" id="keywords" v-model="keywords" />
+        <div>
         <button class="submit" v-on:click.prevent="createNewFlashCard()">
-          <button class="submit" v-on:click="cancelCreate()">Cancel</button>
           Submit
         </button>
+        <button class="submit" v-on:click="cancelCreate()">Cancel</button>
+        </div>
       </form>
     </div>
     <div class="flashCardList">
@@ -152,15 +154,15 @@ div.flashCardList {
 }
 
 div.createForm {
-  color: rgb(4, 65, 65);
+  /* color: #E0FBFc; */
   border-style: solid;
   border-width: 2px;
-  background-color: transparent;
+  background-color: #98C1D9;
   display: flex;
   flex-direction: row;
   align-items: center;
   word-wrap: none;
-  width: 45%;
+  width: 70%;
   justify-content: space-evenly;
   box-shadow: 2px 4px 7px 0 #e47b64;
   margin: auto;
@@ -174,7 +176,7 @@ form.form {
   font-weight: bold;
   text-align: center;
   text-transform: uppercase;
-  border-style: double;
+  /* border-style: double; */
   display: flex;
   flex-direction: column;
   justify-content: center;

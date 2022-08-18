@@ -1,17 +1,7 @@
 <template>
   <div class="whole">
     <div class="createForm">
-      <form action="submit" class="form">
-        <label for="name">Deck Name:</label>
-        <input type="text" id="newDeckName" v-model="name" required />
-        <button
-          type="submit"
-          class="submit"
-          v-on:click.prevent="createNewDeck()"
-        >
-          Create Deck
-        </button>
-      </form>
+    
       <search-flash-card />
     </div>
     <div class="flashCardList">
@@ -32,7 +22,20 @@
           />
         </div>
       </div>
-    </div>
+    </div >
+    <div class="createForm">
+      <form action="submit" class="form" >
+        <label for="name">Deck Name:</label>
+        <input type="text" id="newDeckName" v-model="name" required />
+        <button
+          type="submit"
+          class="submit"
+          v-on:click.prevent="createNewDeck()"
+        >
+          Create Deck
+        </button>
+      </form>
+      </div>
   </div>
 </template>
 
