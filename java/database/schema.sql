@@ -124,6 +124,7 @@ INSERT INTO flashcards(user_id,question_side, answer_side , keywords) VALUES('1'
 INSERT INTO flashcards(user_id,question_side, answer_side , keywords) VALUES('1','Let f(x) = 2x − 6. Solve f^−1(x) when x = 2','4', 'Math Algebra');
 INSERT INTO flashcards(user_id,question_side, answer_side , keywords) VALUES('1','Let f(x) = −4x + 7 and g(x) = 10x − 6. Find f(g(x)).','-40x+31', 'Math Algebra');
 INSERT INTO flashcards(user_id,question_side, answer_side , keywords) VALUES('1','Let f(x) = 9x − 2 and g(x) = −x + 3. Find f(g(x)).','-9x+25', 'Math Algebra');
+INSERT INTO flashcards(user_id,question_side, answer_side , keywords) VALUES('1','Let f(x) = 5x + 12. Find f^−1(x).','x-12(over)/5', 'Math Algebra');
 
 INSERT INTO decks(user_id, name) VALUES('2','Java Interview Prep');
 INSERT INTO decks(user_id, name) VALUES('1',E'1950\'s History');
