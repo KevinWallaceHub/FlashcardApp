@@ -1,11 +1,11 @@
 <template>
   <div>
     <div class="mainSelection">
-      <h2 v-if="!this.sessionActive">Welcome to the study room</h2>
+      <h2 v-if="!this.sessionActive">Welcome to the Study Room</h2>
           <form action="submit" v-if="!this.sessionActive" v-show="!this.testSessionActive">
             <label for="Decks">Please Select a deck to study from</label>
             <select  name="Decks" id="Decks" v-model="selectedDeck">
-            <option value= "" disabled selected hidden > select a deck </option>
+            <option value= "" disabled selected hidden> select a deck </option>
             <option v-for="deck in this.decks"
             :key="deck.deck_id"
             :value="deck"
@@ -13,7 +13,7 @@
                    </option>
             </select>
             <button v-on:click.prevent="setActiveSession()">Start Studying!</button>
-            <button v-on:click.prevent="setActiveTestSession()" >Test thing</button>
+            <button v-on:click.prevent="setActiveTestSession()" >Practice Test</button>
           </form>
    
           </div>
