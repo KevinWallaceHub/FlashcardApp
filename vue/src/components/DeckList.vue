@@ -1,7 +1,7 @@
 <template>
   <div class="whole">
-    <div class="createForm">
-    
+    <h1>Decks</h1>
+    <div class="searchBar">
       <search-flash-card />
     </div>
     <div class="flashCardList">
@@ -23,8 +23,8 @@
         </div>
       </div>
     </div >
-    <div class="createForm">
-      <form action="submit" class="form" >
+    <div class="createDeck">
+      <form action="submit" class="createDeckForm" >
         <label for="name">Deck Name:</label>
         <input type="text" id="newDeckName" v-model="name" required />
         <button
@@ -190,5 +190,29 @@ div.flashCardList {
 .whole {
   display: flex;
   flex-direction: column;
+}
+
+input#searchBar{
+  width: 500px;
+}
+input#newDeckName{
+  width: 400px;
+}
+div.searchBar,
+div.createDeck{
+  border-style: solid;
+  border-width: 2px;
+  background-color: #98C1D9;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  word-wrap: none;
+  width: auto;
+  justify-content: center;
+  box-shadow: 2px 4px 7px 0 #e47b64;
+  margin: auto;
+  padding: 5px;
+  border-radius: 5px;
+  z-index: 1;
 }
 </style>
