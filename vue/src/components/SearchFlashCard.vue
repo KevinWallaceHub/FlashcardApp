@@ -2,7 +2,7 @@
   <div>
     <!-- Search By Keyword: -->
     <label for="searchBar" ></label>
-    <input type="text" placeholder="Search By Keyword" id="searchBar" v-model="searchBar" 
+    <input type="text" placeholder="Search For Cards By Keyword" id="searchBar" v-model="searchBar" 
     v-bind="mutationForSearchTerm()"
     />
     

@@ -247,7 +247,7 @@ div.singleCard {
   word-wrap: none;
   flex-direction: row;
   justify-content: space-around;
-  box-shadow: 2px 4px 7px 0 #e47b64;
+  box-shadow: 2px 4px 7px 0 #293241;
   margin-bottom: 10px;
   margin-right: 5px;
   border-radius: 5px;

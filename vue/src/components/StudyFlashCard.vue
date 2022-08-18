@@ -3,10 +3,10 @@
     <div class="theCard">
         <!-- class="sideOne" -->
       <div class="testCard">
-        <p v-if="this.switchSide" id="question"
+        <p v-if="this.$store.state.switchSide" id="question"
           >{{ flashcard.question_side }}
         </p>
-        <p v-if="!this.switchSide" id="answer"
+        <p v-if="!this.$store.state.switchSide" id="answer"
           >{{ flashcard.answer_side }}
         </p>
       </div>
@@ -23,19 +23,19 @@
 export default {
   data() {
     return {
-      switchSide: true,
+      switchSide: false,
     };
   },
   props: ["flashcard"],
   methods: {
     switchTo() {
-      if (this.switchSide) {
-        this.switchSide = false;
-      } else {
-        this.switchSide = true;
-      }
-    },
+      this.$store.commit("SET_SWITCHSIDE", this.switchSide)
+         if(this.switchSide){
+        this.switchSide = false
+      } else ( this.switchSide = true)
+      
   },
+  }
 };
 </script>
 

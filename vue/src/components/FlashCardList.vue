@@ -163,14 +163,15 @@ div.createForm {
   flex-direction: row;
   align-items: center;
   word-wrap: none;
-  width: 70%;
+  width: 750px;
   justify-content: space-evenly;
-  box-shadow: 2px 4px 7px 0 #e47b64;
+  box-shadow: 2px 4px 7px 0 #293241;
   margin: auto;
   padding: 5px;
   border-radius: 5px;
   z-index: 1;
-  
+  margin-top: 25px; 
+  margin-bottom: 25px;
 }
 form.form {
   font-family: "Courier New", Courier, monospace;
