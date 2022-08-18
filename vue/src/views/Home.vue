@@ -55,13 +55,13 @@ export default {
 } */
 
 div.home{
-  background: url("../images/backGround.jpg") no-repeat center center
+  background: url("../images/goodres.jpg") no-repeat center center
     fixed;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
   background-size: cover;
-  height: 800px;
+  height: 1000px;
 }
 #homepage-image {
     width: 75vw;
@@ -133,12 +133,14 @@ button#yourCards:hover, button#yourDecks:hover {
   transition: 0.7s;
 }
 #welcome{
-  color: whitesmoke;
+  color: #293241;
   position: relative;
-  right: 10rem;
 }
 .greeting{
-  color: whitesmoke;
+  color: #293241;
+  position: relative;
+  font-size: 15pt;
+  text-decoration: solid;
 }
 
 </style>
