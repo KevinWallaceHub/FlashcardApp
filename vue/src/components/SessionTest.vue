@@ -22,7 +22,7 @@
 </div>
 <div class="testControls">
     <div class="nextCard"> 
-        <button v-on:click="iterateFlashCard()">Next</button>
+        <button v-on:click="iterateFlashCard(), switchTo()">Next</button>
         <button v-on:click="iterateBackFlashCard()">Back</button>
     
     </div>
@@ -46,7 +46,8 @@ export default {
       flashCardListForDeck: [],
      correct:0,
      incorrect:0,
-     showSummary:false
+     showSummary:false,
+     switchSide: false
     };
   },
 
@@ -72,7 +73,10 @@ computed:{
 
 },
   methods: {
-
+         switchTo() {
+      this.$store.commit("SET_SWITCHSIDE", this.switchSide)
+  
+      },
       setCurrentDeck(){
          console.log(this.deck);
           return this.$store.commit('SET_CURRENT_DECK', this.deck)

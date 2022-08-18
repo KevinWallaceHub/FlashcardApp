@@ -81,9 +81,9 @@ export default {
   display: flex; 
   flex-direction: row; 
    flex-wrap: wrap; 
-   border-style:solid; 
+   /* border-style:solid; 
   border-color: #293241;
-  border-width: 1px 1px 1px 1px;
+  border-width: 1px 1px 1px 1px; */
   margin-left: 2px;
   width: 900px;
 }

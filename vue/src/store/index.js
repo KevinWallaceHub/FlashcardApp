@@ -27,9 +27,17 @@ export default new Vuex.Store({
     searchTerm: "",
     showEdit: false,
     deckList:[],
-  
+    switchSide:true
   },
   mutations: {
+    SET_SWITCHSIDE(state, bool){
+      if(bool){
+        state.switchSide = false;
+      } if(!bool){
+        state.switchSide =true;
+      }
+    },
+
     SET_SHOW_EDIT(state, bool){
       if(bool){
         state.showEdit = true;
