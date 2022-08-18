@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div>
+    <div class="centerStuff">
     <div class="deckName" @click="setCurrentDeck()"> Currently studying deck: "{{ deck.name }}"
     </div>
     <div class="summary"   v-if="showSummary">
@@ -116,6 +116,7 @@ computed:{
 </script>
 
 <style>
+
 .testControls{
     display: flex;
     justify-content: space-evenly;
@@ -125,5 +126,10 @@ computed:{
     display: flex;
     justify-content: space-evenly;
     font-size: 16pt;
+}
+.deckName{
+    width:400px;
+    display: flex;
+    justify-content: center;
 }
 </style>

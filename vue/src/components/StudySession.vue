@@ -15,6 +15,7 @@
             <button v-on:click.prevent="setActiveSession()">Start Studying!</button>
             <button v-on:click.prevent="setActiveTestSession()" >Test thing</button>
           </form>
+   
           </div>
           <div class="stopSession"
           v-if="this.sessionActive">
@@ -98,7 +99,7 @@ button {
   text-align: center;
   text-transform: uppercase;
   cursor: pointer;
-  margin:1px;
+  margin:10px;
   
   font-size: 11pt;
 }
