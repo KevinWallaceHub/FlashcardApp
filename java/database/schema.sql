@@ -142,4 +142,3 @@ INSERT INTO deckard (deck_id, card_id) VALUES (4, 38);
 INSERT INTO deckard (deck_id, card_id) VALUES (4, 39);
 
 COMMIT TRANSACTION;
-
