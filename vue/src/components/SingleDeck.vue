@@ -6,7 +6,7 @@
       @drop="deleteDrop($event, deck)"
       @dragover.prevent
       @dragenter.prevent
-    > Drag Drop & Delete</div>
+    > </div>
     <div @drop="onDrop($event, deck)" @dragover.prevent @dragenter.prevent>
       <div class="deckCover">
        <h3> {{ deck.name }}
@@ -97,7 +97,7 @@ export default {
   /* align-items: center; */
 
   height: rem;
-  width: 12rem;
+  width: 15rem;
   font-size: 18pt;
   
   /* text-orientation:sideways;
@@ -107,9 +107,11 @@ export default {
 div#deleteZone {
   
   height: 55px;
-  background-color: #3d5a80;
+  background-color: #293241;
   color: #e0fbfc;
   margin-bottom: 5px;
 }
-
+h3{
+  padding:8px;
+}
 </style>
