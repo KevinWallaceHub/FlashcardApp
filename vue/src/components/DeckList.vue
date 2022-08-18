@@ -11,7 +11,7 @@
         :flashcard="currentFlashCard"
       />
     </div>
-
+<img class="infoButton" src="@/images/infobutton.png" alt="somthing" title="Drag to bar at top of deck to delete cards from deck">
     <div class="accContainer">
       <div class="flashCardListacc">
         <div class="flashCardListHover">
@@ -23,6 +23,7 @@
         </div>
       </div>
     </div >
+    
     <div class="createDeck">
       <form action="submit" class="createDeckForm" >
         <label for="name">Deck Name:</label>
@@ -135,7 +136,7 @@ export default {
   overflow-y: scroll;
   transition: all 0.5s ease;
   border: 2px solid #293241;
-  border-radius: 6px;
+  /* border-radius: 5px; */
 
   position: relative;
   scroll-behavior: smooth;
@@ -209,10 +210,18 @@ div.createDeck{
   word-wrap: none;
   width: auto;
   justify-content: center;
-  box-shadow: 2px 4px 7px 0 #e47b64;
+  box-shadow: 2px 4px 7px 0 #2932417a;
   margin: auto;
   padding: 5px;
   border-radius: 5px;
   z-index: 1;
+}
+.infoButton{
+  width: 25px;
+  margin-left: 58px;
+  
+}
+.infoButton:hover{
+  cursor:pointer;
 }
 </style>
