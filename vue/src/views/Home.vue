@@ -1,8 +1,8 @@
-<template>
+<template class="home">
   <div class="home" >
     
-    <div class="main">
-      <h1>Welcome!</h1>
+    <div class="main" :style="{'background-image':'@/images/engagement-to-autonomy.png'}">
+      <h1 id="welcome">Welcome!</h1>
       <p class="greeting">
         Expanding your knowledge and studying hard is QwikFlip's number
         one goal!
@@ -53,10 +53,21 @@ export default {
   flex-direction: column;
   justify-content: center;
 } */
-/* #homepage-image {
-    width: 100px;
-   
+
+div.home{
+  background: url("../images/backGround.jpg") no-repeat center center
+    fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  height: 800px;
+}
+#homepage-image {
+    width: 75vw;
+    z-index: -2;
     background-attachment: fixed;
+    position: relative;
 }
 #hp-image-container{
     width: 100%;
@@ -65,12 +76,13 @@ export default {
     justify-content: center;
    
     
-} */
+}
 div.home {
   display: grid;
   grid-template-columns: 1fr 4fr 1fr;
   grid-template-areas: "sidebar1 main sidebar2";
   gap: 10px;
+  background-image: image('@/image/engagement-to-automation.png');
 }
 body {
   background-color: #e0fbfc;
@@ -120,6 +132,13 @@ button#yourCards:hover, button#yourDecks:hover {
   background-color: #d44623;
   transition: 0.7s;
 }
-
+#welcome{
+  color: whitesmoke;
+  position: relative;
+  right: 10rem;
+}
+.greeting{
+  color: whitesmoke;
+}
 
 </style>
