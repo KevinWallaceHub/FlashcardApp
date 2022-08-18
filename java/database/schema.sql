@@ -115,6 +115,15 @@ INSERT INTO flashcards(user_id,question_side, answer_side , keywords) VALUES('1'
 INSERT INTO flashcards(user_id,question_side, answer_side , keywords) VALUES('1','Isotopes', 'Atoms of the same element that have different numbers of neutrons.', 'Science Chemistry');
 INSERT INTO flashcards(user_id,question_side, answer_side , keywords) VALUES('1','Neutrons', 'A subatomic particle that has no charge and that is found in the nucleus of an atom.', 'Science Chemistry');
 INSERT INTO flashcards(user_id,question_side, answer_side , keywords) VALUES('1','Nucleus', 'Center of an atom.', 'Science Chemistry');
+INSERT INTO flashcards(user_id,question_side, answer_side , keywords) VALUES('1','Let f(x) = x + 8 and g(x) = x^2 − 6x − 7. Find f(g(2)).', '-7', 'Math Algebra');
+INSERT INTO flashcards(user_id,question_side, answer_side , keywords) VALUES('1','Let f(x) = x − 2 and g(x) = x^2 − 7x − 9. Find f(g(−1)).', '-3', 'Math Algebra');
+INSERT INTO flashcards(user_id,question_side, answer_side , keywords) VALUES('1','Let f(x) = x^2 − 3x − 7. Find f(−3).', '11', 'Math Algebra');
+INSERT INTO flashcards(user_id,question_side, answer_side , keywords) VALUES('1','Let f(x) = x^2 − 16. Find f^−1(x)).', '+(sqrt) x+16', 'Math Algebra');
+INSERT INTO flashcards(user_id,question_side, answer_side , keywords) VALUES('1','Let f(x) = twenty four over the quantity of 3 x minus two. Find f(−2).', '-3', 'Math Algebra');
+INSERT INTO flashcards(user_id,question_side, answer_side , keywords) VALUES('1','Let f(x) = 2x + 2. Solve f^−1(x) when x = 4.', '1','Math Algebra');
+INSERT INTO flashcards(user_id,question_side, answer_side , keywords) VALUES('1','Let f(x) = 2x − 6. Solve f^−1(x) when x = 2','4', 'Math Algebra');
+INSERT INTO flashcards(user_id,question_side, answer_side , keywords) VALUES('1','Let f(x) = −4x + 7 and g(x) = 10x − 6. Find f(g(x)).','-40x+31', 'Math Algebra');
+INSERT INTO flashcards(user_id,question_side, answer_side , keywords) VALUES('1','Let f(x) = 9x − 2 and g(x) = −x + 3. Find f(g(x)).','-9x+25', 'Math Algebra');
 
 INSERT INTO decks(user_id, name) VALUES('2','Java Interview Prep');
 INSERT INTO decks(user_id, name) VALUES('1',E'1950\'s History');
@@ -182,7 +191,6 @@ INSERT INTO deckard (deck_id, card_id) VALUES (6, 56);
 INSERT INTO deckard (deck_id, card_id) VALUES (6, 57);
 INSERT INTO deckard (deck_id, card_id) VALUES (6, 58);
 INSERT INTO deckard (deck_id, card_id) VALUES (6, 59);
-
 
 
 COMMIT TRANSACTION;
