@@ -132,6 +132,7 @@ INSERT INTO decks(user_id, name) VALUES('1','Ant eaters!');
 INSERT INTO decks(user_id, name) VALUES('1',E'Sport\'s Trivia');
 INSERT INTO decks(user_id, name) VALUES('1','Spanish');
 INSERT INTO decks(user_id, name) VALUES('1','Chemistry');
+INSERT INTO decks(user_id, name) VALUES('1','Algebra');
 
 INSERT INTO deckard (deck_id, card_id) VALUES (1, 1);
 INSERT INTO deckard (deck_id, card_id) VALUES (1, 2);
@@ -192,6 +193,15 @@ INSERT INTO deckard (deck_id, card_id) VALUES (6, 56);
 INSERT INTO deckard (deck_id, card_id) VALUES (6, 57);
 INSERT INTO deckard (deck_id, card_id) VALUES (6, 58);
 INSERT INTO deckard (deck_id, card_id) VALUES (6, 59);
-
+INSERT INTO deckard (deck_id, card_id) VALUES (7, 60);
+INSERT INTO deckard (deck_id, card_id) VALUES (7, 61);
+INSERT INTO deckard (deck_id, card_id) VALUES (7, 62);
+INSERT INTO deckard (deck_id, card_id) VALUES (7, 63);
+INSERT INTO deckard (deck_id, card_id) VALUES (7, 64);
+INSERT INTO deckard (deck_id, card_id) VALUES (7, 65);
+INSERT INTO deckard (deck_id, card_id) VALUES (7, 66);
+INSERT INTO deckard (deck_id, card_id) VALUES (7, 67);
+INSERT INTO deckard (deck_id, card_id) VALUES (7, 68);
+INSERT INTO deckard (deck_id, card_id) VALUES (7, 69);
 
 COMMIT TRANSACTION;
