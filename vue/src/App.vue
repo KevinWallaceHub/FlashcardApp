@@ -62,7 +62,6 @@ div#nav {
   margin: 0;
   padding: 0;
   background-image: linear-gradient(to right, #e0fbfc, #98c1d9);
-  /* background-color: #dff0f9; */
   border-width: 0px 0px 3px 0px;
   border-style: solid;
   border-color: antiquewhite;
@@ -95,10 +94,8 @@ img.logo {
 }
 .nav__links {
   list-style: none;
-  /* display: inline-block; */
 }
 .nav__links li {
-  /* display: inline-block; */
   padding: 0px 20px;
   text-transform: uppercase;
   text-decoration: none;
@@ -120,7 +117,6 @@ img.logo {
 nav {
   
   display: flex;
-  /* flex-shrink:0; */
   flex-wrap: wrap;
 }
 button#logout {

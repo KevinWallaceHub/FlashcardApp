@@ -36,6 +36,7 @@
         <label for="keywords"> Keywords:</label>
         <textarea type="text" id="keywords" v-model="keywords" />
         <button class="submit" v-on:click.prevent="createNewFlashCard()">
+          <button class="submit" v-on:click="cancelCreate()">Cancel</button>
           Submit
         </button>
       </form>
@@ -93,6 +94,10 @@ export default {
     createFormToggle() {
       this.showCreateForm = true;
       this.showButton = false;
+    },
+    cancelCreate(){
+      this.showCreateForm = false;
+      this.showButton = true;
     },
     resetData() {
       this.questionSide = "";
@@ -158,14 +163,10 @@ div.createForm {
   width: 45%;
   justify-content: space-evenly;
   box-shadow: 2px 4px 7px 0 #e47b64;
-  /* margin-bottom: 10px;
-  margin-right: 25rem; */
   margin: auto;
   padding: 5px;
   border-radius: 5px;
   z-index: 1;
-  /* right: 25rem; */
-  /* top: 40%; */
   
 }
 form.form {

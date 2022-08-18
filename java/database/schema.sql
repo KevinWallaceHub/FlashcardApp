@@ -30,6 +30,7 @@ CREATE TABLE flashcards(
 	question_side varchar (512) not null,
 	answer_side varchar (1024) not null,
 	keywords varchar (128),
+	image_url varchar (256),
 	
 	constraint fk_flashcards_user_id foreign key (user_id) references users(user_id)
 );
