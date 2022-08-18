@@ -22,11 +22,18 @@
           <label for="keywords">Keywords: </label>
           <input type="text" id="keywords" v-model="keywords" />
         </div>
+        <div id="imageUpload">
+          <label for="imageURL">Upload image:</label>
+          <input type="file" @input="previewFile" />
+        </div>
         <div class="allEditFormBtn">
           <div>
             <button
               class="submit"
-              @click.prevent="updateSelectedFlashcard(), toggleShowEdit()"
+              id="submitButton"
+              @click.prevent="
+               addImage().then(() => updateSelectedFlashcard(), toggleShowEdit())
+              "
             >
               Update
             </button>
@@ -36,22 +43,24 @@
           </div>
           <div>
             <form action="submit">
-            <label for="Decks"></label>
-            <select  name="Decks" id="Decks" v-model="value">
-            <option></option>
-            <option v-for="deck in this.deckList"
-            :key="deck.deck_id"
-            :value="deck.deck_id"
-            >{{deck.name}}
-                   </option>
-            </select>
-                    
-            <button class="addToDeck" @click.prevent="addFlashCardToDeck() ">
-              Add To Deck
-            </button>
+              <label for="Decks"></label>
+              <select name="Decks" id="Decks" v-model="value">
+                <option></option>
+                <option
+                  v-for="deck in this.deckList"
+                  :key="deck.deck_id"
+                  :value="deck.deck_id"
+                >
+                  {{ deck.name }}
+                </option>
+              </select>
+
+              <button class="addToDeck" @click.prevent="addFlashCardToDeck()">
+                Add To Deck
+              </button>
             </form>
-            </div>
-            <div>
+          </div>
+          <div>
             <button
               class="delete"
               v-on:click.prevent="toggleShowEdit(), deleteSelectedFlashcard()"
@@ -67,21 +76,47 @@
 
 <script>
 import flashCardService from "@/services/FlashCardService.js";
-import deckService from "@/services/DeckService"
+import deckService from "@/services/DeckService";
+import { initializeApp } from "firebase/app";
+import { getStorage, ref, uploadBytes, getDownloadURL } from "firebase/storage";
+
+
+const firebaseConfig = {
+  apiKey: "AIzaSyDNwUAfWMlZ0_LW4L4iaf2qu1DQczthmS8",
+  authDomain: "qwikflipecho.firebaseapp.com",
+  projectId: "qwikflipecho",
+  storageBucket: "qwikflipecho.appspot.com",
+  messagingSenderId: "193713042654",
+  appId: "1:193713042654:web:94014e9299a3fcbbfa7e4f",
+};
+
+const firebase = initializeApp(firebaseConfig);
+const storage = getStorage(firebase, "gs://qwikflipecho.appspot.com/");
+
 export default {
   data() {
     return {
       questionSide: this.flashcard.question_side,
       answerSide: this.flashcard.answer_side,
       keywords: this.flashcard.keywords,
+      imageLocation: this.flashcard.image_url,
       deckList: [],
-      value: ""
+      value: "",
+      fileName: "",
+      file: {},
     };
   },
+  mounted() {},
   props: ["flashcard"],
-  computed: {},
-created() {
-    deckService.getAllDecks()
+  computed: {
+    getFileName() {
+      const imageRef = ref(storage, this.fileName);
+      return imageRef;
+    },
+  },
+  created() {
+    deckService
+      .getAllDecks()
       .then((response) => {
         this.deckList = response.data;
       })
@@ -89,6 +124,30 @@ created() {
   },
 
   methods: {
+    setImageReference(imageURL) {
+      console.log(imageURL)
+      return imageURL.then(link => {
+       console.log(link)
+       return this.imageLocation = link
+      
+      })
+      
+      // console.log(this.imageLocation)
+      
+    },
+
+    previewFile(event) {
+      this.file = event.target.files[0];
+      this.fileName = this.file.name;
+      return this.file;
+    },
+
+    addImage() {
+      return uploadBytes(this.getFileName, this.file).then((snapshot) => {
+         
+       return this.setImageReference(getDownloadURL(snapshot.ref))
+      });
+    },
     // changingCurrentDeck(){
     //     let selecetedDeck = {};
     //     console.log(this.value);
@@ -98,12 +157,15 @@ created() {
     //     })
     //     this.$store.commit('SET_CURRENT_DECK', selecetedDeck)
     // },
-    addFlashCardToDeck(){
+    addFlashCardToDeck() {
       // console.log(this.value);
-      deckService.addFlashCardToDeck(this.value, this.flashcard).then(response => {
-        console.log(response.data);
-        alert("card was added to deck successfully")
-      }).catch(err => console.error(err))
+      deckService
+        .addFlashCardToDeck(this.value, this.flashcard)
+        .then((response) => {
+          console.log(response.data);
+          alert("card was added to deck successfully");
+        })
+        .catch((err) => console.error(err));
     },
     toggleShowEdit() {
       this.$store.commit("SET_SHOW_EDIT", false);
@@ -120,6 +182,7 @@ created() {
         answer_side: this.answerSide,
         keywords: this.keywords,
         user_id: this.$store.state.user.id,
+        image_url: this.imageLocation
       };
       flashCardService
         .updateFlashCard(updatedFlashcard.card_id, updatedFlashcard)
@@ -141,29 +204,30 @@ created() {
     },
 
     deleteSelectedFlashcard() {
-      if(confirm('Are your sure you would like to delete this Flashcard?'))
-      {
-      const unwantedFlashcard = 
-      {
-        card_id: this.flashcard.card_id,
-        question_side: this.questionSide,
-        answer_side: this.answerSide,
-        keywords: this.keywords,
-        user_id: this.$store.state.user.id,
-      };
-      
-      flashCardService
-        .deleteFlashCard(unwantedFlashcard.card_id)
-        .then((response) => {
-          if (response.status < 300) {
-            let index =
-              this.$store.state.flashCardList.indexOf(unwantedFlashcard.card_id);
+      if (confirm("Are your sure you would like to delete this Flashcard?")) {
+        const unwantedFlashcard = {
+          card_id: this.flashcard.card_id,
+          question_side: this.questionSide,
+          answer_side: this.answerSide,
+          keywords: this.keywords,
+          user_id: this.$store.state.user.id,
+        };
+
+        flashCardService
+          .deleteFlashCard(unwantedFlashcard.card_id)
+          .then((response) => {
+            if (response.status < 300) {
+              let index = this.$store.state.flashCardList.indexOf(
+                unwantedFlashcard.card_id
+              );
               this.$store.state.flashCardList.splice(index, 1);
               alert("Flashcard Deleted Forever");
-            }}).catch((err) => console.error(err));
+            }
+          })
+          .catch((err) => console.error(err));
       }
+    },
   },
-  }
 };
 </script>
 

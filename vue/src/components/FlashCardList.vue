@@ -29,11 +29,12 @@
     <div class="createForm" v-if="showCreateForm">
       <form class="form" action="submit">
         <label for="questionSide">Question:</label>
-        <input type="text" id="questionSide" v-model="questionSide" />
+        <textarea type="textarea" rows="3"
+            cols="100" id="questionSide" v-model="questionSide" />
         <label for="answerSide"> Answer:</label>
-        <input type="text" id="answerSide" v-model="answerSide" />
+        <textarea type="text" id="answerSide" v-model="answerSide" />
         <label for="keywords"> Keywords:</label>
-        <input type="text" id="keywords" v-model="keywords" />
+        <textarea type="text" id="keywords" v-model="keywords" />
         <button class="submit" v-on:click.prevent="createNewFlashCard()">
           Submit
         </button>
@@ -146,15 +147,37 @@ div.flashCardList {
 }
 
 div.createForm {
+  color: rgb(4, 65, 65);
+  border-style: solid;
+  border-width: 2px;
+  background-color: transparent;
   display: flex;
-  justify-content: center;
+  flex-direction: row;
+  align-items: center;
+  word-wrap: none;
+  width: 45%;
+  justify-content: space-evenly;
+  box-shadow: 2px 4px 7px 0 #e47b64;
+  /* margin-bottom: 10px;
+  margin-right: 25rem; */
+  margin: auto;
+  padding: 5px;
+  border-radius: 5px;
+  z-index: 1;
+  /* right: 25rem; */
+  /* top: 40%; */
+  
 }
 form.form {
   font-family: "Courier New", Courier, monospace;
   font-weight: bold;
   text-align: center;
   text-transform: uppercase;
-  border-style: inset;
+  border-style: double;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  position: relative;
 }
 button.createButton {
   width: 9.7rem;
@@ -188,4 +211,5 @@ button.submit:hover {
   background-color: #d44623;
   transition: 0.7s;
 }
+
 </style>

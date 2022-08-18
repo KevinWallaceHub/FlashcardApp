@@ -44,12 +44,14 @@
     <router-view />
   </div>
 </template>
+<script>
+
+</script>
+
 
 <style>
 @import url("https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@600&display=swap");
-div#app {
-  /* background-image: linear-gradient(to bottom right, #dff0f9, #215350); */
-}
+
 * {
   font-family: "Nunito Sans", sans-serif;
 }

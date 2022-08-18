@@ -1,18 +1,18 @@
 <template>
   <div>
     <div >
-    <div @click="setCurrentDeck(),viewFlashCardsInDeck()">
-     {{ deck.name }}
+    <div class="deckName" @click="setCurrentDeck()"> Currently studying deck: "{{ deck.name }}"
     </div>
 
 
-    <div >
+    <div class="shape">
       <study-flash-card
-        
+        class="tester"
         v-for="currentFlashCard in this.flashCardListForDeck"
         :key="currentFlashCard.card_id"
         :flashcard="currentFlashCard"
       />
+     
     </div>
 </div>
     <div class="deckList"></div>
@@ -35,15 +35,8 @@ export default {
   components: {
       StudyFlashCard
   },
-
-  methods: {
-
-      setCurrentDeck(){
-         console.log(this.deck);
-          return this.$store.commit('SET_CURRENT_DECK', this.deck)
-          
-      },
-      viewFlashCardsInDeck(){
+ created(){
+   {
           const deckId = this.deck.deck_id;
           // console.log(this.$store.state.currentDeck);
            deckService
@@ -54,10 +47,61 @@ export default {
               return this.flashCardListForDeck
            }).catch(err => console.error(err))
       }
+ },
+  methods: {
+
+      setCurrentDeck(){
+         console.log(this.deck);
+          return this.$store.commit('SET_CURRENT_DECK', this.deck)
+          
+      },
+      // viewFlashCardsInDeck(){
+      //     const deckId = this.deck.deck_id;
+      //     // console.log(this.$store.state.currentDeck);
+      //      deckService
+      //      .getFlashCardForDeck(deckId)
+      //      .then(response =>{
+      //         console.log(response.data);
+      //         this.flashCardListForDeck =  response.data
+      //         return this.flashCardListForDeck
+      //      }).catch(err => console.error(err))
+      // }
   }
 };
 </script>
 
 <style>
+.tester{
+  padding: 30px;
+  width:100%;
+ 
+  
+}
+.shape{
+  display: flex; 
+  flex-direction: row; 
+   flex-wrap: wrap; 
+   border-style:solid; 
+  border-color: #293241;
+  border-width: 1px 1px 1px 1px;
+  margin-left: 2px;
+  width: 900px;
+}
 
+.deckName{
+  margin:10px;
+  margin-left: 3rem;
+  width: 15rem;
+  padding: 10px;
+  border-radius: 5px;
+  border-color: black;
+  border-style: solid;
+  border-width: 2px;
+  color: #ffffff;
+  background-color: #293241;
+  font-weight: bold;
+  text-align: center;
+  text-transform: uppercase;
+  font-size: 10pt;
+}
 </style>
