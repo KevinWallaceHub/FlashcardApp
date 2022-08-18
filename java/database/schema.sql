@@ -97,9 +97,9 @@ INSERT INTO flashcards(user_id,question_side, answer_side , keywords) VALUES('1'
 INSERT INTO flashcards(user_id,question_side, answer_side , keywords) VALUES('1',E'What is Babe Ruth\'s full real name?', 'George Herman Ruth, Jr.', 'Sports Baseball MLB Trivia');
 
 INSERT INTO decks(user_id, name) VALUES('1','Java Interview Prep');
-INSERT INTO decks(user_id, name) VALUES('2',E'1950\'s History');
-INSERT INTO decks(user_id, name) VALUES('3','Ant eaters!');
-INSERT INTO decks(user_id, name) VALUES('4',E'Sport\'s Trivia');
+INSERT INTO decks(user_id, name) VALUES('1',E'1950\'s History');
+INSERT INTO decks(user_id, name) VALUES('1','Ant eaters!');
+INSERT INTO decks(user_id, name) VALUES('1',E'Sport\'s Trivia');
 
 INSERT INTO deckard (deck_id, card_id) VALUES (1, 1);
 INSERT INTO deckard (deck_id, card_id) VALUES (1, 2);
@@ -135,6 +135,11 @@ INSERT INTO deckard (deck_id, card_id) VALUES (3, 31);
 INSERT INTO deckard (deck_id, card_id) VALUES (3, 32);
 INSERT INTO deckard (deck_id, card_id) VALUES (3, 33);
 INSERT INTO deckard (deck_id, card_id) VALUES (3, 34);
+INSERT INTO deckard (deck_id, card_id) VALUES (4, 35);
+INSERT INTO deckard (deck_id, card_id) VALUES (4, 36);
+INSERT INTO deckard (deck_id, card_id) VALUES (4, 37);
+INSERT INTO deckard (deck_id, card_id) VALUES (4, 38);
+INSERT INTO deckard (deck_id, card_id) VALUES (4, 39);
 
 COMMIT TRANSACTION;
 
