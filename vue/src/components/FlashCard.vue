@@ -38,7 +38,6 @@ export default {
 
     dragStart(evt, flashcard) {
       flashcard = this.flashcard;
-
       evt.dataTransfer.dropEffect = "move";
       evt.dataTransfer.effectAllowed = "move";
       evt.dataTransfer.setData("flashcardId", flashcard.card_id);
@@ -107,7 +106,7 @@ img#answerImage {
   display: flex;
   max-width: 10em;
   max-height: auto;
-  justify-content: flex-end;
+  justify-content: space-around;
   align-items: center;
 }
 </style>

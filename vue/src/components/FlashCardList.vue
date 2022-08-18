@@ -1,7 +1,7 @@
 <template>
   <div class="page">
     <div class="twoButtons">
-      <div class="searchBar"><search-flash-card /></div>
+      <div class="searchBarFlashCardpage"><search-flash-card /></div>
 
       <div>
         <single-flash-card
@@ -144,6 +144,8 @@ export default {
 div.twoButtons {
   display: flex;
   justify-content: center;
+  flex-direction: column-reverse;
+  align-items: center;
 }
 div.flashCardList {
   display: flex;
@@ -154,7 +156,6 @@ div.flashCardList {
 }
 
 div.createForm {
-  /* color: #E0FBFc; */
   border-style: solid;
   border-width: 2px;
   background-color: #98C1D9;
@@ -176,7 +177,6 @@ form.form {
   font-weight: bold;
   text-align: center;
   text-transform: uppercase;
-  /* border-style: double; */
   display: flex;
   flex-direction: column;
   justify-content: center;
