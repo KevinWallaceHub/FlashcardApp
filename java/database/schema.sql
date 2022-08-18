@@ -85,8 +85,16 @@ INSERT INTO flashcards(user_id,question_side, answer_side , keywords) VALUES('1'
 INSERT INTO flashcards(user_id,question_side, answer_side , keywords) VALUES('1','21 Game Show',E'Popular game show in the 1950\'s. Charles Van Doren captivated Americans when he began to win the show. He was an instant celebrity. The nation was shocked when they found out he was fed answers to continue winning to keep the ratings high. People had never questioned what they had seen on tv as real of honest.', '1950 American History');
 INSERT INTO flashcards(user_id,question_side, answer_side , keywords) VALUES('1','Baby of Pigs Invasion',E'Known as the baby of pigs invasion Eisenhower put the CIA on a secret plan to overthrow Cuba. When Kennedy took office he supported this plan. On April 17, 1961 went ashore on the attack (Bahai de Cochinos). It was a disaster 1,400 invaders were killed or captured.', '1950 American History');
 INSERT INTO flashcards(user_id,question_side, answer_side , keywords) VALUES('1','Beat Generation',E'Also called beatniks were from coffee houses in New York. They criticize the conformity and complacency of the 50s. It\'s unique that the artists are highly educated and are inspired by intellectualism that is coming from college campuses. The influential writers of this period are Alan Ginsburg and Jack Kerouac.','1950 American History');
-INSERT INTO decks(user_id, name) VALUES('2','Java Interview Prep');
-INSERT INTO decks(user_id, name) VALUES('1',E'1950\'s History');
+INSERT INTO flashcards(user_id,question_side, answer_side , keywords) VALUES('1','Where do ant eaters live?','Central and South America.','Animal Ant Eaters');
+INSERT INTO flashcards(user_id,question_side, answer_side , keywords) VALUES('1','How many different species of ant eaters are there?','Four species.', 'Animal Ant Eaters');
+INSERT INTO flashcards(user_id,question_side, answer_side , keywords) VALUES('1','What are ant eaters primary tool for gathering food?','Their spine-covered tongues.','Animal Ant Eaters');
+INSERT INTO flashcards(user_id,question_side, answer_side , keywords) VALUES('1','On average, how many ants and termites do ant eaters eat in a day?','30,000.', 'Animal Ant Eaters');
+INSERT INTO flashcards(user_id,question_side, answer_side , keywords) VALUES('1','How fast can an ant eater run?', '30 miles per hour(48 kilometers per hour).','Animal Ant Eaters');
+
+INSERT INTO decks(user_id, name) VALUES('1','Java Interview Prep');
+INSERT INTO decks(user_id, name) VALUES('2',E'1950\'s History');
+INSERT INTO decks(user_id, name) VALUES('3','Ant eaters!');
+
 INSERT INTO deckard (deck_id, card_id) VALUES (1, 1);
 INSERT INTO deckard (deck_id, card_id) VALUES (1, 2);
 INSERT INTO deckard (deck_id, card_id) VALUES (1, 3);
@@ -116,6 +124,11 @@ INSERT INTO deckard (deck_id, card_id) VALUES (2, 26);
 INSERT INTO deckard (deck_id, card_id) VALUES (2, 27);
 INSERT INTO deckard (deck_id, card_id) VALUES (2, 28);
 INSERT INTO deckard (deck_id, card_id) VALUES (2, 29);
+INSERT INTO deckard (deck_id, card_id) VALUES (3, 30);
+INSERT INTO deckard (deck_id, card_id) VALUES (3, 31);
+INSERT INTO deckard (deck_id, card_id) VALUES (3, 32);
+INSERT INTO deckard (deck_id, card_id) VALUES (3, 33);
+INSERT INTO deckard (deck_id, card_id) VALUES (3, 34);
 
 COMMIT TRANSACTION;
 
