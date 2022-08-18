@@ -42,10 +42,10 @@
             </button>
           </div>
           <div>
-            <form action="submit">
-              <label for="Decks"></label>
-              <select name="Decks" id="Decks" v-model="value">
-                <option></option>
+            <form action="submit" >
+              <label for="Decks" ></label>
+              <select name="Decks" id="Decks" v-model="value" >
+                <option value= "" disabled selected hidden>select a deck</option>
                 <option
                   v-for="deck in this.deckList"
                   :key="deck.deck_id"
@@ -239,10 +239,10 @@ div#cardForm {
   position: absolute;
 }
 div.singleCard {
-  color: rgb(4, 65, 65);
+  color: #293241;
   border-style: solid;
   border-width: 2px;
-  background-color: white;
+  background-color: #98C1D9;
   display: flex;
   word-wrap: none;
   flex-direction: row;
@@ -253,7 +253,6 @@ div.singleCard {
   border-radius: 5px;
   z-index: 1;
   position: fixed;
-  /* right: 25rem; */
   top: 40%;
 }
 div#questionSide,
@@ -267,17 +266,20 @@ div#keywords {
 div.allEditFormBtn {
   display: flex;
   justify-content: space-between;
+  color: #293241;
 }
 
 button.cancel,
 button.delete,
-button.addToDeck {
+button.addToDeck,
+option {
   margin: 5px;
   width: 9.7rem;
   padding: 10px;
   border-radius: 5px;
   color: #ffffff;
   background-color: #ee6c4d;
+  border-color: #293241;
   font-weight: bold;
   text-align: center;
   text-transform: uppercase;
