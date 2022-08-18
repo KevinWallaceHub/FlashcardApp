@@ -90,10 +90,16 @@ INSERT INTO flashcards(user_id,question_side, answer_side , keywords) VALUES('1'
 INSERT INTO flashcards(user_id,question_side, answer_side , keywords) VALUES('1','What are ant eaters primary tool for gathering food?','Their spine-covered tongues.','Animal Ant Eaters');
 INSERT INTO flashcards(user_id,question_side, answer_side , keywords) VALUES('1','On average, how many ants and termites do ant eaters eat in a day?','30,000.', 'Animal Ant Eaters');
 INSERT INTO flashcards(user_id,question_side, answer_side , keywords) VALUES('1','How fast can an ant eater run?', '30 miles per hour(48 kilometers per hour).','Animal Ant Eaters');
+INSERT INTO flashcards(user_id,question_side, answer_side , keywords) VALUES('1','Which boxer fought against Muhammad Ali and won?', 'Joe Frazier.', 'Sports Boxing Trivia');
+INSERT INTO flashcards(user_id,question_side, answer_side , keywords) VALUES('1','How old was Tiger Woods when he won the Masters?', '21.', 'Sports Golf Trivia');
+INSERT INTO flashcards(user_id,question_side, answer_side , keywords) VALUES('1','What NFL team was originally called the ‘New York Titans’?', 'The New York Jets.', 'Sports Football NFL Trivia');
+INSERT INTO flashcards(user_id,question_side, answer_side , keywords) VALUES('1','What is the only team in the NFL to neither host nor play in the Super Bowl?', 'Cleveland Browns.', 'Sports Football NFL Trivia');
+INSERT INTO flashcards(user_id,question_side, answer_side , keywords) VALUES('1',E'What is Babe Ruth\'s full real name?', 'George Herman Ruth, Jr.', 'Sports Baseball MLB Trivia');
 
 INSERT INTO decks(user_id, name) VALUES('1','Java Interview Prep');
 INSERT INTO decks(user_id, name) VALUES('2',E'1950\'s History');
 INSERT INTO decks(user_id, name) VALUES('3','Ant eaters!');
+INSERT INTO decks(user_id, name) VALUES('4',E'Sport\'s Trivia');
 
 INSERT INTO deckard (deck_id, card_id) VALUES (1, 1);
 INSERT INTO deckard (deck_id, card_id) VALUES (1, 2);
