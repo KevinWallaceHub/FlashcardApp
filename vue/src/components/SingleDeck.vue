@@ -9,7 +9,10 @@
     > Drag Drop & Delete</div>
     <div @drop="onDrop($event, deck)" @dragover.prevent @dragenter.prevent>
       <div class="deckCover">
-        {{ deck.name }}
+       <h3> {{ deck.name }}
+        </h3>
+       
+        
       </div>
 
       <div>
@@ -88,23 +91,25 @@ export default {
 
 <style>
 .deckCover {
-  display: flex;
-  justify-content: flex-start;
-  align-items: center;
+  /* display: flex; */
+  /* flex-direction: column; */
+  /* justify-content: flex-start; */
+  /* align-items: center; */
 
-  height: 11rem;
+  height: 4.5rem;
   width: 9rem;
   font-size: 18pt;
-  border-style: solid;
-  /* text-orientation: sideways;
-  writing-mode: vertical-lr; */
+  
+  /* text-orientation:sideways;
+  writing-mode:vertical-rl */
 }
 
 div#deleteZone {
-  width: vw;
-  height: 65px;
-  background-color: #293241;
+  
+  height: 55px;
+  background-color: #3d5a80;
   color: #e0fbfc;
   margin-bottom: 5px;
 }
+
 </style>

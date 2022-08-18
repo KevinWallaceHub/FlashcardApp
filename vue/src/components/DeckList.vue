@@ -115,6 +115,7 @@ export default {
   width: 100%;
   display: flex;
   justify-content: center;
+  
 }
 
 .flashCardListHover {
@@ -127,14 +128,14 @@ export default {
 }
 
 .flashCardListHover > div {
-  width: 310px;
+  width: 315px;
   flex-grow: 1;
   flex-shrink: 1;
 
   overflow-y: scroll;
   transition: all 0.5s ease;
-  border: 5px solid aliceblue;
-  border-radius: 10px;
+  border: 2px solid #293241;
+  border-radius: 6px;
 
   position: relative;
   scroll-behavior: smooth;
@@ -143,6 +144,11 @@ export default {
 .flashCardListHover > div::-webkit-scrollbar {
   display: none;
 }
+
+.flashCardListHover::-webkit-scrollbar{
+ display: none;
+}
+
 
 .flashCardListacc {
   display: flex;
